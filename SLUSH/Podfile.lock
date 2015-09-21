@@ -1,4 +1,15 @@
 PODS:
+  - AWSCognito (2.2.6):
+    - AWSCore (= 2.2.6)
+  - AWSCore (2.2.6)
+  - AWSDynamoDB (2.2.6):
+    - AWSCore (= 2.2.6)
+  - AWSEC2 (2.2.6):
+    - AWSCore (= 2.2.6)
+  - AWSLambda (2.2.6):
+    - AWSCore (= 2.2.6)
+  - AWSSimpleDB (2.2.6):
+    - AWSCore (= 2.2.6)
   - Bolts (1.2.2):
     - Bolts/AppLinks (= 1.2.2)
     - Bolts/Tasks (= 1.2.2)
@@ -21,12 +32,23 @@ PODS:
   - GoogleMaps (1.10.2)
 
 DEPENDENCIES:
+  - AWSCognito
+  - AWSDynamoDB
+  - AWSEC2
+  - AWSLambda
+  - AWSSimpleDB
   - FBSDKCoreKit
   - FBSDKLoginKit
   - FBSDKShareKit
   - GoogleMaps
 
 SPEC CHECKSUMS:
+  AWSCognito: 4cb0bd389dedf6673048609408577bb6c871422b
+  AWSCore: dd05203bf44d45b58b7667754ce4fa6f1bdb1c3e
+  AWSDynamoDB: d0eb38a6bcaaee5931e5168478c409a39b0a9066
+  AWSEC2: 2a37f326ea456c059da9b5bc5d390eac5190965a
+  AWSLambda: e8559b162b6dc3ae02dc7234d7143b23c80cd164
+  AWSSimpleDB: 56a8aae3cde205ef3270e46ed4a3e416e67d4d4e
   Bolts: 20a2bd788273360cb1e31530dc19b8544eef2544
   FBSDKCoreKit: 9954492d90c5fd65ae831395697a1660360d61f1
   FBSDKLoginKit: 3d07febbfa884b9878cacba54f705bb41f07d4b6

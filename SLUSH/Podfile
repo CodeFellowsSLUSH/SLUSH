@@ -8,6 +8,12 @@ pod 'FBSDKCoreKit'
 pod 'FBSDKLoginKit'
 pod 'FBSDKShareKit'
 
+pod 'AWSCognito'
+pod 'AWSDynamoDB'
+pod 'AWSSimpleDB'
+pod 'AWSLambda'
+pod 'AWSEC2'
+
 end
 
 target 'SLUSHTests' do
