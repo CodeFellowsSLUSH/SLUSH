@@ -6,8 +6,8 @@
 //  Copyright © 2015 Benjamin Laddin. All rights reserved.
 //
 
-#import "ViewController.h"
+#import "LoginViewController.h"
 
-@interface ProfileViewController : ViewController
+@interface ProfileViewController : LoginViewController
 
 @end
