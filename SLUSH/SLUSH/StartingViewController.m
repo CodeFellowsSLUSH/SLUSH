@@ -1,21 +1,22 @@
 //
-//  NewPropertyViewController.m
+//  StartingViewController.m
 //  SLUSH
 //
-//  Created by Benjamin Laddin on 9/21/15.
-//  Copyright © 2015 Chris Budro, Benjamin Laddin, Stephen Lardieri, and Mark Lin. All rights reserved.
+//  Created by Mark Lin on 9/21/15.
+//  Copyright © 2015 Benjamin Laddin. All rights reserved.
 //
 
-#import "NewPropertyViewController.h"
+#import "StartingViewController.h"
 
-@interface NewPropertyViewController ()
+@interface StartingViewController ()
 
 @end
 
-@implementation NewPropertyViewController
+@implementation StartingViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+  
     // Do any additional setup after loading the view.
 }
 
