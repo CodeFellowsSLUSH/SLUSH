@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4B69954EC0E353ACFEDFD890 /* libPods-SLUSH.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C8E5A0AE889B3DDBC310613 /* libPods-SLUSH.a */; };
 		B52EA8361BB060FF00A1C98E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B52EA8351BB060FF00A1C98E /* main.m */; };
 		B52EA8391BB060FF00A1C98E /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B52EA8381BB060FF00A1C98E /* AppDelegate.m */; };
 		B52EA83C1BB060FF00A1C98E /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B52EA83B1BB060FF00A1C98E /* ViewController.m */; };
@@ -41,6 +42,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3C8E5A0AE889B3DDBC310613 /* libPods-SLUSH.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-SLUSH.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		4FFE30BAB7754F1D9E63AA7B /* Pods-SLUSH.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SLUSH.release.xcconfig"; path = "Pods/Target Support Files/Pods-SLUSH/Pods-SLUSH.release.xcconfig"; sourceTree = "<group>"; };
+		5D12102E74F16FC75A3DF591 /* Pods-SLUSH.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SLUSH.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SLUSH/Pods-SLUSH.debug.xcconfig"; sourceTree = "<group>"; };
 		B52EA8311BB060FF00A1C98E /* SLUSH.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SLUSH.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B52EA8351BB060FF00A1C98E /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		B52EA8371BB060FF00A1C98E /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -75,6 +79,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4B69954EC0E353ACFEDFD890 /* libPods-SLUSH.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -95,6 +100,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		26AA02D669CFACC35740F89E /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				3C8E5A0AE889B3DDBC310613 /* libPods-SLUSH.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		92A88772705ACC15F66FA023 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				5D12102E74F16FC75A3DF591 /* Pods-SLUSH.debug.xcconfig */,
+				4FFE30BAB7754F1D9E63AA7B /* Pods-SLUSH.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		B52EA8281BB060FF00A1C98E = {
 			isa = PBXGroup;
 			children = (
@@ -102,6 +124,8 @@
 				B52EA8501BB060FF00A1C98E /* SLUSHTests */,
 				B52EA85B1BB060FF00A1C98E /* SLUSHUITests */,
 				B52EA8321BB060FF00A1C98E /* Products */,
+				92A88772705ACC15F66FA023 /* Pods */,
+				26AA02D669CFACC35740F89E /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -199,9 +223,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = B52EA8611BB060FF00A1C98E /* Build configuration list for PBXNativeTarget "SLUSH" */;
 			buildPhases = (
+				4BA8A7038F7F6EB024AF3F7A /* Check Pods Manifest.lock */,
 				B52EA82D1BB060FF00A1C98E /* Sources */,
 				B52EA82E1BB060FF00A1C98E /* Frameworks */,
 				B52EA82F1BB060FF00A1C98E /* Resources */,
+				D6FEED2A4DCEA910847549BC /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -316,6 +342,39 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		4BA8A7038F7F6EB024AF3F7A /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		D6FEED2A4DCEA910847549BC /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SLUSH/Pods-SLUSH-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		B52EA82D1BB060FF00A1C98E /* Sources */ = {
@@ -469,6 +528,7 @@
 		};
 		B52EA8621BB060FF00A1C98E /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5D12102E74F16FC75A3DF591 /* Pods-SLUSH.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = SLUSH/Info.plist;
@@ -480,6 +540,7 @@
 		};
 		B52EA8631BB060FF00A1C98E /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4FFE30BAB7754F1D9E63AA7B /* Pods-SLUSH.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = SLUSH/Info.plist;
@@ -556,6 +617,7 @@
 				B52EA8631BB060FF00A1C98E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		B52EA8641BB060FF00A1C98E /* Build configuration list for PBXNativeTarget "SLUSHTests" */ = {
 			isa = XCConfigurationList;
@@ -564,6 +626,7 @@
 				B52EA8661BB060FF00A1C98E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		B52EA8671BB060FF00A1C98E /* Build configuration list for PBXNativeTarget "SLUSHUITests" */ = {
 			isa = XCConfigurationList;
@@ -572,6 +635,7 @@
 				B52EA8691BB060FF00A1C98E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
