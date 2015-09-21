@@ -6,8 +6,8 @@
 //  Copyright © 2015 Chris Budro, Benjamin Laddin, Stephen Lardieri, and Mark Lin. All rights reserved.
 //
 
-#import "LoginViewController.h"
+#import <UIKit/UIKit.h>
 
-@interface ProfileViewController : LoginViewController
+@interface ProfileViewController : UIViewController
 
 @end
