@@ -7,7 +7,19 @@
 //
 
 #import <UIKit/UIKit.h>
+@class FilterViewController;
+@class FilterManagerDelegate;
 
-@interface FilterViewController : UIViewController
+@protocol FilterManagerDelegate <NSObject>
+
+//- (void)filterManager:(FilterViewController *)filterManager didApplyFilter:(Filter *)filter;
+
+@end
+
+@interface FilterViewController : UITableViewController
+
+@property (weak, nonatomic) FilterManagerDelegate *delegate;
+
+
 
 @end
