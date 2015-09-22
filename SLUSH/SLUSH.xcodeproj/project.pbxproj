@@ -27,6 +27,7 @@
 		B52EA8721BB0626800A1C98E /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B52EA8711BB0626800A1C98E /* ProfileViewController.m */; settings = {ASSET_TAGS = (); }; };
 		B52EA8751BB0627600A1C98E /* NewPropertyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B52EA8741BB0627600A1C98E /* NewPropertyViewController.m */; settings = {ASSET_TAGS = (); }; };
 		B52EA87B1BB07ABA00A1C98E /* BrowseListingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B52EA87A1BB07ABA00A1C98E /* BrowseListingsViewController.m */; settings = {ASSET_TAGS = (); }; };
+		DFF009C41BB0CBA400D14EC7 /* Secrets.m in Sources */ = {isa = PBXBuildFile; fileRef = DFF009C31BB0CBA400D14EC7 /* Secrets.m */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -86,6 +87,8 @@
 		B52EA8741BB0627600A1C98E /* NewPropertyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewPropertyViewController.m; sourceTree = "<group>"; };
 		B52EA8791BB07ABA00A1C98E /* BrowseListingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BrowseListingsViewController.h; sourceTree = "<group>"; };
 		B52EA87A1BB07ABA00A1C98E /* BrowseListingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BrowseListingsViewController.m; sourceTree = "<group>"; };
+		DFF009C01BB0CACF00D14EC7 /* Secrets.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Secrets.h; sourceTree = "<group>"; };
+		DFF009C31BB0CBA400D14EC7 /* Secrets.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Secrets.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -160,6 +163,8 @@
 				B52EA8381BB060FF00A1C98E /* AppDelegate.m */,
 				4C74AF411BB0D21800D2770F /* Constants.h */,
 				4C74AF421BB0D21800D2770F /* Constants.m */,
+				DFF009C01BB0CACF00D14EC7 /* Secrets.h */,
+				DFF009C31BB0CBA400D14EC7 /* Secrets.m */,
 				B52EA8781BB062A000A1C98E /* Models */,
 				B52EA8761BB0628F00A1C98E /* Controllers */,
 				B52EA8771BB0629A00A1C98E /* Views */,
@@ -416,6 +421,7 @@
 				B52EA8751BB0627600A1C98E /* NewPropertyViewController.m in Sources */,
 				B52EA87B1BB07ABA00A1C98E /* BrowseListingsViewController.m in Sources */,
 				B52EA8721BB0626800A1C98E /* ProfileViewController.m in Sources */,
+				DFF009C41BB0CBA400D14EC7 /* Secrets.m in Sources */,
 				B52EA8391BB060FF00A1C98E /* AppDelegate.m in Sources */,
 				B52EA8361BB060FF00A1C98E /* main.m in Sources */,
 			);
