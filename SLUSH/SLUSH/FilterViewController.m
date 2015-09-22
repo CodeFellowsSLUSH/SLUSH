@@ -12,6 +12,7 @@
 @interface FilterViewController ()
 @property (weak, nonatomic) IBOutlet UISegmentedControl *bedroomSegmentedControl;
 @property (weak, nonatomic) IBOutlet UISegmentedControl *bathroomSegmentedControl;
+@property (weak, nonatomic) IBOutlet UITableViewCell *resetFiltersCell;
 
 @end
 
@@ -33,6 +34,7 @@
   
   UIBarButtonItem * applyFilterButton = [[UIBarButtonItem alloc] initWithTitle:@"Apply" style:UIBarButtonItemStyleDone target:self action:@selector(applyFilterWasPressed)];
   self.navigationItem.rightBarButtonItem = applyFilterButton;
+  
   
 }
 
@@ -59,6 +61,15 @@
 
 - (void)applyFilterWasPressed {
   [self.delegate filterManager:self didApplyFilter:self.filter];
+}
+
+#pragma mark - Table View Delegate
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+  UITableViewCell *currentCell = [tableView cellForRowAtIndexPath:indexPath];
+  if (currentCell == self.resetFiltersCell) {
+    self.filter = [[PropertyQueryFilter alloc] init];
+  }
 }
 
 @end

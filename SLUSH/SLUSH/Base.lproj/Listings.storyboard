@@ -160,7 +160,7 @@
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
-                            <tableViewSection headerTitle="Section-2" id="3Sm-ZI-Fd7">
+                            <tableViewSection headerTitle="Filters" id="3Sm-ZI-Fd7">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="35" id="JFc-Sd-vMU" userLabel="Price Label">
                                         <rect key="frame" x="0.0" y="203.5" width="600" height="35"/>
@@ -168,15 +168,6 @@
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="JFc-Sd-vMU" id="Tgb-qS-4xd">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="34.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Price Range" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4rA-CC-oaB">
-                                                    <rect key="frame" x="254" y="11" width="92" height="21"/>
-                                                    <animations/>
-                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                            </subviews>
                                             <animations/>
                                         </tableViewCellContentView>
                                         <animations/>
@@ -190,18 +181,25 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="Pgh-9L-CJv">
-                                                    <rect key="frame" x="51" y="8" width="494" height="31"/>
+                                                    <rect key="frame" x="181" y="8" width="364" height="31"/>
                                                     <animations/>
                                                 </slider>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="$10" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Il-yK-Jo4">
-                                                    <rect key="frame" x="13" y="14" width="24" height="17"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="$100" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="M2I-pM-htz">
+                                                    <rect key="frame" x="559" y="14" width="33" height="17"/>
                                                     <animations/>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="$100" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="M2I-pM-htz">
-                                                    <rect key="frame" x="559" y="14" width="33" height="17"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Price Range" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4rA-CC-oaB">
+                                                    <rect key="frame" x="8" y="14" width="78" height="17"/>
+                                                    <animations/>
+                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="$10" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Il-yK-Jo4">
+                                                    <rect key="frame" x="151" y="14" width="24" height="17"/>
                                                     <animations/>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -219,7 +217,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="JxP-hf-UvZ">
+                                                <segmentedControl opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="751" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="JxP-hf-UvZ">
                                                     <rect key="frame" x="149" y="7" width="443" height="29"/>
                                                     <animations/>
                                                     <segments>
@@ -233,8 +231,8 @@
                                                         <action selector="bedroomSegmentWasChanged:" destination="Rn7-h8-PfT" eventType="valueChanged" id="uiO-ju-ac3"/>
                                                     </connections>
                                                 </segmentedControl>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Bedrooms" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7U6-cw-ZRY">
-                                                    <rect key="frame" x="8" y="12" width="66" height="17"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="753" text="Bedrooms" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7U6-cw-ZRY">
+                                                    <rect key="frame" x="8" y="13" width="66" height="17"/>
                                                     <animations/>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -242,6 +240,13 @@
                                                 </label>
                                             </subviews>
                                             <animations/>
+                                            <constraints>
+                                                <constraint firstItem="JxP-hf-UvZ" firstAttribute="centerY" secondItem="k67-32-9K6" secondAttribute="centerY" id="M0i-0K-LiK"/>
+                                                <constraint firstItem="JxP-hf-UvZ" firstAttribute="trailing" secondItem="k67-32-9K6" secondAttribute="trailingMargin" id="NaD-3R-bxl"/>
+                                                <constraint firstItem="7U6-cw-ZRY" firstAttribute="leading" secondItem="k67-32-9K6" secondAttribute="leadingMargin" id="dkc-NR-l3t"/>
+                                                <constraint firstItem="JxP-hf-UvZ" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="7U6-cw-ZRY" secondAttribute="trailing" constant="8" symbolic="YES" id="qDs-TL-whf"/>
+                                                <constraint firstItem="7U6-cw-ZRY" firstAttribute="centerY" secondItem="k67-32-9K6" secondAttribute="centerY" id="xTP-uZ-sfB"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                         <animations/>
                                     </tableViewCell>
@@ -252,8 +257,8 @@
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="usw-HO-VlB">
-                                                    <rect key="frame" x="149" y="7" width="443" height="29"/>
+                                                <segmentedControl opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="usw-HO-VlB">
+                                                    <rect key="frame" x="147" y="7" width="445" height="29"/>
                                                     <animations/>
                                                     <segments>
                                                         <segment title="Any"/>
@@ -266,8 +271,8 @@
                                                         <action selector="bathroomSegmentWasChanged:" destination="Rn7-h8-PfT" eventType="valueChanged" id="2zI-wg-vlW"/>
                                                     </connections>
                                                 </segmentedControl>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Bathrooms" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2v7-Ma-er2">
-                                                    <rect key="frame" x="8" y="12" width="71" height="17"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bathrooms" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2v7-Ma-er2">
+                                                    <rect key="frame" x="8" y="13.5" width="70.5" height="17"/>
                                                     <animations/>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -275,6 +280,13 @@
                                                 </label>
                                             </subviews>
                                             <animations/>
+                                            <constraints>
+                                                <constraint firstItem="2v7-Ma-er2" firstAttribute="leading" secondItem="nPB-sa-Ncg" secondAttribute="leadingMargin" id="5Pe-Nd-GDJ"/>
+                                                <constraint firstItem="usw-HO-VlB" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="2v7-Ma-er2" secondAttribute="trailing" constant="8" symbolic="YES" id="5gn-Z6-xYt"/>
+                                                <constraint firstItem="usw-HO-VlB" firstAttribute="trailing" secondItem="nPB-sa-Ncg" secondAttribute="trailingMargin" id="FkT-bY-1el"/>
+                                                <constraint firstItem="2v7-Ma-er2" firstAttribute="centerY" secondItem="nPB-sa-Ncg" secondAttribute="centerY" id="H9z-ic-RSL"/>
+                                                <constraint firstItem="usw-HO-VlB" firstAttribute="centerY" secondItem="nPB-sa-Ncg" secondAttribute="centerY" id="Ywt-Ul-p3W"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                         <animations/>
                                     </tableViewCell>
@@ -292,7 +304,7 @@
                             </tableViewSection>
                             <tableViewSection headerTitle="" id="0uA-bj-bSv">
                                 <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="43" id="fmj-kn-DgK" userLabel="Price Label">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="43" id="fmj-kn-DgK" userLabel="Reset Filters">
                                         <rect key="frame" x="0.0" y="453.5" width="600" height="43"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="fmj-kn-DgK" id="4DM-w1-Qdh">
@@ -326,6 +338,7 @@
                     <connections>
                         <outlet property="bathroomSegmentedControl" destination="usw-HO-VlB" id="y1H-Fo-Ida"/>
                         <outlet property="bedroomSegmentedControl" destination="JxP-hf-UvZ" id="B4B-as-uX6"/>
+                        <outlet property="resetFiltersCell" destination="fmj-kn-DgK" id="4nq-Os-737"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="g74-H7-3We" userLabel="First Responder" sceneMemberID="firstResponder"/>
