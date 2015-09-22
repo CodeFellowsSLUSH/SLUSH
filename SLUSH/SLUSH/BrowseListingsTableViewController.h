@@ -1,13 +1,13 @@
 //
-//  BrowseListingsViewController.h
+//  BrowseListingsTableViewController.h
 //  SLUSH
 //
-//  Created by Benjamin Laddin on 9/21/15.
+//  Created by Benjamin Laddin on 9/22/15.
 //  Copyright © 2015 Chris Budro, Benjamin Laddin, Stephen Lardieri, and Mark Lin. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
 
-@interface BrowseListingsViewController : UIViewController
+@interface BrowseListingsTableViewController : UITableViewController
 
 @end
