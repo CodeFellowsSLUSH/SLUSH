@@ -20,7 +20,14 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-  // Override point for customization after application launch.
+
+  AWSCognitoCredentialsProvider *credentialsProvider = [[AWSCognitoCredentialsProvider alloc]
+                                                        initWithRegionType:kCognitoRegionType
+                                                        identityPoolId:kCognitoIdentityPoolID];
+  
+  AWSServiceConfiguration *configuration = [[AWSServiceConfiguration alloc] initWithRegion:kCognitoRegionType credentialsProvider:credentialsProvider];
+  
+  [AWSServiceManager defaultServiceManager].defaultServiceConfiguration = configuration;
   return YES;
 }
 
