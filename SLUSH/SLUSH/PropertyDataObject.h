@@ -12,6 +12,7 @@
 @interface PropertyDataObject : NSObject
 
 @property (strong, nonatomic) NSString * objectId;
+@property (strong, nonatomic) NSString * landlordId;
 
 @property (nonatomic, strong) NSString * headline;
 @property (nonatomic, strong) NSString * propertyDescription;
