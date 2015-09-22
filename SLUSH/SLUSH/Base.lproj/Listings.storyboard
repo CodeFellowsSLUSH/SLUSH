@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8191" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="ofO-tF-N67">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8191" systemVersion="15A282b" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="ofO-tF-N67">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
@@ -13,6 +13,7 @@
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="376" sectionHeaderHeight="28" sectionFooterHeight="28" id="JGk-zi-mkO">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="listingCell" selectionStyle="default" indentationWidth="10" reuseIdentifier="listingCell" rowHeight="379" id="hfg-n2-W8f" customClass="BrowseListingCellsTableViewCell">
@@ -24,6 +25,7 @@
                                     <subviews>
                                         <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Pff-5w-6aR">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="300"/>
+                                            <animations/>
                                             <constraints>
                                                 <constraint firstAttribute="width" secondItem="Pff-5w-6aR" secondAttribute="height" multiplier="2:1" id="gat-mW-Acm"/>
                                             </constraints>
@@ -43,15 +45,19 @@
                                                         <subviews>
                                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="modernHouse" translatesAutoresizingMaskIntoConstraints="NO" id="zW1-AZ-8z4">
                                                                 <rect key="frame" x="0.0" y="0.0" width="600" height="300"/>
+                                                                <animations/>
                                                             </imageView>
                                                         </subviews>
+                                                        <animations/>
                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                     </view>
+                                                    <animations/>
                                                 </collectionViewCell>
                                             </cells>
                                         </collectionView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="3 berooms 1 bath, Awesome Place!!!" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f6s-cJ-bUb">
                                             <rect key="frame" x="8" y="308" width="592" height="26.5"/>
+                                            <animations/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="592" id="xhn-BK-WQd"/>
                                             </constraints>
@@ -61,11 +67,13 @@
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Here is where the discription goes" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kIc-Pw-PzB">
                                             <rect key="frame" x="8" y="342.5" width="592" height="21"/>
+                                            <animations/>
                                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
+                                    <animations/>
                                     <constraints>
                                         <constraint firstAttribute="bottomMargin" secondItem="kIc-Pw-PzB" secondAttribute="bottom" constant="7" id="1al-v8-Pr0"/>
                                         <constraint firstAttribute="trailingMargin" secondItem="Pff-5w-6aR" secondAttribute="trailing" constant="-8" id="2bd-Ha-HV2"/>
@@ -79,6 +87,7 @@
                                         <constraint firstItem="kIc-Pw-PzB" firstAttribute="top" secondItem="f6s-cJ-bUb" secondAttribute="bottom" constant="8" id="q4I-1x-Xac"/>
                                     </constraints>
                                 </tableViewCellContentView>
+                                <animations/>
                                 <connections>
                                     <outlet property="descriptionLabel" destination="kIc-Pw-PzB" id="tQS-nb-FWB"/>
                                     <outlet property="headerLabel" destination="f6s-cJ-bUb" id="WJ4-Ky-YgR"/>
@@ -210,14 +219,24 @@
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tEH-02-4pJ">
-                                                    <rect key="frame" x="408" y="-55" width="133" height="153"/>
+                                                <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="JxP-hf-UvZ">
+                                                    <rect key="frame" x="149" y="7" width="443" height="29"/>
                                                     <animations/>
-                                                </pickerView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Bedrooms" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WJ9-Ip-jxh">
-                                                    <rect key="frame" x="16" y="10" width="79" height="21"/>
+                                                    <segments>
+                                                        <segment title="Any"/>
+                                                        <segment title="1+"/>
+                                                        <segment title="2+"/>
+                                                        <segment title="3+"/>
+                                                        <segment title="4+"/>
+                                                    </segments>
+                                                    <connections>
+                                                        <action selector="bedroomSegmentWasChanged:" destination="Rn7-h8-PfT" eventType="valueChanged" id="uiO-ju-ac3"/>
+                                                    </connections>
+                                                </segmentedControl>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Bedrooms" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7U6-cw-ZRY">
+                                                    <rect key="frame" x="8" y="12" width="66" height="17"/>
                                                     <animations/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -233,14 +252,24 @@
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ZhG-qq-MYO">
-                                                    <rect key="frame" x="174" y="-86" width="600" height="216"/>
+                                                <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="usw-HO-VlB">
+                                                    <rect key="frame" x="149" y="7" width="443" height="29"/>
                                                     <animations/>
-                                                </pickerView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Bathrooms" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="A2a-HQ-0vN">
-                                                    <rect key="frame" x="16" y="11" width="84" height="21"/>
+                                                    <segments>
+                                                        <segment title="Any"/>
+                                                        <segment title="1+"/>
+                                                        <segment title="2+"/>
+                                                        <segment title="3+"/>
+                                                        <segment title="4+"/>
+                                                    </segments>
+                                                    <connections>
+                                                        <action selector="bathroomSegmentWasChanged:" destination="Rn7-h8-PfT" eventType="valueChanged" id="2zI-wg-vlW"/>
+                                                    </connections>
+                                                </segmentedControl>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Bathrooms" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2v7-Ma-er2">
+                                                    <rect key="frame" x="8" y="12" width="71" height="17"/>
                                                     <animations/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -294,6 +323,10 @@
                     <toolbarItems/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="bathroomSegmentedControl" destination="usw-HO-VlB" id="y1H-Fo-Ida"/>
+                        <outlet property="bedroomSegmentedControl" destination="JxP-hf-UvZ" id="B4B-as-uX6"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="g74-H7-3We" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

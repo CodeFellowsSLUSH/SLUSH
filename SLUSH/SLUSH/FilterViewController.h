@@ -7,19 +7,19 @@
 //
 
 #import <UIKit/UIKit.h>
+@class PropertyQueryFilter;
 @class FilterViewController;
 @class FilterManagerDelegate;
 
 @protocol FilterManagerDelegate <NSObject>
 
-//- (void)filterManager:(FilterViewController *)filterManager didApplyFilter:(Filter *)filter;
+- (void)filterManager:(FilterViewController *)filterManager didApplyFilter:(PropertyQueryFilter *)filter;
 
 @end
 
 @interface FilterViewController : UITableViewController
 
-@property (weak, nonatomic) FilterManagerDelegate *delegate;
-
-
+@property (weak, nonatomic) id <FilterManagerDelegate> delegate;
+@property (strong, nonatomic) PropertyQueryFilter *filter;
 
 @end
