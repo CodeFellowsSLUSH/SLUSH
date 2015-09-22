@@ -20,5 +20,11 @@
 @property (strong, nonatomic) NSArray *photos;
 @property (strong, nonatomic) NSNumber *price;
 @property (strong, nonatomic) GMSPlace *placeDetails;
+@property (strong, nonatomic) NSString *streetAddress;
+@property (strong, nonatomic) NSString *city;
+@property (strong, nonatomic) NSString *unitNumber;
+@property (strong, nonatomic) NSString *zipCode;
+@property (strong, nonatomic) NSString *objectId;
+
 
 @end

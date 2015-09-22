@@ -15,11 +15,11 @@
 }
 
 + (NSString *)hashKeyAttribute {
-  return @"headline";
+  return @"objectId";
 }
 
 + (NSString *)rangeKeyAttribute {
-  return @"propertyDescription";
+  return @"zipCode";
 }
 
 @end
