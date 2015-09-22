@@ -7,7 +7,10 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <AWSDynamoDB/AWSDynamoDB.h>
 
 @interface AWSDatabaseManager : NSObject
+
++ (void)saveItem:(AWSDynamoDBObjectModel *)object withCompletionBlock:(void (^)(BOOL, NSError *))handler;
 
 @end
