@@ -7,7 +7,8 @@
 //
 
 #import <Foundation/Foundation.h>
-
+#import <CoreLocation/CoreLocation.h>
+#import <GoogleMaps/GoogleMaps.h>
 
 @class NSPredicate;
 
@@ -24,11 +25,9 @@
 @property (nonatomic) BOOL allowsPets;
 @property (nonatomic) BOOL allowsSmoking;
 @property (nonatomic) BOOL hasWasherDryer;
-
 @property (nonatomic) NSInteger minSquareFeet;
 
-@property (nonatomic) double searchAroundLatitude;
-@property (nonatomic) double searchAroundLongitude;
+@property (strong, nonatomic) GMSPlace *searchNearPlace;
 @property (nonatomic) double searchRadius;
 
 

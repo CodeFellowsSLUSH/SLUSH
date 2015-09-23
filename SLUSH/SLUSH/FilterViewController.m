@@ -7,31 +7,149 @@
 //
 
 #import "FilterViewController.h"
+#import "PropertyQueryFilter.h"
+#import "GooglePlaceService.h"
+#import "LocationSearchResultsController.h"
+#import "PriceRangePickerDataSource.h"
+#import "Constants.h"
 
 @interface FilterViewController ()
+
+#pragma mark - Outlets
+@property (weak, nonatomic) IBOutlet UISegmentedControl *bedroomSegmentedControl;
+@property (weak, nonatomic) IBOutlet UISegmentedControl *bathroomSegmentedControl;
+@property (weak, nonatomic) IBOutlet UITableViewCell *resetFiltersCell;
+@property (weak, nonatomic) IBOutlet UITableViewCell *useCurrentLocationCell;
+@property (weak, nonatomic) IBOutlet UIPickerView *priceRangePicker;
+
+#pragma mark - Properties
+@property (strong, nonatomic) PriceRangePickerDataSource *priceRangePickerDataSource;
+@property (strong, nonatomic) UISearchController *searchController;
+@property (strong, nonatomic) LocationSearchResultsController *searchResultsController;
 
 @end
 
 @implementation FilterViewController
 
+
+#pragma mark - Life Cycle Methods
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+  
+  if (self.filter) {
+    [self updateFilterDisplay];
+  } else {
+    self.filter = [[PropertyQueryFilter alloc] init];
+  }
+  
+  self.priceRangePicker.dataSource = self.priceRangePickerDataSource;
+  self.priceRangePicker.delegate = self.priceRangePickerDataSource;
+  
+  UIBarButtonItem *cancelButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(cancelWasPressed)];
+  self.navigationItem.leftBarButtonItem = cancelButton;
+  
+  UIBarButtonItem * applyFilterButton = [[UIBarButtonItem alloc] initWithTitle:@"Apply" style:UIBarButtonItemStyleDone target:self action:@selector(applyFilterWasPressed)];
+  self.navigationItem.rightBarButtonItem = applyFilterButton;
+  
+  self.searchResultsController = [[LocationSearchResultsController alloc] initWithStyle:UITableViewStylePlain];
+  self.searchResultsController.delegate = self;
+  
+  self.searchController = [[UISearchController alloc] initWithSearchResultsController:self.searchResultsController];
+
+  self.tableView.tableHeaderView = self.searchController.searchBar;
+  self.searchController.searchBar.placeholder = @"Current Location";
+  self.searchController.searchResultsUpdater = self;
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+
+- (void)updateFilterDisplay {
+  self.bedroomSegmentedControl.selectedSegmentIndex = self.filter.minBedrooms;
+  self.bathroomSegmentedControl.selectedSegmentIndex = self.filter.minBathrooms;
+  self.searchController.searchBar.text = self.filter.searchNearPlace.name;
+  
+  NSInteger minRow = [self.priceRangePickerDataSource.minPrices indexOfObject:[NSNumber numberWithInteger:self.filter.minPrice]];
+  [self.priceRangePicker selectRow:minRow inComponent:kMinRentComponent animated:true];
+  
+  NSInteger maxRow = [self.priceRangePickerDataSource.maxPrices indexOfObject:[NSNumber numberWithInteger:self.filter.maxPrice]];
+  [self.priceRangePicker selectRow:maxRow inComponent:kMaxRentComponent animated:true];
+  
 }
 
-/*
-#pragma mark - Navigation
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+#pragma mark - Actions
+- (IBAction)bedroomSegmentWasChanged:(UISegmentedControl *)sender {
+  self.filter.minBedrooms = sender.selectedSegmentIndex;
 }
-*/
+
+- (IBAction)bathroomSegmentWasChanged:(UISegmentedControl *)sender {
+  self.filter.minBathrooms = sender.selectedSegmentIndex;
+}
+
+
+- (void)cancelWasPressed {
+  [self.navigationController popViewControllerAnimated:true];
+}
+
+- (void)applyFilterWasPressed {
+  self.filter.minPrice = [self.priceRangePicker selectedRowInComponent:kMinRentComponent];
+  self.filter.maxPrice = [self.priceRangePicker selectedRowInComponent:kMaxRentComponent];
+  
+  [self.delegate filterManager:self didApplyFilter:self.filter];
+}
+
+
+
+#pragma mark - Table View Delegate
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+  UITableViewCell *currentCell = [tableView cellForRowAtIndexPath:indexPath];
+  if (currentCell == self.resetFiltersCell) {
+    self.filter = [[PropertyQueryFilter alloc] init];
+    [tableView deselectRowAtIndexPath:indexPath animated:true];
+  } else if (currentCell == self.useCurrentLocationCell) {
+    
+  }
+}
+
+- (BOOL)tableView:(UITableView *)tableView shouldHighlightRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
+  UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+  if (cell == self.resetFiltersCell || cell == self.useCurrentLocationCell) {
+    return true;
+  }
+  return false;
+}
+
+#pragma mark - Search Results updating
+
+-(void)updateSearchResultsForSearchController:(UISearchController *)searchController {
+  [GooglePlaceService autoCompletePredictionsFromSearchTerm:searchController.searchBar.text withBlock:^(NSArray *predictions, NSError *error) {
+    if (error) {
+      
+    } else {
+      self.searchResultsController.searchResults = predictions;
+    }
+  }];
+}
+
+#pragma mark - Location Picker Delegate
+
+-(void)locationPicker:(LocationSearchResultsController *)picker didPickPlace:(GMSPlace *)place {
+  self.filter.searchNearPlace = place;
+  [self updateFilterDisplay];
+  [self.searchResultsController dismissViewControllerAnimated:true completion:nil];
+}
+
+#pragma mark - Getters / Setters
+
+-(void)setFilter:(PropertyQueryFilter *)filter {
+  _filter = filter;
+}
+
+-(PriceRangePickerDataSource *)priceRangePickerDataSource {
+  if (!_priceRangePickerDataSource) {
+    _priceRangePickerDataSource = [[PriceRangePickerDataSource alloc] init];
+  }
+  return _priceRangePickerDataSource;
+}
 
 @end
