@@ -7,9 +7,18 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <GoogleMaps/GoogleMaps.h>
+@class LocationSearchResultsController;
+
+@protocol LocationPickerDelegate <NSObject>
+
+- (void)locationPicker:(LocationSearchResultsController *)picker didPickPlace:(GMSPlace *)place;
+
+@end
 
 @interface LocationSearchResultsController : UITableViewController
 
 @property (strong, nonatomic) NSArray *searchResults;
+@property (weak, nonatomic) id <LocationPickerDelegate> delegate;
 
 @end

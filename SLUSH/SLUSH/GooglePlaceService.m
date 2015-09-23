@@ -7,7 +7,6 @@
 //
 
 #import "GooglePlaceService.h"
-#import <GoogleMaps/GMSPlacesClient.h>
 
 @implementation GooglePlaceService
 
@@ -20,6 +19,26 @@
     } else {
       handler(results, nil);
     }
+  }];
+}
+
++ (void)googlePlaceForAutocompletePrediction:(GMSAutocompletePrediction *)prediction withBlock:(void (^)(GMSPlace *place, NSError *error))handler {
+  
+  GMSPlacesClient *placesClient = [GMSPlacesClient sharedClient];
+  [placesClient lookUpPlaceID:prediction.placeID callback:^(GMSPlace * _Nullable result, NSError * _Nullable error) {
+    if (error) {
+      handler(nil, error);
+    } else {
+      handler(result, nil);
+    }
+  }];
+}
+
++ (void)currentPlace {
+  GMSPlacesClient *placesClient = [GMSPlacesClient sharedClient];
+  [placesClient currentPlaceWithCallback:^(GMSPlaceLikelihoodList * _Nullable likelihoodList, NSError * _Nullable error) {
+    
+    
   }];
 }
 

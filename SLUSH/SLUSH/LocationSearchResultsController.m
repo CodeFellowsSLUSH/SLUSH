@@ -7,6 +7,10 @@
 //
 
 #import "LocationSearchResultsController.h"
+#import <GoogleMaps/GoogleMaps.h>
+#import "GooglePlaceService.h"
+#import "ErrorAlertController.h"
+
 
 NSString * const kSearchCellReuseIdentifier = @"Cell";
 
@@ -27,27 +31,41 @@ NSString * const kSearchCellReuseIdentifier = @"Cell";
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-  if (self.searchResults.count == 0) {
-    return 1;
-  }
-  return 1;
+    return self.searchResults.count;
 }
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
   UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kSearchCellReuseIdentifier forIndexPath:indexPath];
   
-  if (self.searchResults.count > 0) {
-    NSString *result = self.searchResults[indexPath.row];
-    cell.textLabel.text = @"Test";
-  } else {
-    cell.textLabel.text = @"Current Location";
-  }
-  
+  GMSAutocompletePrediction *result = self.searchResults[indexPath.row];
+  NSAttributedString *fullText = result.attributedFullText;
+  cell.textLabel.attributedText = fullText;
   
   return cell;
 }
 
+-(void)setSearchResults:(NSArray *)searchResults {
+  _searchResults = searchResults;
+  [self.tableView reloadData];
+}
 
+#pragma mark - Table View Delegate
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+  GMSAutocompletePrediction *placePrediction = self.searchResults[indexPath.row];
+  
+  [GooglePlaceService googlePlaceForAutocompletePrediction:placePrediction withBlock:^(GMSPlace *place, NSError *error) {
+    if (error) {
+      [self.tableView deselectRowAtIndexPath:indexPath animated:true];
+      UIAlertController *alert = [ErrorAlertController alertWithError:error];
+      [self presentViewController:alert animated:true completion:nil];
+    } else {
+    [self.delegate locationPicker:self didPickPlace:place];
+    }
+  }];
+  
+  
+}
 
 @end

@@ -7,9 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "LocationSearchResultsController.h"
+
 @class PropertyQueryFilter;
 @class FilterViewController;
-@class FilterManagerDelegate;
 
 @protocol FilterManagerDelegate <NSObject>
 
@@ -17,7 +18,7 @@
 
 @end
 
-@interface FilterViewController : UITableViewController <UISearchResultsUpdating>
+@interface FilterViewController : UITableViewController <UISearchResultsUpdating, LocationPickerDelegate>
 
 @property (weak, nonatomic) id <FilterManagerDelegate> delegate;
 @property (strong, nonatomic) PropertyQueryFilter *filter;

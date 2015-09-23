@@ -7,9 +7,11 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <GoogleMaps/GoogleMaps.h>
 
 @interface GooglePlaceService : NSObject
 
 + (void)autoCompletePredictionsFromSearchTerm:(NSString *)searchTerm withBlock:(void (^)(NSArray *predictions, NSError *error))handler;
++ (void)googlePlaceForAutocompletePrediction:(GMSAutocompletePrediction *)prediction withBlock:(void (^)(GMSPlace *place, NSError *error))handler;
 
 @end
