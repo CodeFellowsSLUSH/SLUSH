@@ -11,7 +11,6 @@
 #import "ImageCollectionViewCell.h"
 #import "Property.h"
 
-
 @interface BrowseListingsTableViewController ()<UITableViewDelegate, UITableViewDataSource>
 
 @property (strong, nonatomic) NSArray *photoArray;
@@ -39,6 +38,7 @@
   self.tableView.estimatedRowHeight = 100;
   self.tableView.rowHeight = UITableViewAutomaticDimension;
 }
+
 
 
 #pragma mark - Table view data source

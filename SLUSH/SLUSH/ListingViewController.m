@@ -8,8 +8,11 @@
 
 #import "ListingViewController.h"
 #import "ContainerViewController.h"
+#import "FilterViewController.h"
 
-@interface ListingViewController ()
+NSString * const kFilterStoryboardID = @"FilterViewController";
+
+@interface ListingViewController () <FilterManagerDelegate>
 @property (nonatomic, strong) ContainerViewController *containerViewController;
 - (IBAction)toggleButton:(id)sender;
 
@@ -19,6 +22,17 @@
 
 -(void)viewDidLoad{
   self.containerViewController = [[ContainerViewController alloc]init];
+  
+  UIBarButtonItem *filterButton = [[UIBarButtonItem alloc] initWithTitle:@"Filter" style:UIBarButtonItemStylePlain target:self action:@selector(filterWasPressed)];
+  NSLog(@"nav bar: %@", self.navigationItem);
+  self.navigationItem.rightBarButtonItem = filterButton;
+}
+
+- (void)filterWasPressed {
+  FilterViewController *filterVC = [self.storyboard instantiateViewControllerWithIdentifier:kFilterStoryboardID];
+  filterVC.filter = self.filter;
+  filterVC.delegate = self;
+  [self.navigationController pushViewController:filterVC animated:true];
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
@@ -31,6 +45,13 @@
 - (IBAction)toggleButton:(id)sender
 {
 [self.containerViewController swapViewControllers];
+}
+
+#pragma mark - Filter Manager Delegate
+
+-(void)filterManager:(FilterViewController *)filterManager didApplyFilter:(PropertyQueryFilter *)filter {
+  self.filter = filter;
+  [self.navigationController popToRootViewControllerAnimated:true];
 }
 
 @end

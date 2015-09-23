@@ -97,6 +97,11 @@
   [self.delegate filterManager:self didApplyFilter:self.filter];
 }
 
+- (void)resetFilters {
+  self.filter = [[PropertyQueryFilter alloc] init];
+  [self updateFilterDisplay];
+}
+
 
 
 #pragma mark - Table View Delegate
@@ -104,7 +109,7 @@
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
   UITableViewCell *currentCell = [tableView cellForRowAtIndexPath:indexPath];
   if (currentCell == self.resetFiltersCell) {
-    self.filter = [[PropertyQueryFilter alloc] init];
+    [self resetFilters];
     [tableView deselectRowAtIndexPath:indexPath animated:true];
   } else if (currentCell == self.useCurrentLocationCell) {
     
