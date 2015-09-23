@@ -10,6 +10,7 @@
 #import "ContainerViewController.h"
 
 @interface ListingViewController ()
+
 @property (nonatomic, strong) ContainerViewController *containerViewController;
 - (IBAction)toggleButton:(id)sender;
 
@@ -17,8 +18,12 @@
 
 @implementation ListingViewController
 
+- (BOOL)shouldPerformSegueWithIdentifier:(NSString *)identifier sender:(id)sender
+{
+  return YES;
+}
 -(void)viewDidLoad{
-  self.containerViewController = [[ContainerViewController alloc]init];
+  [super viewDidLoad];
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
