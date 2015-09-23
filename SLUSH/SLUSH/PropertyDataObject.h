@@ -9,9 +9,14 @@
 #import <Foundation/Foundation.h>
 #import <CoreLocation/CoreLocation.h>
 
+
+@class UserDataObject;
+
+
 @interface PropertyDataObject : NSObject
 
 @property (strong, nonatomic) NSString * objectId;
+@property (strong, nonatomic) NSString * landlordId;
 
 @property (nonatomic, strong) NSString * headline;
 @property (nonatomic, strong) NSString * propertyDescription;
@@ -38,5 +43,8 @@
 @property (strong, nonatomic) NSString * city;
 @property (strong, nonatomic) NSString * state;
 @property (strong, nonatomic) NSString * zipCode;
+
+
++ (PropertyDataObject *) generateTestPropertyForLandlord: (UserDataObject *) landlord;
 
 @end

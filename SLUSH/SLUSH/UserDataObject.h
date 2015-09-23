@@ -10,4 +10,15 @@
 
 @interface UserDataObject : NSObject
 
+@property (strong, nonatomic) NSString * objectId;
+
+@property (strong, nonatomic) NSString * name;
+@property (strong, nonatomic) NSString * emailAddress;
+@property (strong, nonatomic) NSString * phoneNumber;
+
+@property (strong, nonatomic) NSArray * favoriteProperties;
+
+
++ (UserDataObject *) generateTestUser;
+
 @end
