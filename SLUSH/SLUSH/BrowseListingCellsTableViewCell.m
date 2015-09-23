@@ -20,7 +20,19 @@
   [self.imageCollectionView registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:collectionViewCellIdentifier];
   [self.contentView addSubview:self.contentView];
   
+  
   return self;
+}
+
+-(void)setCollectionViewDataSourceDelegate:(id<UICollectionViewDataSource,UICollectionViewDelegate>)dataSourceDelegate indexPath:(NSIndexPath *)indexPath{
+  
+  
+  self.collectionView.dataSource = dataSourceDelegate;
+  self.collectionView.delegate = dataSourceDelegate;
+  self.collectionView.indexPath = indexPath;
+  
+  
+  [self.collectionView reloadData];
 }
 
 @end

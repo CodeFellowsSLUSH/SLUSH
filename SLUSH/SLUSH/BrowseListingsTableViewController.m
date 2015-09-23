@@ -11,12 +11,31 @@
 #import "ImageCollectionViewCell.h"
 
 
-@interface BrowseListingsTableViewController ()<UITableViewDelegate, UITableViewDataSource, UICollectionViewDelegate, UICollectionViewDataSource>
+@interface BrowseListingsTableViewController ()<UITableViewDelegate, UITableViewDataSource>
+
+@property (strong, nonatomic) NSArray *photoArray;
+
+
 @property (strong, nonatomic) IBOutlet UITableView *browserTabelView;
 
 @end
 
 @implementation BrowseListingsTableViewController
+
+
+-(void)loadView{
+  [super loadView];
+  
+  
+  
+  const NSInteger numberofRows = 15;
+  const NSInteger numberofCollectionViewCells = 10;
+  
+  
+  
+}
+
+
 
 -(void)viewDidLoad{
   [super viewDidLoad];
@@ -49,13 +68,33 @@
 }
 
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView{
-  return 2;
+  return 1;
 }
 
-- (NSInteger *)collectionView:(UICollectionView* )collectionView cellForItemAtIndexPath:(nonnull NSIndexPath *)indexPath{
-  UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"" forIndexPath:indexPath];
-    
+-(UITableViewCell *)tableView:(UITableView *)tableView willDisplayCell:(BrowseListingCellsTableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath{
+  [cell setCollectionViewDataSourceDelegate:self indexPath:indexPath];
   
+  NSInteger index = cell.collectionView.tag;
+  
+}
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+  return 66;
+  
+}
+
+-(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
+  
+  
+  NSArray *collectionViewArray = self.photoArray[[(ImageCollectionView *) collectionView indexPath].row];
+  
+  return collectionViewArray.count;
+}
+
+-(UICollectionView *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
+  UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:collectionViewCellIdentifier forIndexPath:indexPath];
+  NSArray *collectionViewArray = self.photoArray[[(ImageCollectionView *)collectionView indexPath].row];
+
+  //add image to cell
   return cell;
   
 }

@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "BrowseListingCellsTableViewCell.h"
 
-@interface BrowseListingsTableViewController : UITableViewController
+@interface BrowseListingsTableViewController : UITableViewController <UICollectionViewDataSource, UICollectionViewDelegate>
 
 @end
