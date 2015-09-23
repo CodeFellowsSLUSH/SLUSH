@@ -21,23 +21,15 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
   
-  // Testing save to database
-  /*
-  Property *newProperty = [[Property alloc] init];
-  newProperty.headline = @"Charming 2BR House in Eastlake";
-  newProperty.propertyDescription = @"The most beautiful house in all of Seattle";
-  newProperty.price = @4000;
-  newProperty.objectId = @"2";
-  newProperty.zipCode = @"98102";
-  
-  [AWSDatabaseManager saveItem:newProperty withCompletionBlock:^(BOOL success, NSError *error) {
-    if (error) {
-      NSLog(@"profile view error: %@", error.localizedDescription);
-    } else if (success) {
-      NSLog(@"Success");
-    }
-  }];
-  */
 }
+
+// Put the Add Property button in the top right corner.
+// Must do this each time we appear.
+- (void) viewWillAppear:(BOOL)animated {
+  [super viewWillAppear: animated];
+
+
+}
+
 
 @end
