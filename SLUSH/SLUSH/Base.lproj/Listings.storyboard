@@ -61,7 +61,7 @@
         <scene sceneID="62M-px-tUj">
             <objects>
                 <tableViewController id="ofO-tF-N67" customClass="BrowseListingsTableViewController" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="376" sectionHeaderHeight="28" sectionFooterHeight="28" id="JGk-zi-mkO">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="376" sectionHeaderHeight="28" sectionFooterHeight="28" id="JGk-zi-mkO" userLabel="Browser Table View">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <animations/>
@@ -74,7 +74,7 @@
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="378.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Pff-5w-6aR">
+                                        <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Pff-5w-6aR" customClass="ImageCollectionView">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="300"/>
                                             <animations/>
                                             <constraints>
@@ -94,7 +94,7 @@
                                                         <rect key="frame" x="0.0" y="0.0" width="600" height="315"/>
                                                         <autoresizingMask key="autoresizingMask"/>
                                                         <subviews>
-                                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="modernHouse" translatesAutoresizingMaskIntoConstraints="NO" id="zW1-AZ-8z4">
+                                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zW1-AZ-8z4">
                                                                 <rect key="frame" x="0.0" y="0.0" width="600" height="300"/>
                                                                 <animations/>
                                                             </imageView>
@@ -103,6 +103,7 @@
                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                     </view>
                                                     <animations/>
+                                                    <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                 </collectionViewCell>
                                             </cells>
                                         </collectionView>
@@ -137,9 +138,9 @@
                                 </tableViewCellContentView>
                                 <animations/>
                                 <connections>
+                                    <outlet property="collectionView" destination="Pff-5w-6aR" id="U99-4I-edu"/>
                                     <outlet property="descriptionLabel" destination="kIc-Pw-PzB" id="tQS-nb-FWB"/>
                                     <outlet property="headerLabel" destination="f6s-cJ-bUb" id="WJ4-Ky-YgR"/>
-                                    <outlet property="imageCollectionView" destination="Pff-5w-6aR" id="x3x-Uj-J1W"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -148,9 +149,6 @@
                             <outlet property="delegate" destination="ofO-tF-N67" id="A5a-aZ-bjW"/>
                         </connections>
                     </tableView>
-                    <connections>
-                        <outlet property="browserTabelView" destination="JGk-zi-mkO" id="1bm-o1-TK5"/>
-                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="C44-Az-sA8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -403,7 +401,4 @@
             <point key="canvasLocation" x="405" y="-547"/>
         </scene>
     </scenes>
-    <resources>
-        <image name="modernHouse" width="650" height="433"/>
-    </resources>
 </document>
