@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 #import <GoogleMaps/GoogleMaps.h>
 #import <AWSDynamoDB/AWSDynamoDB.h>
+#import <GoogleMaps/GoogleMaps.h>
 #import <CoreLocation/CoreLocation.h>
 
 @interface Property : AWSDynamoDBObjectModel <AWSDynamoDBModeling>

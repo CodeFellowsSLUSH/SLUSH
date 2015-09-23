@@ -12,6 +12,10 @@
 		4C74AF3D1BB0CB8100D2770F /* Property.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C74AF3C1BB0CB8100D2770F /* Property.m */; settings = {ASSET_TAGS = (); }; };
 		4C74AF431BB0D21800D2770F /* Constants.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C74AF421BB0D21800D2770F /* Constants.m */; settings = {ASSET_TAGS = (); }; };
 		4C9AB5F01BB0EED40037B32E /* AWSDatabaseManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C9AB5EF1BB0EED40037B32E /* AWSDatabaseManager.m */; settings = {ASSET_TAGS = (); }; };
+		4C9AB5F61BB215470037B32E /* LocationSearchResultsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C9AB5F51BB215470037B32E /* LocationSearchResultsController.m */; settings = {ASSET_TAGS = (); }; };
+		4C9AB5F91BB217730037B32E /* GooglePlaceService.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C9AB5F81BB217730037B32E /* GooglePlaceService.m */; settings = {ASSET_TAGS = (); }; };
+		4C9AB5FC1BB243C20037B32E /* ErrorAlertController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C9AB5FB1BB243C20037B32E /* ErrorAlertController.m */; settings = {ASSET_TAGS = (); }; };
+		4C9AB5FF1BB25D450037B32E /* PriceRangePickerDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C9AB5FE1BB25D450037B32E /* PriceRangePickerDataSource.m */; settings = {ASSET_TAGS = (); }; };
 		AE06B80C1BB2344E00FB9EAE /* Secrets.m in Sources */ = {isa = PBXBuildFile; fileRef = AE06B80B1BB2344E00FB9EAE /* Secrets.m */; settings = {ASSET_TAGS = (); }; };
 		AE06B80F1BB23FA500FB9EAE /* ContainerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AE06B80E1BB23FA500FB9EAE /* ContainerViewController.m */; settings = {ASSET_TAGS = (); }; };
 		AE06B8141BB2465100FB9EAE /* Empty.m in Sources */ = {isa = PBXBuildFile; fileRef = AE06B8131BB2465100FB9EAE /* Empty.m */; settings = {ASSET_TAGS = (); }; };
@@ -65,6 +69,14 @@
 		4C74AF421BB0D21800D2770F /* Constants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Constants.m; sourceTree = "<group>"; };
 		4C9AB5EE1BB0EED40037B32E /* AWSDatabaseManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AWSDatabaseManager.h; sourceTree = "<group>"; };
 		4C9AB5EF1BB0EED40037B32E /* AWSDatabaseManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AWSDatabaseManager.m; sourceTree = "<group>"; };
+		4C9AB5F41BB215470037B32E /* LocationSearchResultsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationSearchResultsController.h; sourceTree = "<group>"; };
+		4C9AB5F51BB215470037B32E /* LocationSearchResultsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationSearchResultsController.m; sourceTree = "<group>"; };
+		4C9AB5F71BB217730037B32E /* GooglePlaceService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GooglePlaceService.h; sourceTree = "<group>"; };
+		4C9AB5F81BB217730037B32E /* GooglePlaceService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GooglePlaceService.m; sourceTree = "<group>"; };
+		4C9AB5FA1BB243C20037B32E /* ErrorAlertController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ErrorAlertController.h; sourceTree = "<group>"; };
+		4C9AB5FB1BB243C20037B32E /* ErrorAlertController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ErrorAlertController.m; sourceTree = "<group>"; };
+		4C9AB5FD1BB25D450037B32E /* PriceRangePickerDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PriceRangePickerDataSource.h; sourceTree = "<group>"; };
+		4C9AB5FE1BB25D450037B32E /* PriceRangePickerDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PriceRangePickerDataSource.m; sourceTree = "<group>"; };
 		4FFE30BAB7754F1D9E63AA7B /* Pods-SLUSH.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SLUSH.release.xcconfig"; path = "Pods/Target Support Files/Pods-SLUSH/Pods-SLUSH.release.xcconfig"; sourceTree = "<group>"; };
 		5D12102E74F16FC75A3DF591 /* Pods-SLUSH.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SLUSH.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SLUSH/Pods-SLUSH.debug.xcconfig"; sourceTree = "<group>"; };
 		AE06B80B1BB2344E00FB9EAE /* Secrets.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Secrets.m; sourceTree = "<group>"; };
@@ -241,6 +253,10 @@
 				B52EA86E1BB0620900A1C98E /* MapViewController.m */,
 				B52EA86A1BB061EA00A1C98E /* FilterViewController.h */,
 				B52EA86B1BB061EA00A1C98E /* FilterViewController.m */,
+				4C9AB5F41BB215470037B32E /* LocationSearchResultsController.h */,
+				4C9AB5F51BB215470037B32E /* LocationSearchResultsController.m */,
+				4C9AB5FA1BB243C20037B32E /* ErrorAlertController.h */,
+				4C9AB5FB1BB243C20037B32E /* ErrorAlertController.m */,
 				AEB160C71BB08F59006038A6 /* StartingViewController.h */,
 				AEB160C81BB08F59006038A6 /* StartingViewController.m */,
 				AE06B80D1BB23FA500FB9EAE /* ContainerViewController.h */,
@@ -268,6 +284,10 @@
 		B52EA8781BB062A000A1C98E /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				4C9AB5FD1BB25D450037B32E /* PriceRangePickerDataSource.h */,
+				4C9AB5FE1BB25D450037B32E /* PriceRangePickerDataSource.m */,
+				4C9AB5F71BB217730037B32E /* GooglePlaceService.h */,
+				4C9AB5F81BB217730037B32E /* GooglePlaceService.m */,
 				4C9AB5EE1BB0EED40037B32E /* AWSDatabaseManager.h */,
 				4C9AB5EF1BB0EED40037B32E /* AWSDatabaseManager.m */,
 				4C74AF3B1BB0CB8100D2770F /* Property.h */,
@@ -452,9 +472,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4C9AB5F61BB215470037B32E /* LocationSearchResultsController.m in Sources */,
 				DF7DA17A1BB1E7BC004882E0 /* PropertyQueryFilter.m in Sources */,
+				4C9AB5F91BB217730037B32E /* GooglePlaceService.m in Sources */,
 				B52EA8421BB060FF00A1C98E /* SLUSH.xcdatamodeld in Sources */,
 				4C9AB5F01BB0EED40037B32E /* AWSDatabaseManager.m in Sources */,
+				4C9AB5FC1BB243C20037B32E /* ErrorAlertController.m in Sources */,
 				B52EA86C1BB061EA00A1C98E /* FilterViewController.m in Sources */,
 				B52EA86F1BB0620900A1C98E /* MapViewController.m in Sources */,
 				AE06B8171BB24CEC00FB9EAE /* ListingViewController.m in Sources */,
@@ -471,6 +494,7 @@
 				AE06B80F1BB23FA500FB9EAE /* ContainerViewController.m in Sources */,
 				AE06B80C1BB2344E00FB9EAE /* Secrets.m in Sources */,
 				B52EA8721BB0626800A1C98E /* ProfileViewController.m in Sources */,
+				4C9AB5FF1BB25D450037B32E /* PriceRangePickerDataSource.m in Sources */,
 				DF7DA1741BB1E782004882E0 /* UserDataObject.m in Sources */,
 				B52EA8391BB060FF00A1C98E /* AppDelegate.m in Sources */,
 				B52EA8361BB060FF00A1C98E /* main.m in Sources */,
