@@ -11,6 +11,19 @@
 @interface BrowseListingCellsTableViewCell : UITableViewCell
 @property (weak, nonatomic) IBOutlet UILabel *headerLabel;
 @property (weak, nonatomic) IBOutlet UILabel *descriptionLabel;
-@property (weak, nonatomic) IBOutlet UICollectionView *imageCollectionView;
+@property (strong, nonatomic) IBOutlet UICollectionView *imageCollectionView;
+
+
+- (void)setCollectionViewDataSourceDelegate:(id<UICollectionViewDataSource, UICollectionViewDelegate>)dataSourceDelegate indexPath:(NSIndexPath *)indexPath;
+
 
 @end
+
+
+@interface AFIndexedCollectionView : UICollectionView
+
+@property (strong, nonatomic) NSIndexPath *indexPath;
+
+@end
+
+static NSString *collectionViewCellIdentifier = @"imagesInCollectionView";

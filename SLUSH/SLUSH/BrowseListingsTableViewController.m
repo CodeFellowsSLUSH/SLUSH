@@ -11,7 +11,7 @@
 #import "ImageCollectionViewCell.h"
 
 
-@interface BrowseListingsTableViewController ()<UITableViewDelegate, UITableViewDataSource>
+@interface BrowseListingsTableViewController ()<UITableViewDelegate, UITableViewDataSource, UICollectionViewDelegate, UICollectionViewDataSource>
 @property (strong, nonatomic) IBOutlet UITableView *browserTabelView;
 
 @end
@@ -44,9 +44,17 @@
   cell.headerLabel.text = @"awesome Place is avalible!!!! PETS WELCOME";
   cell.descriptionLabel.text = @"this is a grate place located in SLU washer and dryer included, utilities included, cant miss this opportunity for a great place in the best location";
   
+  return cell;
   
-  
-  
+}
+
+- (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView{
+  return 2;
+}
+
+- (NSInteger *)collectionView:(UICollectionView* )collectionView cellForItemAtIndexPath:(nonnull NSIndexPath *)indexPath{
+  UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"" forIndexPath:indexPath];
+    
   
   return cell;
   
