@@ -15,7 +15,6 @@
 		AEB160C41BB088A2006038A6 /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AEB160C31BB088A2006038A6 /* Profile.storyboard */; settings = {ASSET_TAGS = (); }; };
 		AEB160C61BB088CE006038A6 /* Starting.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AEB160C51BB088CE006038A6 /* Starting.storyboard */; settings = {ASSET_TAGS = (); }; };
 		AEB160C91BB08F59006038A6 /* StartingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AEB160C81BB08F59006038A6 /* StartingViewController.m */; settings = {ASSET_TAGS = (); }; };
-		AEDCC3251BB22FCE00D3A194 /* Secrets.m in Sources */ = {isa = PBXBuildFile; fileRef = AEDCC3241BB22FCE00D3A194 /* Secrets.m */; settings = {ASSET_TAGS = (); }; };
 		B52EA8361BB060FF00A1C98E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B52EA8351BB060FF00A1C98E /* main.m */; };
 		B52EA8391BB060FF00A1C98E /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B52EA8381BB060FF00A1C98E /* AppDelegate.m */; };
 		B52EA83F1BB060FF00A1C98E /* Listings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B52EA83D1BB060FF00A1C98E /* Listings.storyboard */; };
@@ -69,7 +68,6 @@
 		AEB160C71BB08F59006038A6 /* StartingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StartingViewController.h; sourceTree = "<group>"; };
 		AEB160C81BB08F59006038A6 /* StartingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StartingViewController.m; sourceTree = "<group>"; };
 		AEDCC3211BB22D0100D3A194 /* Secrets.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Secrets.h; sourceTree = "<group>"; };
-		AEDCC3241BB22FCE00D3A194 /* Secrets.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Secrets.m; sourceTree = "<group>"; };
 		AEE8E16D1BB1F70C003D5727 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		B52EA8311BB060FF00A1C98E /* SLUSH.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SLUSH.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B52EA8351BB060FF00A1C98E /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -180,7 +178,6 @@
 				B52EA8381BB060FF00A1C98E /* AppDelegate.m */,
 				4C74AF411BB0D21800D2770F /* Constants.h */,
 				4C74AF421BB0D21800D2770F /* Constants.m */,
-				AEDCC3241BB22FCE00D3A194 /* Secrets.m */,
 				AEDCC3211BB22D0100D3A194 /* Secrets.h */,
 				B52EA8781BB062A000A1C98E /* Models */,
 				B52EA8761BB0628F00A1C98E /* Controllers */,
@@ -451,7 +448,6 @@
 				B558303B1BB1CF2B00002FE5 /* BrowseListingCellsTableViewCell.m in Sources */,
 				4C74AF431BB0D21800D2770F /* Constants.m in Sources */,
 				B52EA8751BB0627600A1C98E /* NewPropertyViewController.m in Sources */,
-				AEDCC3251BB22FCE00D3A194 /* Secrets.m in Sources */,
 				B52EA8721BB0626800A1C98E /* ProfileViewController.m in Sources */,
 				DF7DA1741BB1E782004882E0 /* UserDataObject.m in Sources */,
 				B52EA8391BB060FF00A1C98E /* AppDelegate.m in Sources */,
