@@ -11,6 +11,8 @@
 #import <FBSDKLoginKit/FBSDKLoginKit.h>
 #import <AWSCognito/AWSCognito.h>
 #import "Constants.h"
+#import <GoogleMaps/GoogleMaps.h>
+#import "Secrets.h"
 
 @interface AppDelegate ()
 
@@ -21,6 +23,8 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
 
+  [GMSServices provideAPIKey:ksecretMapKey];
+  
   AWSCognitoCredentialsProvider *credentialsProvider = [[AWSCognitoCredentialsProvider alloc]
                                                         initWithRegionType:kCognitoRegionType
                                                         identityPoolId:kCognitoIdentityPoolID];

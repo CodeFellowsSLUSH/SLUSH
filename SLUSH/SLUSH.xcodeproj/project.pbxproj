@@ -63,6 +63,7 @@
 		AEB160C51BB088CE006038A6 /* Starting.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Starting.storyboard; sourceTree = "<group>"; };
 		AEB160C71BB08F59006038A6 /* StartingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StartingViewController.h; sourceTree = "<group>"; };
 		AEB160C81BB08F59006038A6 /* StartingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StartingViewController.m; sourceTree = "<group>"; };
+		AEE8E16D1BB1F70C003D5727 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		B52EA8311BB060FF00A1C98E /* SLUSH.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SLUSH.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B52EA8351BB060FF00A1C98E /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		B52EA8371BB060FF00A1C98E /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -120,6 +121,7 @@
 		26AA02D669CFACC35740F89E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				AEE8E16D1BB1F70C003D5727 /* CoreLocation.framework */,
 				3C8E5A0AE889B3DDBC310613 /* libPods-SLUSH.a */,
 			);
 			name = Frameworks;

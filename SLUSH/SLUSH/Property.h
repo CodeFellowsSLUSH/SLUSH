@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 #import <GoogleMaps/GoogleMaps.h>
 #import <AWSDynamoDB/AWSDynamoDB.h>
+#import <CoreLocation/CoreLocation.h>
 
 @interface Property : AWSDynamoDBObjectModel <AWSDynamoDBModeling>
 
@@ -25,6 +26,6 @@
 @property (strong, nonatomic) NSString *unitNumber;
 @property (strong, nonatomic) NSString *zipCode;
 @property (strong, nonatomic) NSString *objectId;
-
+@property (strong, nonatomic) GMSMarker *marker;
 
 @end
