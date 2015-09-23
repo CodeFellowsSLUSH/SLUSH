@@ -8,11 +8,15 @@
 
 #import "FilterViewController.h"
 #import "PropertyQueryFilter.h"
+#import "GooglePlaceService.h"
+#import "LocationSearchResultsController.h"
 
 @interface FilterViewController ()
 @property (weak, nonatomic) IBOutlet UISegmentedControl *bedroomSegmentedControl;
 @property (weak, nonatomic) IBOutlet UISegmentedControl *bathroomSegmentedControl;
 @property (weak, nonatomic) IBOutlet UITableViewCell *resetFiltersCell;
+@property (strong, nonatomic) UISearchController *searchController;
+@property (strong, nonatomic) LocationSearchResultsController *searchResultsController;
 
 @end
 
@@ -35,7 +39,12 @@
   UIBarButtonItem * applyFilterButton = [[UIBarButtonItem alloc] initWithTitle:@"Apply" style:UIBarButtonItemStyleDone target:self action:@selector(applyFilterWasPressed)];
   self.navigationItem.rightBarButtonItem = applyFilterButton;
   
-  
+  self.searchResultsController = [[LocationSearchResultsController alloc] initWithStyle:UITableViewStylePlain];
+  self.searchController = [[UISearchController alloc] initWithSearchResultsController:self.searchResultsController];
+
+  self.tableView.tableHeaderView = self.searchController.searchBar;
+  self.searchController.searchBar.placeholder = @"Current Location";
+  self.searchController.searchResultsUpdater = self;
 }
 
 
@@ -69,7 +78,20 @@
   UITableViewCell *currentCell = [tableView cellForRowAtIndexPath:indexPath];
   if (currentCell == self.resetFiltersCell) {
     self.filter = [[PropertyQueryFilter alloc] init];
+    [tableView deselectRowAtIndexPath:indexPath animated:true];
   }
+}
+
+#pragma mark - Search Results updating
+
+-(void)updateSearchResultsForSearchController:(UISearchController *)searchController {
+//  [GooglePlaceService autoCompletePredictionsFromSearchTerm:searchController.searchBar.text withBlock:^(NSArray *predictions, NSError *error) {
+//    if (error) {
+//      
+//    } else {
+//      self.searchResultsController.searchResults = predictions;
+//    }
+//  }];
 }
 
 @end

@@ -12,6 +12,8 @@
 		4C74AF3D1BB0CB8100D2770F /* Property.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C74AF3C1BB0CB8100D2770F /* Property.m */; settings = {ASSET_TAGS = (); }; };
 		4C74AF431BB0D21800D2770F /* Constants.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C74AF421BB0D21800D2770F /* Constants.m */; settings = {ASSET_TAGS = (); }; };
 		4C9AB5F01BB0EED40037B32E /* AWSDatabaseManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C9AB5EF1BB0EED40037B32E /* AWSDatabaseManager.m */; settings = {ASSET_TAGS = (); }; };
+		4C9AB5F61BB215470037B32E /* LocationSearchResultsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C9AB5F51BB215470037B32E /* LocationSearchResultsController.m */; settings = {ASSET_TAGS = (); }; };
+		4C9AB5F91BB217730037B32E /* GooglePlaceService.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C9AB5F81BB217730037B32E /* GooglePlaceService.m */; settings = {ASSET_TAGS = (); }; };
 		AEB160C41BB088A2006038A6 /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AEB160C31BB088A2006038A6 /* Profile.storyboard */; settings = {ASSET_TAGS = (); }; };
 		AEB160C61BB088CE006038A6 /* Starting.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AEB160C51BB088CE006038A6 /* Starting.storyboard */; settings = {ASSET_TAGS = (); }; };
 		AEB160C91BB08F59006038A6 /* StartingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AEB160C81BB08F59006038A6 /* StartingViewController.m */; settings = {ASSET_TAGS = (); }; };
@@ -61,6 +63,10 @@
 		4C74AF421BB0D21800D2770F /* Constants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Constants.m; sourceTree = "<group>"; };
 		4C9AB5EE1BB0EED40037B32E /* AWSDatabaseManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AWSDatabaseManager.h; sourceTree = "<group>"; };
 		4C9AB5EF1BB0EED40037B32E /* AWSDatabaseManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AWSDatabaseManager.m; sourceTree = "<group>"; };
+		4C9AB5F41BB215470037B32E /* LocationSearchResultsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationSearchResultsController.h; sourceTree = "<group>"; };
+		4C9AB5F51BB215470037B32E /* LocationSearchResultsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationSearchResultsController.m; sourceTree = "<group>"; };
+		4C9AB5F71BB217730037B32E /* GooglePlaceService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GooglePlaceService.h; sourceTree = "<group>"; };
+		4C9AB5F81BB217730037B32E /* GooglePlaceService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GooglePlaceService.m; sourceTree = "<group>"; };
 		4FFE30BAB7754F1D9E63AA7B /* Pods-SLUSH.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SLUSH.release.xcconfig"; path = "Pods/Target Support Files/Pods-SLUSH/Pods-SLUSH.release.xcconfig"; sourceTree = "<group>"; };
 		5D12102E74F16FC75A3DF591 /* Pods-SLUSH.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SLUSH.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SLUSH/Pods-SLUSH.debug.xcconfig"; sourceTree = "<group>"; };
 		AEB160C31BB088A2006038A6 /* Profile.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Profile.storyboard; sourceTree = "<group>"; };
@@ -225,6 +231,8 @@
 				B52EA86E1BB0620900A1C98E /* MapViewController.m */,
 				B52EA86A1BB061EA00A1C98E /* FilterViewController.h */,
 				B52EA86B1BB061EA00A1C98E /* FilterViewController.m */,
+				4C9AB5F41BB215470037B32E /* LocationSearchResultsController.h */,
+				4C9AB5F51BB215470037B32E /* LocationSearchResultsController.m */,
 				AEB160C71BB08F59006038A6 /* StartingViewController.h */,
 				AEB160C81BB08F59006038A6 /* StartingViewController.m */,
 				B55830341BB1C32100002FE5 /* BrowseListingsTableViewController.h */,
@@ -246,6 +254,8 @@
 		B52EA8781BB062A000A1C98E /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				4C9AB5F71BB217730037B32E /* GooglePlaceService.h */,
+				4C9AB5F81BB217730037B32E /* GooglePlaceService.m */,
 				4C9AB5EE1BB0EED40037B32E /* AWSDatabaseManager.h */,
 				4C9AB5EF1BB0EED40037B32E /* AWSDatabaseManager.m */,
 				4C74AF3B1BB0CB8100D2770F /* Property.h */,
@@ -430,7 +440,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4C9AB5F61BB215470037B32E /* LocationSearchResultsController.m in Sources */,
 				DF7DA17A1BB1E7BC004882E0 /* PropertyQueryFilter.m in Sources */,
+				4C9AB5F91BB217730037B32E /* GooglePlaceService.m in Sources */,
 				B52EA8421BB060FF00A1C98E /* SLUSH.xcdatamodeld in Sources */,
 				4C9AB5F01BB0EED40037B32E /* AWSDatabaseManager.m in Sources */,
 				B52EA86C1BB061EA00A1C98E /* FilterViewController.m in Sources */,

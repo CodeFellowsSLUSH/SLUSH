@@ -17,7 +17,7 @@
 
 @end
 
-@interface FilterViewController : UITableViewController
+@interface FilterViewController : UITableViewController <UISearchResultsUpdating>
 
 @property (weak, nonatomic) id <FilterManagerDelegate> delegate;
 @property (strong, nonatomic) PropertyQueryFilter *filter;
