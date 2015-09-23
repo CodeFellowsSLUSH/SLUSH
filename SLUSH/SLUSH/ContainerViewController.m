@@ -9,10 +9,11 @@
 #import "ContainerViewController.h"
 #import "ListingViewController.h"
 #import "MapViewController.h"
+#import "FilterViewController.h"
+#import "PropertyQueryFilter.h"
 
 #define SegueIdentifierFirst @"listingSegue"
 #define SegueIdentifierSecond @"mapSegue"
-
 
 @interface ContainerViewController ()
 @property (strong, nonatomic) NSString *currentSegueIdentifier;

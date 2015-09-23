@@ -10,7 +10,6 @@
 #import "BrowseListingCellsTableViewCell.h"
 #import "ImageCollectionViewCell.h"
 
-
 @interface BrowseListingsTableViewController ()<UITableViewDelegate, UITableViewDataSource>
 @property (strong, nonatomic) IBOutlet UITableView *browserTabelView;
 
@@ -24,6 +23,7 @@
   self.tableView.estimatedRowHeight = 100;
   self.tableView.rowHeight = UITableViewAutomaticDimension;
 }
+
 
 
 #pragma mark - Table view data source

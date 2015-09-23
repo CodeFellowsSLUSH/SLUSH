@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+@class PropertyQueryFilter;
 
 @interface ListingViewController : UIViewController
+
+@property (strong, nonatomic) PropertyQueryFilter *filter;
 
 @end

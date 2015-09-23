@@ -7,7 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+@class PropertyQueryFilter;
 
 @interface BrowseListingsTableViewController : UITableViewController
+
 
 @end
