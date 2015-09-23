@@ -10,16 +10,21 @@
 
 @implementation Property
 
-+ (NSString *)dynamoDBTableName {
-  return @"Properties";
-}
+@dynamic headline;
+@dynamic propertyDescription;
+@dynamic numberOfBedrooms;
+@dynamic numberOfBathrooms;
+@dynamic allowsPets;
+@dynamic photos;
+@dynamic price;
+@dynamic placeDetails;
+@dynamic streetAddress;
+@dynamic city;
+@dynamic unitNumber;
+@dynamic zipCode;
 
-+ (NSString *)hashKeyAttribute {
-  return @"objectId";
-}
-
-+ (NSString *)rangeKeyAttribute {
-  return @"zipCode";
++ (NSString *)parseClassName {
+  return @"Property";
 }
 
 @end

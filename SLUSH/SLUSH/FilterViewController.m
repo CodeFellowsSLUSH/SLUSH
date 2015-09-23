@@ -93,7 +93,7 @@
 - (void)applyFilterWasPressed {
   self.filter.minPrice = [self.priceRangePicker selectedRowInComponent:kMinRentComponent];
   self.filter.maxPrice = [self.priceRangePicker selectedRowInComponent:kMaxRentComponent];
-  
+
   [self.delegate filterManager:self didApplyFilter:self.filter];
 }
 

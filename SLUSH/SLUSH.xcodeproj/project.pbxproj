@@ -16,6 +16,7 @@
 		4C9AB5F91BB217730037B32E /* GooglePlaceService.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C9AB5F81BB217730037B32E /* GooglePlaceService.m */; settings = {ASSET_TAGS = (); }; };
 		4C9AB5FC1BB243C20037B32E /* ErrorAlertController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C9AB5FB1BB243C20037B32E /* ErrorAlertController.m */; settings = {ASSET_TAGS = (); }; };
 		4C9AB5FF1BB25D450037B32E /* PriceRangePickerDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C9AB5FE1BB25D450037B32E /* PriceRangePickerDataSource.m */; settings = {ASSET_TAGS = (); }; };
+		4C9AB6021BB3290D0037B32E /* ParseService.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C9AB6011BB3290D0037B32E /* ParseService.m */; settings = {ASSET_TAGS = (); }; };
 		AE06B80C1BB2344E00FB9EAE /* Secrets.m in Sources */ = {isa = PBXBuildFile; fileRef = AE06B80B1BB2344E00FB9EAE /* Secrets.m */; settings = {ASSET_TAGS = (); }; };
 		AE06B80F1BB23FA500FB9EAE /* ContainerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AE06B80E1BB23FA500FB9EAE /* ContainerViewController.m */; settings = {ASSET_TAGS = (); }; };
 		AE06B8141BB2465100FB9EAE /* Empty.m in Sources */ = {isa = PBXBuildFile; fileRef = AE06B8131BB2465100FB9EAE /* Empty.m */; settings = {ASSET_TAGS = (); }; };
@@ -77,6 +78,8 @@
 		4C9AB5FB1BB243C20037B32E /* ErrorAlertController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ErrorAlertController.m; sourceTree = "<group>"; };
 		4C9AB5FD1BB25D450037B32E /* PriceRangePickerDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PriceRangePickerDataSource.h; sourceTree = "<group>"; };
 		4C9AB5FE1BB25D450037B32E /* PriceRangePickerDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PriceRangePickerDataSource.m; sourceTree = "<group>"; };
+		4C9AB6001BB3290D0037B32E /* ParseService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ParseService.h; sourceTree = "<group>"; };
+		4C9AB6011BB3290D0037B32E /* ParseService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ParseService.m; sourceTree = "<group>"; };
 		4FFE30BAB7754F1D9E63AA7B /* Pods-SLUSH.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SLUSH.release.xcconfig"; path = "Pods/Target Support Files/Pods-SLUSH/Pods-SLUSH.release.xcconfig"; sourceTree = "<group>"; };
 		5D12102E74F16FC75A3DF591 /* Pods-SLUSH.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SLUSH.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SLUSH/Pods-SLUSH.debug.xcconfig"; sourceTree = "<group>"; };
 		AE06B80B1BB2344E00FB9EAE /* Secrets.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Secrets.m; sourceTree = "<group>"; };
@@ -302,6 +305,8 @@
 				B558303A1BB1CF2B00002FE5 /* BrowseListingCellsTableViewCell.m */,
 				B558303C1BB1D10200002FE5 /* ImageCollectionViewCell.h */,
 				B558303D1BB1D10200002FE5 /* ImageCollectionViewCell.m */,
+				4C9AB6001BB3290D0037B32E /* ParseService.h */,
+				4C9AB6011BB3290D0037B32E /* ParseService.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -494,6 +499,7 @@
 				AE06B80F1BB23FA500FB9EAE /* ContainerViewController.m in Sources */,
 				AE06B80C1BB2344E00FB9EAE /* Secrets.m in Sources */,
 				B52EA8721BB0626800A1C98E /* ProfileViewController.m in Sources */,
+				4C9AB6021BB3290D0037B32E /* ParseService.m in Sources */,
 				4C9AB5FF1BB25D450037B32E /* PriceRangePickerDataSource.m in Sources */,
 				DF7DA1741BB1E782004882E0 /* UserDataObject.m in Sources */,
 				B52EA8391BB060FF00A1C98E /* AppDelegate.m in Sources */,

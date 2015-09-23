@@ -13,3 +13,4 @@ extern AWSRegionType kCognitoRegionType;
 extern NSString * const kCognitoIdentityPoolID;
 extern NSInteger const kMinRentComponent;
 extern NSInteger const kMaxRentComponent;
+extern NSString * const kParseApplicationID;

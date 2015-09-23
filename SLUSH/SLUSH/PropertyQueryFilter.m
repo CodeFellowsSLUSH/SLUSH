@@ -10,6 +10,10 @@
 
 @implementation PropertyQueryFilter
 
+-(void)setMinPrice:(NSNumber *)minPrice {
+  _minPrice = minPrice;
+  _minPricePredicate = [NSPredicate predicateWithFormat:@"minPrice = %@", minPrice];
+}
 
 - (NSString *) asSQLQuery {
 

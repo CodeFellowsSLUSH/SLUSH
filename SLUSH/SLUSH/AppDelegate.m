@@ -14,6 +14,8 @@
 #import <GoogleMaps/GoogleMaps.h>
 #import "Secrets.h"
 #import <CoreLocation/CoreLocation.h>
+#import <Parse/Parse.h>
+#import "Property.h"
 
 @interface AppDelegate ()
 
@@ -23,6 +25,10 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+  
+  
+  [Property registerSubclass];
+  [Parse setApplicationId:kParseApplicationID clientKey:kParseClientKey];
 
   [GMSServices provideAPIKey:kSecretMapKey];
   
