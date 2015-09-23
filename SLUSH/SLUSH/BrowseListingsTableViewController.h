@@ -11,4 +11,6 @@
 
 @interface BrowseListingsTableViewController : UITableViewController <UICollectionViewDataSource, UICollectionViewDelegate>
 
+@property (strong, nonatomic) NSArray *properties;
+
 @end

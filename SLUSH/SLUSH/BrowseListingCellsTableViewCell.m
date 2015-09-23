@@ -14,13 +14,7 @@
 - (id) initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier{
   
   if (!(self = [super initWithStyle:style reuseIdentifier:reuseIdentifier])) return nil;
-  
-  
-  self.imageCollectionView = [[UICollectionView alloc] init];
-  [self.imageCollectionView registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:collectionViewCellIdentifier];
-  [self.contentView addSubview:self.contentView];
-  
-  
+
   return self;
 }
 

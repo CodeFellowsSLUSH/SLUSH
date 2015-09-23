@@ -20,18 +20,21 @@
                         <subviews>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2cS-ss-vGR">
                                 <rect key="frame" x="0.0" y="47" width="600" height="553"/>
+                                <animations/>
                                 <connections>
                                     <segue destination="032-Z7-dyU" kind="embed" id="hje-ps-Wgg"/>
                                 </connections>
                             </containerView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oJZ-sM-zzV">
                                 <rect key="frame" x="534" y="20" width="46" height="30"/>
+                                <animations/>
                                 <state key="normal" title="Button"/>
                                 <connections>
                                     <action selector="toggleButton:" destination="quk-jQ-2cM" eventType="touchUpInside" id="fgw-zJ-jDu"/>
                                 </connections>
                             </button>
                         </subviews>
+                        <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="oJZ-sM-zzV" firstAttribute="trailing" secondItem="hXr-ET-Ryu" secondAttribute="trailingMargin" id="DJN-af-7yf"/>
@@ -57,7 +60,7 @@
         <scene sceneID="62M-px-tUj">
             <objects>
                 <tableViewController id="ofO-tF-N67" customClass="BrowseListingsTableViewController" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="376" sectionHeaderHeight="28" sectionFooterHeight="28" id="JGk-zi-mkO">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="376" sectionHeaderHeight="28" sectionFooterHeight="28" id="JGk-zi-mkO" userLabel="Browser Table View">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <animations/>
@@ -70,7 +73,7 @@
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="378.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Pff-5w-6aR">
+                                        <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Pff-5w-6aR" customClass="ImageCollectionView">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="300"/>
                                             <animations/>
                                             <constraints>
@@ -90,7 +93,7 @@
                                                         <rect key="frame" x="0.0" y="0.0" width="600" height="315"/>
                                                         <autoresizingMask key="autoresizingMask"/>
                                                         <subviews>
-                                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="modernHouse" translatesAutoresizingMaskIntoConstraints="NO" id="zW1-AZ-8z4">
+                                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zW1-AZ-8z4">
                                                                 <rect key="frame" x="0.0" y="0.0" width="600" height="300"/>
                                                                 <animations/>
                                                             </imageView>
@@ -99,6 +102,7 @@
                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                     </view>
                                                     <animations/>
+                                                    <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                 </collectionViewCell>
                                             </cells>
                                         </collectionView>
@@ -136,9 +140,9 @@
                                 </tableViewCellContentView>
                                 <animations/>
                                 <connections>
+                                    <outlet property="collectionView" destination="Pff-5w-6aR" id="U99-4I-edu"/>
                                     <outlet property="descriptionLabel" destination="kIc-Pw-PzB" id="tQS-nb-FWB"/>
                                     <outlet property="headerLabel" destination="f6s-cJ-bUb" id="WJ4-Ky-YgR"/>
-                                    <outlet property="imageCollectionView" destination="Pff-5w-6aR" id="x3x-Uj-J1W"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -147,9 +151,6 @@
                             <outlet property="delegate" destination="ofO-tF-N67" id="A5a-aZ-bjW"/>
                         </connections>
                     </tableView>
-                    <connections>
-                        <outlet property="browserTabelView" destination="JGk-zi-mkO" id="1bm-o1-TK5"/>
-                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="C44-Az-sA8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -389,6 +390,7 @@
                     <view key="view" contentMode="scaleToFill" id="W9a-bK-7ku">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="553"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <connections>
@@ -401,7 +403,4 @@
             <point key="canvasLocation" x="405" y="-547"/>
         </scene>
     </scenes>
-    <resources>
-        <image name="modernHouse" width="650" height="433"/>
-    </resources>
 </document>

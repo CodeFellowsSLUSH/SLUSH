@@ -16,6 +16,7 @@
 		4C9AB5F91BB217730037B32E /* GooglePlaceService.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C9AB5F81BB217730037B32E /* GooglePlaceService.m */; settings = {ASSET_TAGS = (); }; };
 		4C9AB5FC1BB243C20037B32E /* ErrorAlertController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C9AB5FB1BB243C20037B32E /* ErrorAlertController.m */; settings = {ASSET_TAGS = (); }; };
 		4C9AB5FF1BB25D450037B32E /* PriceRangePickerDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C9AB5FE1BB25D450037B32E /* PriceRangePickerDataSource.m */; settings = {ASSET_TAGS = (); }; };
+		4CAB46291BB34A9A0091EE38 /* ImageCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CAB46281BB34A9A0091EE38 /* ImageCollectionView.m */; settings = {ASSET_TAGS = (); }; };
 		AE06B80F1BB23FA500FB9EAE /* ContainerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AE06B80E1BB23FA500FB9EAE /* ContainerViewController.m */; settings = {ASSET_TAGS = (); }; };
 		AE06B8141BB2465100FB9EAE /* Empty.m in Sources */ = {isa = PBXBuildFile; fileRef = AE06B8131BB2465100FB9EAE /* Empty.m */; settings = {ASSET_TAGS = (); }; };
 		AE06B8171BB24CEC00FB9EAE /* ListingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AE06B8161BB24CEC00FB9EAE /* ListingViewController.m */; settings = {ASSET_TAGS = (); }; };
@@ -77,6 +78,8 @@
 		4C9AB5FB1BB243C20037B32E /* ErrorAlertController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ErrorAlertController.m; sourceTree = "<group>"; };
 		4C9AB5FD1BB25D450037B32E /* PriceRangePickerDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PriceRangePickerDataSource.h; sourceTree = "<group>"; };
 		4C9AB5FE1BB25D450037B32E /* PriceRangePickerDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PriceRangePickerDataSource.m; sourceTree = "<group>"; };
+		4CAB46271BB34A9A0091EE38 /* ImageCollectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageCollectionView.h; sourceTree = "<group>"; };
+		4CAB46281BB34A9A0091EE38 /* ImageCollectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageCollectionView.m; sourceTree = "<group>"; };
 		4FFE30BAB7754F1D9E63AA7B /* Pods-SLUSH.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SLUSH.release.xcconfig"; path = "Pods/Target Support Files/Pods-SLUSH/Pods-SLUSH.release.xcconfig"; sourceTree = "<group>"; };
 		5D12102E74F16FC75A3DF591 /* Pods-SLUSH.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SLUSH.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SLUSH/Pods-SLUSH.debug.xcconfig"; sourceTree = "<group>"; };
 		AE06B80D1BB23FA500FB9EAE /* ContainerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContainerViewController.h; sourceTree = "<group>"; };
@@ -274,6 +277,8 @@
 		B52EA8771BB0629A00A1C98E /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				4CAB46271BB34A9A0091EE38 /* ImageCollectionView.h */,
+				4CAB46281BB34A9A0091EE38 /* ImageCollectionView.m */,
 				B52EA83D1BB060FF00A1C98E /* Listings.storyboard */,
 				AEB160C31BB088A2006038A6 /* Profile.storyboard */,
 				AEB160C51BB088CE006038A6 /* Starting.storyboard */,
@@ -473,6 +478,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4C9AB5F61BB215470037B32E /* LocationSearchResultsController.m in Sources */,
+				4CAB46291BB34A9A0091EE38 /* ImageCollectionView.m in Sources */,
 				DF7DA17A1BB1E7BC004882E0 /* PropertyQueryFilter.m in Sources */,
 				4C9AB5F91BB217730037B32E /* GooglePlaceService.m in Sources */,
 				B52EA8421BB060FF00A1C98E /* SLUSH.xcdatamodeld in Sources */,
