@@ -18,4 +18,7 @@
 
 @property (strong, nonatomic) NSArray * favoriteProperties;
 
+
++ (UserDataObject *) generateTestUser;
+
 @end
