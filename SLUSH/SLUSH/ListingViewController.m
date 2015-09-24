@@ -9,6 +9,8 @@
 #import "ListingViewController.h"
 #import "ContainerViewController.h"
 #import "FilterViewController.h"
+#import "ParseService.h"
+#import "Constants.h"
 
 NSString * const kFilterStoryboardID = @"FilterViewController";
 
@@ -24,8 +26,9 @@ NSString * const kFilterStoryboardID = @"FilterViewController";
   self.containerViewController = [[ContainerViewController alloc]init];
   
   UIBarButtonItem *filterButton = [[UIBarButtonItem alloc] initWithTitle:@"Filter" style:UIBarButtonItemStylePlain target:self action:@selector(filterWasPressed)];
-  NSLog(@"nav bar: %@", self.navigationItem);
   self.navigationItem.rightBarButtonItem = filterButton;
+  
+  [self loadProperties];
 }
 
 - (void)filterWasPressed {
@@ -47,10 +50,24 @@ NSString * const kFilterStoryboardID = @"FilterViewController";
 [self.containerViewController swapViewControllers];
 }
 
+#pragma mark - Helper Methods
+
+- (void)loadProperties {
+  [ParseService propertiesWithFilter:self.filter completionHandler:^(NSArray *properties, NSError *error) {
+    if (error) {
+      NSLog(@"error: %@", error.localizedDescription);
+    } else {
+      NSDictionary *userInfo = @{ kPropertiesListKey: properties };
+      [[NSNotificationCenter defaultCenter] postNotificationName:kPropertiesDidLoadNotification object:nil userInfo:userInfo];
+    }
+  }];
+}
+
 #pragma mark - Filter Manager Delegate
 
 -(void)filterManager:(FilterViewController *)filterManager didApplyFilter:(PropertyQueryFilter *)filter {
   self.filter = filter;
+  [self loadProperties];
   [self.navigationController popToRootViewControllerAnimated:true];
 }
 
