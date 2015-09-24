@@ -12,8 +12,9 @@
 #import "ParseService.h"
 #import "Constants.h"
 
-@interface ListingViewController ()
+NSString * const kFilterStoryboardID = @"FilterViewController";
 
+@interface ListingViewController () <FilterManagerDelegate>
 @property (nonatomic, strong) ContainerViewController *containerViewController;
 - (IBAction)toggleButton:(id)sender;
 
@@ -26,7 +27,17 @@
   return YES;
 }
 -(void)viewDidLoad{
-  [super viewDidLoad];
+  UIBarButtonItem *filterButton = [[UIBarButtonItem alloc] initWithTitle:@"Filter" style:UIBarButtonItemStylePlain target:self action:@selector(filterWasPressed)];
+  self.navigationItem.rightBarButtonItem = filterButton;
+  
+  [self loadProperties];
+}
+
+- (void)filterWasPressed {
+  FilterViewController *filterVC = [self.storyboard instantiateViewControllerWithIdentifier:kFilterStoryboardID];
+  filterVC.filter = self.filter;
+  filterVC.delegate = self;
+  [self.navigationController pushViewController:filterVC animated:true];
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender

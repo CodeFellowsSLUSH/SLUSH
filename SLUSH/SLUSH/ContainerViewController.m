@@ -11,6 +11,8 @@
 #import "MapViewController.h"
 #import "BrowseListingsTableViewController.h"
 #import "MapViewController.h"
+#import "FilterViewController.h"
+#import "PropertyQueryFilter.h"
 
 #define SegueID1 @"listingSegue"
 #define SegueID2 @"mapSegue"
@@ -86,14 +88,17 @@
   self.currentSegueIdentifier = ([self.currentSegueIdentifier isEqualToString:SegueID1]) ? SegueID2:SegueID1;
   
   if (([self.currentSegueIdentifier isEqualToString:SegueID1] && self.browseVC)) {
-    [self swapFromViewController:self.browseVC toViewController:self.mapVC];
+    [self swapFromViewController:self.mapVC toViewController:self.browseVC];
     return;
   }
   
   if (([self.currentSegueIdentifier isEqualToString:SegueID2] && self.mapVC)) {
-    [self swapFromViewController:self.mapVC toViewController:self.browseVC];
+    [self swapFromViewController:self.browseVC toViewController:self.mapVC];
     return;
   }
+  
+
+
   
   
   [self performSegueWithIdentifier:self.currentSegueIdentifier sender:self];
