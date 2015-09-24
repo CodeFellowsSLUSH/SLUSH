@@ -10,3 +10,4 @@
 
 
 NSString * const kSecretMapKey = @"AIzaSyANSoNaxujWslIIAauP1KLXIjjWDSWTIrI";
+NSString * const kParseClientKey = @"ywtqBa2unQNbCLw6UzokbdZzKrX1h3uDnBIm6xQh";

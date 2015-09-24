@@ -63,14 +63,14 @@
 
 
 - (void)updateFilterDisplay {
-  self.bedroomSegmentedControl.selectedSegmentIndex = self.filter.minBedrooms;
-  self.bathroomSegmentedControl.selectedSegmentIndex = self.filter.minBathrooms;
+  self.bedroomSegmentedControl.selectedSegmentIndex = self.filter.minBedrooms.integerValue;
+  self.bathroomSegmentedControl.selectedSegmentIndex = self.filter.minBathrooms.integerValue;
   self.searchController.searchBar.text = self.filter.searchNearPlace.name;
   
-  NSInteger minRow = [self.priceRangePickerDataSource.minPrices indexOfObject:[NSNumber numberWithInteger:self.filter.minPrice]];
+  NSInteger minRow = [self.priceRangePickerDataSource.minPrices indexOfObject:self.filter.minPrice];
   [self.priceRangePicker selectRow:minRow inComponent:kMinRentComponent animated:true];
   
-  NSInteger maxRow = [self.priceRangePickerDataSource.maxPrices indexOfObject:[NSNumber numberWithInteger:self.filter.maxPrice]];
+  NSInteger maxRow = [self.priceRangePickerDataSource.maxPrices indexOfObject: self.filter.maxPrice];
   [self.priceRangePicker selectRow:maxRow inComponent:kMaxRentComponent animated:true];
   
 }
@@ -78,11 +78,11 @@
 
 #pragma mark - Actions
 - (IBAction)bedroomSegmentWasChanged:(UISegmentedControl *)sender {
-  self.filter.minBedrooms = sender.selectedSegmentIndex;
+  self.filter.minBedrooms = [NSNumber numberWithLong:sender.selectedSegmentIndex];
 }
 
 - (IBAction)bathroomSegmentWasChanged:(UISegmentedControl *)sender {
-  self.filter.minBathrooms = sender.selectedSegmentIndex;
+  self.filter.minBathrooms = [NSNumber numberWithLong:sender.selectedSegmentIndex];
 }
 
 
@@ -91,9 +91,12 @@
 }
 
 - (void)applyFilterWasPressed {
-  self.filter.minPrice = [self.priceRangePicker selectedRowInComponent:kMinRentComponent];
-  self.filter.maxPrice = [self.priceRangePicker selectedRowInComponent:kMaxRentComponent];
+  NSInteger minPriceFromComponent = [self.priceRangePicker selectedRowInComponent:kMinRentComponent];
+  NSInteger maxPriceFromComponent = [self.priceRangePicker selectedRowInComponent:kMaxRentComponent];
   
+  self.filter.minPrice = [NSNumber numberWithLong:minPriceFromComponent];
+  self.filter.maxPrice = [NSNumber numberWithLong:maxPriceFromComponent]; 
+
   [self.delegate filterManager:self didApplyFilter:self.filter];
 }
 

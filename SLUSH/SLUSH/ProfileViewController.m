@@ -8,8 +8,6 @@
 
 #import "ProfileViewController.h"
 #import "LoginViewController.h"
-#import <AWSDynamoDB/AWSDynamoDB.h>
-#import "AWSDatabaseManager.h"
 #import "Property.h"
 
 @interface ProfileViewController ()

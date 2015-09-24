@@ -20,7 +20,6 @@
 
 -(void)setCollectionViewDataSourceDelegate:(id<UICollectionViewDataSource,UICollectionViewDelegate>)dataSourceDelegate indexPath:(NSIndexPath *)indexPath{
   
-  
   self.collectionView.dataSource = dataSourceDelegate;
   self.collectionView.delegate = dataSourceDelegate;
   self.collectionView.indexPath = indexPath;

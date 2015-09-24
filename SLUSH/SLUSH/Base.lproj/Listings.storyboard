@@ -74,13 +74,13 @@
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="378.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Pff-5w-6aR" customClass="ImageCollectionView">
+                                        <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Pff-5w-6aR" customClass="ImageCollectionView">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="300"/>
                                             <animations/>
                                             <constraints>
                                                 <constraint firstAttribute="width" secondItem="Pff-5w-6aR" secondAttribute="height" multiplier="2:1" id="gat-mW-Acm"/>
                                             </constraints>
-                                            <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="gpi-gR-EKa">
+                                            <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="gpi-gR-EKa">
                                                 <size key="itemSize" width="600" height="315"/>
                                                 <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                                 <size key="footerReferenceSize" width="0.0" height="0.0"/>
@@ -94,7 +94,7 @@
                                                         <rect key="frame" x="0.0" y="0.0" width="600" height="315"/>
                                                         <autoresizingMask key="autoresizingMask"/>
                                                         <subviews>
-                                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zW1-AZ-8z4">
+                                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zW1-AZ-8z4">
                                                                 <rect key="frame" x="0.0" y="0.0" width="600" height="300"/>
                                                                 <animations/>
                                                             </imageView>
@@ -103,19 +103,27 @@
                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                     </view>
                                                     <animations/>
-                                                    <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="trailing" secondItem="zW1-AZ-8z4" secondAttribute="trailing" id="LJr-Oh-pna"/>
+                                                        <constraint firstItem="zW1-AZ-8z4" firstAttribute="top" secondItem="GrK-9C-Ujh" secondAttribute="top" id="WTN-nK-HIj"/>
+                                                        <constraint firstAttribute="bottom" secondItem="zW1-AZ-8z4" secondAttribute="bottom" id="vtg-oG-S5x"/>
+                                                        <constraint firstItem="zW1-AZ-8z4" firstAttribute="leading" secondItem="GrK-9C-Ujh" secondAttribute="leading" id="w3W-UX-cNP"/>
+                                                    </constraints>
+                                                    <connections>
+                                                        <outlet property="imageView" destination="zW1-AZ-8z4" id="wZS-sg-YZ2"/>
+                                                    </connections>
                                                 </collectionViewCell>
                                             </cells>
                                         </collectionView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="3 berooms 1 bath, Awesome Place!!!" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f6s-cJ-bUb">
-                                            <rect key="frame" x="8" y="308" width="592" height="26.5"/>
+                                            <rect key="frame" x="8" y="308" width="584" height="26.5"/>
                                             <animations/>
                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Here is where the discription goes" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kIc-Pw-PzB">
-                                            <rect key="frame" x="8" y="342.5" width="592" height="21"/>
+                                            <rect key="frame" x="8" y="342.5" width="584" height="21"/>
                                             <animations/>
                                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -126,9 +134,9 @@
                                     <constraints>
                                         <constraint firstAttribute="bottomMargin" secondItem="kIc-Pw-PzB" secondAttribute="bottom" constant="7" id="1al-v8-Pr0"/>
                                         <constraint firstAttribute="trailingMargin" secondItem="Pff-5w-6aR" secondAttribute="trailing" constant="-8" id="2bd-Ha-HV2"/>
-                                        <constraint firstAttribute="trailingMargin" secondItem="f6s-cJ-bUb" secondAttribute="trailing" constant="-8" id="5bF-8I-qMM"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="f6s-cJ-bUb" secondAttribute="trailing" id="5bF-8I-qMM"/>
                                         <constraint firstItem="Pff-5w-6aR" firstAttribute="top" secondItem="puy-bH-xgD" secondAttribute="topMargin" constant="-8" id="5l7-sw-Sho"/>
-                                        <constraint firstAttribute="trailingMargin" secondItem="kIc-Pw-PzB" secondAttribute="trailing" constant="-8" id="Da7-tB-9ZD"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="kIc-Pw-PzB" secondAttribute="trailing" id="Da7-tB-9ZD"/>
                                         <constraint firstItem="f6s-cJ-bUb" firstAttribute="leading" secondItem="puy-bH-xgD" secondAttribute="leadingMargin" id="Oku-Ky-fin"/>
                                         <constraint firstItem="Pff-5w-6aR" firstAttribute="leading" secondItem="puy-bH-xgD" secondAttribute="leadingMargin" constant="-8" id="apq-gF-DWy"/>
                                         <constraint firstItem="kIc-Pw-PzB" firstAttribute="leading" secondItem="puy-bH-xgD" secondAttribute="leadingMargin" id="cou-Gp-xn1"/>

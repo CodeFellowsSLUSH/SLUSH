@@ -4,15 +4,9 @@
 target 'SLUSH' do
 
 pod 'GoogleMaps'
-pod 'FBSDKCoreKit'
-pod 'FBSDKLoginKit'
-pod 'FBSDKShareKit'
 
-pod 'AWSCognito'
-pod 'AWSDynamoDB'
-pod 'AWSSimpleDB'
-pod 'AWSLambda'
-pod 'AWSEC2'
+pod 'Parse'
+pod 'ParseUI'
 
 end
 

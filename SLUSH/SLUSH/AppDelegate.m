@@ -7,13 +7,12 @@
 //
 
 #import "AppDelegate.h"
-#import <FBSDKCoreKit/FBSDKCoreKit.h>
-#import <FBSDKLoginKit/FBSDKLoginKit.h>
-#import <AWSCognito/AWSCognito.h>
 #import "Constants.h"
 #import <GoogleMaps/GoogleMaps.h>
 #import "Secrets.h"
 #import <CoreLocation/CoreLocation.h>
+#import <Parse/Parse.h>
+#import "Property.h"
 
 @interface AppDelegate ()
 
@@ -23,36 +22,14 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+  
+  
+  [Property registerSubclass];
+  [Parse setApplicationId:kParseApplicationID clientKey:kParseClientKey];
 
   [GMSServices provideAPIKey:kSecretMapKey];
-  
-  AWSCognitoCredentialsProvider *credentialsProvider = [[AWSCognitoCredentialsProvider alloc]
-                                                        initWithRegionType:kCognitoRegionType
-                                                        identityPoolId:kCognitoIdentityPoolID];
-  
-  AWSServiceConfiguration *configuration = [[AWSServiceConfiguration alloc] initWithRegion:kCognitoRegionType credentialsProvider:credentialsProvider];
-  
-  [AWSServiceManager defaultServiceManager].defaultServiceConfiguration = configuration;
-  return YES;
-}
 
-- (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication
-         annotation:(id)annotation {
-  
-#warning move to AWSClientManager once it has been setup
-  
-   if ([[FBSDKApplicationDelegate sharedInstance] application:application
-                                                        openURL:url
-                                              sourceApplication:sourceApplication
-                                                   annotation:annotation]) {
-     
-     NSString *token = [FBSDKAccessToken currentAccessToken].tokenString;
-     AWSCognitoCredentialsProvider *credentialsProvider = [[AWSCognitoCredentialsProvider alloc] initWithRegionType:kCognitoRegionType identityPoolId:kCognitoIdentityPoolID];
-     credentialsProvider.logins = @{ @(AWSCognitoLoginProviderKeyFacebook): token };
-     return true;
-   }
-  
-  return false;
+  return YES;
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {
