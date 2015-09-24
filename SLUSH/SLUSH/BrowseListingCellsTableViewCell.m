@@ -11,5 +11,22 @@
 
 @implementation BrowseListingCellsTableViewCell
 
+- (id) initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier{
+  
+  if (!(self = [super initWithStyle:style reuseIdentifier:reuseIdentifier])) return nil;
+
+  return self;
+}
+
+-(void)setCollectionViewDataSourceDelegate:(id<UICollectionViewDataSource,UICollectionViewDelegate>)dataSourceDelegate indexPath:(NSIndexPath *)indexPath{
+  
+  self.collectionView.dataSource = dataSourceDelegate;
+  self.collectionView.delegate = dataSourceDelegate;
+  self.collectionView.indexPath = indexPath;
+  
+  
+  [self.collectionView reloadData];
+}
+
 @end
 

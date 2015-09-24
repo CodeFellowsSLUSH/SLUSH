@@ -8,25 +8,26 @@
 
 #import <Foundation/Foundation.h>
 #import <GoogleMaps/GoogleMaps.h>
-#import <AWSDynamoDB/AWSDynamoDB.h>
 #import <GoogleMaps/GoogleMaps.h>
 #import <CoreLocation/CoreLocation.h>
+#import <Parse/Parse.h>
 
-@interface Property : AWSDynamoDBObjectModel <AWSDynamoDBModeling>
+@interface Property : PFObject <PFSubclassing>
 
 @property (strong, nonatomic) NSString *headline;
 @property (strong, nonatomic) NSString *propertyDescription;
-@property (nonatomic) NSInteger numberOfBedrooms;
-@property (nonatomic) NSInteger numberOfBathrooms;
+@property (strong, nonatomic) NSNumber *numberOfBedrooms;
+@property (strong, nonatomic) NSNumber *numberOfBathrooms;
 @property (nonatomic) BOOL allowsPets;
-@property (strong, nonatomic) NSArray *photos;
 @property (strong, nonatomic) NSNumber *price;
-@property (strong, nonatomic) GMSPlace *placeDetails;
 @property (strong, nonatomic) NSString *streetAddress;
 @property (strong, nonatomic) NSString *city;
 @property (strong, nonatomic) NSString *unitNumber;
 @property (strong, nonatomic) NSString *zipCode;
-@property (strong, nonatomic) NSString *objectId;
-@property (strong, nonatomic) GMSMarker *marker;
+@property (strong, nonatomic) NSArray *photos;
+
+@property (strong, nonatomic) GMSPlace *placeDetails;
+
+- (void)addImage:(UIImage *)image withBlock:(void(^)(BOOL succeeded, NSError *error))handler;
 
 @end

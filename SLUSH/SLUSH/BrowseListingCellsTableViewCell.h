@@ -7,10 +7,18 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ImageCollectionView.h"
+
+
+static NSString *collectionViewCellIdentifier = @"imagesInCollectionView";
 
 @interface BrowseListingCellsTableViewCell : UITableViewCell
 @property (weak, nonatomic) IBOutlet UILabel *headerLabel;
 @property (weak, nonatomic) IBOutlet UILabel *descriptionLabel;
-@property (weak, nonatomic) IBOutlet UICollectionView *imageCollectionView;
+@property (weak, nonatomic) IBOutlet ImageCollectionView *collectionView;
+
+- (void)setCollectionViewDataSourceDelegate:(id<UICollectionViewDataSource, UICollectionViewDelegate>)dataSourceDelegate indexPath:(NSIndexPath *)indexPath;
+
 
 @end
+
