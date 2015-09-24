@@ -40,6 +40,7 @@
 		DF7DA1741BB1E782004882E0 /* UserDataObject.m in Sources */ = {isa = PBXBuildFile; fileRef = DF7DA1731BB1E782004882E0 /* UserDataObject.m */; settings = {ASSET_TAGS = (); }; };
 		DF7DA1771BB1E794004882E0 /* PropertyDataObject.m in Sources */ = {isa = PBXBuildFile; fileRef = DF7DA1761BB1E794004882E0 /* PropertyDataObject.m */; settings = {ASSET_TAGS = (); }; };
 		DF7DA17A1BB1E7BC004882E0 /* PropertyQueryFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = DF7DA1791BB1E7BC004882E0 /* PropertyQueryFilter.m */; settings = {ASSET_TAGS = (); }; };
+		DFC9B37C1BB38EB800E12FC4 /* CustomTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = DFC9B37B1BB38EB800E12FC4 /* CustomTableView.m */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -126,6 +127,8 @@
 		DF7DA1761BB1E794004882E0 /* PropertyDataObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PropertyDataObject.m; sourceTree = "<group>"; };
 		DF7DA1781BB1E7BC004882E0 /* PropertyQueryFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PropertyQueryFilter.h; sourceTree = "<group>"; };
 		DF7DA1791BB1E7BC004882E0 /* PropertyQueryFilter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PropertyQueryFilter.m; sourceTree = "<group>"; };
+		DFC9B37A1BB38EB800E12FC4 /* CustomTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomTableView.h; sourceTree = "<group>"; };
+		DFC9B37B1BB38EB800E12FC4 /* CustomTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomTableView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -243,30 +246,30 @@
 		B52EA8761BB0628F00A1C98E /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				4C74AF351BB0B58500D2770F /* LoginViewController.h */,
-				4C74AF361BB0B58500D2770F /* LoginViewController.m */,
-				B52EA8711BB0626800A1C98E /* ProfileViewController.m */,
-				B52EA8701BB0626800A1C98E /* ProfileViewController.h */,
-				B52EA8731BB0627600A1C98E /* NewPropertyViewController.h */,
-				B52EA8741BB0627600A1C98E /* NewPropertyViewController.m */,
-				B52EA86D1BB0620900A1C98E /* MapViewController.h */,
-				B52EA86E1BB0620900A1C98E /* MapViewController.m */,
-				B52EA86A1BB061EA00A1C98E /* FilterViewController.h */,
-				B52EA86B1BB061EA00A1C98E /* FilterViewController.m */,
-				4C9AB5F41BB215470037B32E /* LocationSearchResultsController.h */,
-				4C9AB5F51BB215470037B32E /* LocationSearchResultsController.m */,
-				4C9AB5FA1BB243C20037B32E /* ErrorAlertController.h */,
-				4C9AB5FB1BB243C20037B32E /* ErrorAlertController.m */,
-				AEB160C71BB08F59006038A6 /* StartingViewController.h */,
-				AEB160C81BB08F59006038A6 /* StartingViewController.m */,
-				AE06B80D1BB23FA500FB9EAE /* ContainerViewController.h */,
-				AE06B80E1BB23FA500FB9EAE /* ContainerViewController.m */,
 				B55830341BB1C32100002FE5 /* BrowseListingsTableViewController.h */,
 				B55830351BB1C32100002FE5 /* BrowseListingsTableViewController.m */,
-				AE06B8151BB24CEC00FB9EAE /* ListingViewController.h */,
-				AE06B8161BB24CEC00FB9EAE /* ListingViewController.m */,
+				AE06B80D1BB23FA500FB9EAE /* ContainerViewController.h */,
+				AE06B80E1BB23FA500FB9EAE /* ContainerViewController.m */,
 				AE06B8121BB2465100FB9EAE /* Empty.h */,
 				AE06B8131BB2465100FB9EAE /* Empty.m */,
+				4C9AB5FA1BB243C20037B32E /* ErrorAlertController.h */,
+				4C9AB5FB1BB243C20037B32E /* ErrorAlertController.m */,
+				B52EA86A1BB061EA00A1C98E /* FilterViewController.h */,
+				B52EA86B1BB061EA00A1C98E /* FilterViewController.m */,
+				AE06B8151BB24CEC00FB9EAE /* ListingViewController.h */,
+				AE06B8161BB24CEC00FB9EAE /* ListingViewController.m */,
+				4C9AB5F41BB215470037B32E /* LocationSearchResultsController.h */,
+				4C9AB5F51BB215470037B32E /* LocationSearchResultsController.m */,
+				4C74AF351BB0B58500D2770F /* LoginViewController.h */,
+				4C74AF361BB0B58500D2770F /* LoginViewController.m */,
+				B52EA86D1BB0620900A1C98E /* MapViewController.h */,
+				B52EA86E1BB0620900A1C98E /* MapViewController.m */,
+				B52EA8731BB0627600A1C98E /* NewPropertyViewController.h */,
+				B52EA8741BB0627600A1C98E /* NewPropertyViewController.m */,
+				B52EA8701BB0626800A1C98E /* ProfileViewController.h */,
+				B52EA8711BB0626800A1C98E /* ProfileViewController.m */,
+				AEB160C71BB08F59006038A6 /* StartingViewController.h */,
+				AEB160C81BB08F59006038A6 /* StartingViewController.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -277,6 +280,8 @@
 				B52EA83D1BB060FF00A1C98E /* Listings.storyboard */,
 				AEB160C31BB088A2006038A6 /* Profile.storyboard */,
 				AEB160C51BB088CE006038A6 /* Starting.storyboard */,
+				DFC9B37A1BB38EB800E12FC4 /* CustomTableView.h */,
+				DFC9B37B1BB38EB800E12FC4 /* CustomTableView.m */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -486,6 +491,7 @@
 				4C74AF371BB0B58500D2770F /* LoginViewController.m in Sources */,
 				B55830361BB1C32100002FE5 /* BrowseListingsTableViewController.m in Sources */,
 				B558303E1BB1D10200002FE5 /* ImageCollectionViewCell.m in Sources */,
+				DFC9B37C1BB38EB800E12FC4 /* CustomTableView.m in Sources */,
 				4C74AF3D1BB0CB8100D2770F /* Property.m in Sources */,
 				B558303B1BB1CF2B00002FE5 /* BrowseListingCellsTableViewCell.m in Sources */,
 				AE06B8141BB2465100FB9EAE /* Empty.m in Sources */,
