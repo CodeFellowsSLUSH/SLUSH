@@ -105,6 +105,17 @@
 
 }
 
+- (IBAction)saveButtonPressed:(UIBarButtonItem *)sender {
+  
+  // Save the property object based on the changes the user has made.
+  [self saveUIToProperty];
+  [self.property save];
+  
+  // Return to the profile controller.
+  [self.navigationController popViewControllerAnimated:true];
+  
+}
+
 - (void)setupSearchController {
   self.searchResultsController = [[LocationSearchResultsController alloc] initWithStyle:UITableViewStylePlain];
   self.searchController = [[UISearchController alloc] initWithSearchResultsController:self.searchResultsController];
@@ -151,6 +162,7 @@
 
 #pragma mark - Search Results Updating
 
+
 -(void)updateSearchResultsForSearchController:(UISearchController *)searchController {
   [GooglePlaceService autoCompletePredictionsFromSearchTerm:searchController.searchBar.text withBlock:^(NSArray *predictions, NSError *error) {
     if (error) {
@@ -164,10 +176,13 @@
 #pragma mark - Location Picker Delegate
 
 -(void)locationPicker:(LocationSearchResultsController *)picker didPickPlace:(GMSPlace *)place {
-  [picker dismissViewControllerAnimated:true completion:nil];
- 
+
   self.property.coordinate = place.coordinate;
-  self.property.streetAddress = place.attributions.string;
+  self.property.address = place.formattedAddress;
+  self.searchController.searchBar.text = place.formattedAddress;
+  
+  [picker dismissViewControllerAnimated:true completion:nil];
+  
 }
 
 

@@ -35,11 +35,7 @@
 @property (nonatomic) BOOL allowsPets;
 @property (nonatomic) BOOL hasWasherDryer;
 
-@property (strong, nonatomic) NSString * streetAddress;
-@property (strong, nonatomic) NSString * unitNumber;
-@property (strong, nonatomic) NSString * city;
-@property (strong, nonatomic) NSString * state;
-@property (strong, nonatomic) NSString * zipCode;
+@property (strong, nonatomic) NSString * address;
 
 @property (strong, nonatomic) NSArray *photos;
 @property (nonatomic) CLLocationCoordinate2D coordinate;

@@ -40,11 +40,7 @@ CGFloat const kDefaultImageCompression = 0.8;
 
 @synthesize googlePlace;
 
-@dynamic streetAddress;
-@dynamic unitNumber;
-@dynamic city;
-@dynamic state;
-@dynamic zipCode;
+@dynamic address;
 
 @dynamic imagesFile;
 @dynamic photos;
@@ -56,7 +52,6 @@ CGFloat const kDefaultImageCompression = 0.8;
 + (NSString *)parseClassName {
   return @"Property";
 }
-
 
 - (void)addImage:(UIImage *)image withBlock:(void(^)(BOOL succeeded, NSError *error))handler {
   NSData *imageData = UIImageJPEGRepresentation(image, kDefaultImageCompression);
@@ -131,12 +126,6 @@ CGFloat const kDefaultImageCompression = 0.8;
   property.hasWasherDryer = arc4random_uniform(2) > 0 ? true : false;
 
   property.geoPoint = [PFGeoPoint geoPointWithLatitude: latitudeOfCodeFellows + ( 0.005 - (double)arc4random_uniform(100) / 10000.0) longitude: longitudeOfCodeFellows + ( 0.005 - (double)arc4random_uniform(100) / 10000.0)];
-
-  property.streetAddress = [NSString stringWithFormat: @"%u Boren Ave N", arc4random_uniform(20) + 490];
-  property.unitNumber = [NSString stringWithFormat: @"%u", arc4random_uniform(20) + 1];
-  property.city = @"Seattle";
-  property.state = @"WA";
-  property.zipCode = @"98123";
 
   [property addImage:[UIImage imageNamed:@"modernHouse"] withBlock:^(BOOL succeeded, NSError *error) {
     if (error) {
