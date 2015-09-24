@@ -89,23 +89,21 @@
 
 - (void) saveUIToProperty {
 
-//  descriptionTextField;
-//  detailsTextView;
-//  descriptionCell;
-//
-//  rentTextField;
-//
-//  leaseTermSlider;
-//  leaseTermLabel;
-//
-//  sqFtTextField;
-//  bedsTextField;
-//  bathsTextField;
-//
-//  petsSwitch;
-//  smokingSwitch;
-//
-//  wdSwitch;
+  self.property.headlineDescription = self.headlineTextField.text;
+  self.property.detailsDescription = self.detailsTextView.text;
+
+  self.property.price = [self.rentTextField.text integerValue];
+
+  self.property.monthsAvailable = self.leaseTermSlider.value;
+
+  self.property.squareFeet = [self.sqFtTextField.text integerValue];
+  self.property.numberOfBedrooms = [self.bedsTextField.text integerValue];
+  self.property.numberOfBathrooms = [self.bathsTextField.text integerValue];
+
+  self.property.allowsPets = self.petsSwitch.on;
+  self.property.allowsSmoking = self.smokingSwitch.on;
+
+  self.property.hasWasherDryer = self.wdSwitch.on;
 
 }
 

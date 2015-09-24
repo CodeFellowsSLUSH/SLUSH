@@ -93,6 +93,13 @@ CGFloat const kDefaultImageCompression = 0.8;
 }
 
 
+- (void) save {
+
+  [self saveEventually];
+
+}
+
+
 + (Property *) generateTestPropertyForLandlord: (UserDataObject *) landlord {
 
   static const CLLocationDegrees latitudeOfCodeFellows = 47.62354;

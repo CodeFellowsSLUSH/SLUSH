@@ -48,6 +48,8 @@
 
 - (void)addImage:(UIImage *)image withBlock:(void(^)(BOOL succeeded, NSError *error))handler;
 
+- (void) save;
+
 + (Property *) generateTestPropertyForLandlord: (UserDataObject *) landlord;
 
 
