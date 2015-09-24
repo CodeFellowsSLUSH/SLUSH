@@ -22,13 +22,12 @@
                                 <rect key="frame" x="0.0" y="47" width="600" height="553"/>
                                 <animations/>
                                 <connections>
-                                    <segue destination="032-Z7-dyU" kind="embed" id="hje-ps-Wgg"/>
+                                    <segue destination="032-Z7-dyU" kind="embed" identifier="embedContainer" id="hje-ps-Wgg"/>
                                 </connections>
                             </containerView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oJZ-sM-zzV">
-                                <rect key="frame" x="534" y="20" width="46" height="30"/>
-                                <animations/>
-                                <state key="normal" title="Button"/>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oJZ-sM-zzV">
+                                <rect key="frame" x="534" y="20" width="47" height="30"/>
+                                <state key="normal" title="Toggle"/>
                                 <connections>
                                     <action selector="toggleButton:" destination="quk-jQ-2cM" eventType="touchUpInside" id="fgw-zJ-jDu"/>
                                 </connections>
@@ -60,8 +59,8 @@
         <!--Browse Listings Table View Controller-->
         <scene sceneID="62M-px-tUj">
             <objects>
-                <tableViewController id="ofO-tF-N67" customClass="BrowseListingsTableViewController" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="376" sectionHeaderHeight="28" sectionFooterHeight="28" id="JGk-zi-mkO" userLabel="Browser Table View">
+                <tableViewController storyboardIdentifier="BrowseListingVC" id="ofO-tF-N67" customClass="BrowseListingsTableViewController" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="376" sectionHeaderHeight="28" sectionFooterHeight="28" id="JGk-zi-mkO">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <animations/>
@@ -165,7 +164,7 @@
         <!--Map View Controller-->
         <scene sceneID="Pfr-yE-JNw">
             <objects>
-                <viewController storyboardIdentifier="MapViewController" id="gGe-s7-MSZ" customClass="MapViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MapVC" id="gGe-s7-MSZ" customClass="MapViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="UXS-H7-9gS"/>
                         <viewControllerLayoutGuide type="bottom" id="k4y-mz-Gzm"/>
@@ -441,8 +440,8 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <connections>
-                        <segue destination="ofO-tF-N67" kind="custom" identifier="listingSegue" customClass="Empty" id="J8r-Zi-1NT"/>
                         <segue destination="gGe-s7-MSZ" kind="custom" identifier="mapSegue" customClass="Empty" id="4eG-Rj-G9G"/>
+                        <segue destination="ofO-tF-N67" kind="custom" identifier="listingSegue" customClass="Empty" id="iuO-gb-uyV"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TyC-qe-Gw4" userLabel="First Responder" sceneMemberID="firstResponder"/>
