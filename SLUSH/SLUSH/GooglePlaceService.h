@@ -13,5 +13,6 @@
 
 + (void)autoCompletePredictionsFromSearchTerm:(NSString *)searchTerm withBlock:(void (^)(NSArray *predictions, NSError *error))handler;
 + (void)googlePlaceForAutocompletePrediction:(GMSAutocompletePrediction *)prediction withBlock:(void (^)(GMSPlace *place, NSError *error))handler;
++ (void)currentPlaceWithBlock:(void(^)(GMSPlace *place, NSError *error))handler;
 
 @end

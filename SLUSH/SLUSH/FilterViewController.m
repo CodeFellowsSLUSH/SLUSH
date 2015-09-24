@@ -12,8 +12,10 @@
 #import "LocationSearchResultsController.h"
 #import "PriceRangePickerDataSource.h"
 #import "Constants.h"
+#import "ErrorAlertController.h"
 
 CGFloat const kSearchRangeSliderMultiplier = 100;
+CGFloat const kSearchRangeSliderInitialValue = 0.5;
 
 @interface FilterViewController ()
 
@@ -36,10 +38,15 @@ CGFloat const kSearchRangeSliderMultiplier = 100;
 
 @implementation FilterViewController
 
+-(void)dealloc {
+  [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
 
 #pragma mark - Life Cycle Methods
 - (void)viewDidLoad {
     [super viewDidLoad];
+  
+  [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(filterDidChange:) name:kFilterDidChangeNotification object:nil];
   
   self.priceRangePicker.dataSource = self.priceRangePickerDataSource;
   self.priceRangePicker.delegate = self.priceRangePickerDataSource;
@@ -56,7 +63,7 @@ CGFloat const kSearchRangeSliderMultiplier = 100;
   self.searchController = [[UISearchController alloc] initWithSearchResultsController:self.searchResultsController];
 
   self.tableView.tableHeaderView = self.searchController.searchBar;
-  self.searchController.searchBar.placeholder = @"Current Location";
+  self.searchController.searchBar.placeholder = @"Enter a location";
   self.searchController.searchResultsUpdater = self;
   
   [self.searchRangeSlider addTarget:self action:@selector(searchRangeChanged:) forControlEvents:UIControlEventValueChanged];
@@ -75,25 +82,23 @@ CGFloat const kSearchRangeSliderMultiplier = 100;
 #pragma mark - Helper Methods
 
 - (void)updateFilterDisplay {
-  self.bedroomSegmentedControl.selectedSegmentIndex = self.filter.minBedrooms.integerValue;
-  self.bathroomSegmentedControl.selectedSegmentIndex = self.filter.minBathrooms.integerValue;
-  self.searchController.searchBar.text = self.filter.searchNearPlace.name;
+  self.bedroomSegmentedControl.selectedSegmentIndex = (self.filter.minBathrooms) ? self.filter.minBedrooms.integerValue : 0;
+  self.bathroomSegmentedControl.selectedSegmentIndex = (self.filter.minBathrooms) ? self.filter.minBathrooms.integerValue : 0;
+  self.searchController.searchBar.text = self.filter.searchNearPlace.formattedAddress;
   
-  self.searchRangeSlider.value = self.filter.searchRadius / kSearchRangeSliderMultiplier;
-  self.searchRange = [NSNumber numberWithLong:self.filter.searchRadius];
+  self.searchRangeSlider.value = (self.filter.searchRadius) ? (self.filter.searchRadius / kSearchRangeSliderMultiplier) : kSearchRangeSliderInitialValue;
+  self.searchRange = (self.filter.searchRadius) ? [NSNumber numberWithLong:self.filter.searchRadius] : [NSNumber numberWithLong:kSearchRangeSliderInitialValue * kSearchRangeSliderMultiplier];
   
-  NSInteger minRow = [self.priceRangePickerDataSource.minPrices indexOfObject:self.filter.minPrice];
-  [self.priceRangePicker selectRow:minRow inComponent:kMinRentComponent animated:true];
-  
-  NSInteger maxRow = [self.priceRangePickerDataSource.maxPrices indexOfObject: self.filter.maxPrice];
-  [self.priceRangePicker selectRow:maxRow inComponent:kMaxRentComponent animated:true];
-  
+    NSInteger minRow = (self.filter.minPrice) ? [self.priceRangePickerDataSource.minPrices indexOfObject:self.filter.minPrice] : 0;
+    [self.priceRangePicker selectRow:minRow inComponent:kMinRentComponent animated:true];
+
+    NSInteger maxRow = (self.filter.maxPrice) ? [self.priceRangePickerDataSource.maxPrices indexOfObject: self.filter.maxPrice] : 0;
+    [self.priceRangePicker selectRow:maxRow inComponent:kMaxRentComponent animated:true];
 }
 
 - (void)updateSearchRangeLabel {
   self.searchRangeLabel.text = [NSString stringWithFormat:@"%@ Miles", self.searchRange];
 }
-
 
 #pragma mark - Actions
 - (IBAction)bedroomSegmentWasChanged:(UISegmentedControl *)sender {
@@ -108,6 +113,12 @@ CGFloat const kSearchRangeSliderMultiplier = 100;
   CGFloat searchRangeFloat = slider.value * kSearchRangeSliderMultiplier;
   NSInteger searchRange = roundf(searchRangeFloat);
   self.searchRange = [NSNumber numberWithFloat:searchRange];
+}
+
+- (void)filterDidChange:(NSNotification *)notification {
+  NSDictionary *userInfo = notification.userInfo;
+  PropertyQueryFilter *newFilter = userInfo[kFilterUserInfoKey];
+  self.filter = newFilter;
 }
 
 
@@ -127,7 +138,12 @@ CGFloat const kSearchRangeSliderMultiplier = 100;
   
   self.filter.searchRadius = self.searchRange.integerValue;
 
-  [self.delegate filterManager:self didApplyFilter:self.filter];
+  if (self.filter.searchNearPlace) {
+    [self.delegate filterManager:self didApplyFilter:self.filter];
+  } else {
+    UIAlertController *alert = [ErrorAlertController alertWithErrorString:@"You must select a location to browse"];
+    [self presentViewController:alert animated:true completion:nil];
+  }
 }
 
 - (void)resetFilters {
@@ -143,10 +159,18 @@ CGFloat const kSearchRangeSliderMultiplier = 100;
   UITableViewCell *currentCell = [tableView cellForRowAtIndexPath:indexPath];
   if (currentCell == self.resetFiltersCell) {
     [self resetFilters];
-    [tableView deselectRowAtIndexPath:indexPath animated:true];
   } else if (currentCell == self.useCurrentLocationCell) {
-    
+    [GooglePlaceService currentPlaceWithBlock:^(GMSPlace *place, NSError *error) {
+      if (error) {
+        UIAlertController *alert = [ErrorAlertController alertWithErrorString:@"Could not retrieve your location.  Please try again or enter your address manually"];
+        [self presentViewController:alert animated:true completion:nil];
+      } else {
+        self.filter.searchNearPlace = place;
+        [self updateFilterDisplay];
+      }
+    }];
   }
+  [tableView deselectRowAtIndexPath:indexPath animated:true];
 }
 
 - (BOOL)tableView:(UITableView *)tableView shouldHighlightRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
@@ -181,6 +205,7 @@ CGFloat const kSearchRangeSliderMultiplier = 100;
 
 -(void)setFilter:(PropertyQueryFilter *)filter {
   _filter = filter;
+  [self updateFilterDisplay];
 }
 
 - (void)setSearchRange:(NSNumber *)searchRange {
