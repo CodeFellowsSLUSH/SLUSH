@@ -1,4 +1,4 @@
-//
+  //
 //  ContainerViewController.m
 //  SLUSH
 //
@@ -9,50 +9,59 @@
 #import "ContainerViewController.h"
 #import "ListingViewController.h"
 #import "MapViewController.h"
+#import "BrowseListingsTableViewController.h"
+#import "MapViewController.h"
 #import "FilterViewController.h"
 #import "PropertyQueryFilter.h"
 
-#define SegueIdentifierFirst @"listingSegue"
-#define SegueIdentifierSecond @"mapSegue"
+#define SegueID1 @"listingSegue"
+#define SegueID2 @"mapSegue"
 
 @interface ContainerViewController ()
 @property (strong, nonatomic) NSString *currentSegueIdentifier;
-@property (nonatomic) int Hello;
+@property (nonatomic) BOOL inTransition;
+@property (strong, nonatomic) BrowseListingsTableViewController *browseVC;
+@property (strong, nonatomic) MapViewController *mapVC;
 @end
 
 @implementation ContainerViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-  
-  self.currentSegueIdentifier = SegueIdentifierFirst;
+  self.inTransition = false;
+  self.currentSegueIdentifier = SegueID1;
   [self performSegueWithIdentifier:self.currentSegueIdentifier sender:nil];
 
-}
-
--(void)swapViewControllers{
-  self.currentSegueIdentifier = SegueIdentifierSecond;
-  [self performSegueWithIdentifier:self.currentSegueIdentifier sender:nil];
 }
 
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-  if ([segue.identifier isEqualToString:SegueIdentifierFirst])
-  {
+  if ([segue.identifier isEqualToString:SegueID1]) {
+    self.browseVC = segue.destinationViewController;
+  }
+  
+  if ([segue.identifier isEqualToString:SegueID2]) {
+    self.mapVC = segue.destinationViewController;
+  }
+  
+  if ([segue.identifier isEqualToString:SegueID1]) {
     if (self.childViewControllers.count > 0) {
-      [self swapFromViewController:[self.childViewControllers objectAtIndex:0] toViewController:segue.destinationViewController];
+      [self swapFromViewController:[self.childViewControllers objectAtIndex:0] toViewController:self.browseVC];
     }
     else {
+
       [self addChildViewController:segue.destinationViewController];
-      ((UIViewController *)segue.destinationViewController).view.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
-      [self.view addSubview:((UIViewController *)segue.destinationViewController).view];
+      UIView* destView = ((UIViewController *)segue.destinationViewController).view;
+      destView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+      destView.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
+      [self.view addSubview:destView];
       [segue.destinationViewController didMoveToParentViewController:self];
     }
   }
-  else if ([segue.identifier isEqualToString:SegueIdentifierSecond])
-  {
-    [self swapFromViewController:[self.childViewControllers objectAtIndex:0] toViewController:segue.destinationViewController];
+
+  else if ([segue.identifier isEqualToString:SegueID2]) {
+    [self swapFromViewController:[self.childViewControllers objectAtIndex:0] toViewController:self.mapVC];
   }
 }
 
@@ -62,19 +71,39 @@
   
   [fromViewController willMoveToParentViewController:nil];
   [self addChildViewController:toViewController];
+  
   [self transitionFromViewController:fromViewController toViewController:toViewController duration:1.0 options:UIViewAnimationOptionTransitionCrossDissolve animations:nil completion:^(BOOL finished) {
-    [fromViewController removeFromParentViewController];
+//    [fromViewController removeFromParentViewController];
     [toViewController didMoveToParentViewController:self];
+    self.inTransition = false;
   }];
 }
 
 
+-(void)swapViewControllers{
+  if (self.inTransition){
+    return;
+  }
+  self.inTransition = true;
+  self.currentSegueIdentifier = ([self.currentSegueIdentifier isEqualToString:SegueID1]) ? SegueID2:SegueID1;
+  
+  if (([self.currentSegueIdentifier isEqualToString:SegueID1] && self.browseVC)) {
+    [self swapFromViewController:self.mapVC toViewController:self.browseVC];
+    return;
+  }
+  
+  if (([self.currentSegueIdentifier isEqualToString:SegueID2] && self.mapVC)) {
+    [self swapFromViewController:self.browseVC toViewController:self.mapVC];
+    return;
+  }
+  
 
-//- (void)swapViewControllers
-//{
-//  self.currentSegueIdentifier = ([self.currentSegueIdentifier  isEqual: SegueIdentifierFirst]) ? SegueIdentifierSecond : SegueIdentifierFirst;
-//  [self performSegueWithIdentifier:self.currentSegueIdentifier sender:nil];
-//}
+
+  
+  
+  [self performSegueWithIdentifier:self.currentSegueIdentifier sender:self];
+}
+
 
 
 
