@@ -29,9 +29,10 @@
 
   if (!self.user) {
 
-//    self.user = [User object];
+    self.user = [User object];
+//    self.user = [User generateTestUser];
 
-    self.user = [User generateTestUser];
+    // Save now, so we have our object ID when we segue to properties.
     [self.user save];
 
   }
@@ -74,10 +75,10 @@
 
     if (sender == self.navigationItem.rightBarButtonItem) {
 
-      Property * newProperty = [Property generateTestPropertyForLandlord: self.user];
+//      Property * newProperty = [Property generateTestPropertyForLandlord: self.user];
 
-//      Property * newProperty = [Property object];
-//      newProperty.landlordId = self.user.objectId;
+      Property * newProperty = [Property object];
+      newProperty.landlordId = self.user.objectId;
 
       propertyVC.property = newProperty;
 
