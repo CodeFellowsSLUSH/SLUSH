@@ -635,6 +635,7 @@
 			baseConfigurationReference = 5D12102E74F16FC75A3DF591 /* Pods-SLUSH.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = SLUSH/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = CodeFellows.SLUSH;
@@ -647,6 +648,7 @@
 			baseConfigurationReference = 4FFE30BAB7754F1D9E63AA7B /* Pods-SLUSH.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = SLUSH/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = CodeFellows.SLUSH;
