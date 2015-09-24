@@ -9,25 +9,103 @@
 #import "NewPropertyViewController.h"
 
 #import "CustomTableView.h"
+#import "Property.h"
 
 
 @interface NewPropertyViewController () <UITableViewDelegate, UITextViewDelegate>
 
+@property (weak, nonatomic) IBOutlet UITextField *headlineTextField;
 @property (weak, nonatomic) IBOutlet UITextView *detailsTextView;
 @property (weak, nonatomic) IBOutlet UITableViewCell *descriptionCell;
+
+@property (weak, nonatomic) IBOutlet UITextField *rentTextField;
+
+@property (weak, nonatomic) IBOutlet UISlider *leaseTermSlider;
+@property (weak, nonatomic) IBOutlet UILabel *leaseTermLabel;
+
+@property (weak, nonatomic) IBOutlet UITextField *sqFtTextField;
+@property (weak, nonatomic) IBOutlet UITextField *bedsTextField;
+@property (weak, nonatomic) IBOutlet UITextField *bathsTextField;
+
+@property (weak, nonatomic) IBOutlet UISwitch *petsSwitch;
+@property (weak, nonatomic) IBOutlet UISwitch *smokingSwitch;
+
+@property (weak, nonatomic) IBOutlet UISwitch *wdSwitch;
+
 
 @end
 
 @implementation NewPropertyViewController
 
+
 - (void)viewDidLoad {
   [super viewDidLoad];
 
+  // Configure table view for dynamic row height.
   self.tableView.rowHeight = UITableViewAutomaticDimension;
   self.tableView.estimatedRowHeight = 100.0;
   self.tableView.delegate = self;
 
+  // Capture changes to the Details text, so we can adjust the height of that cell on the fly
+  // as lines are added or deleted in the text.
   self.detailsTextView.delegate = self;
+
+  // Populate the UI from the property object.
+  NSAssert(self.property && self.property.landlordId, @"You must supply a property object with a link to a landlord's user object");
+  [self loadUIFromProperty];
+
+}
+
+
+- (void) viewWillDisappear:(BOOL)animated {
+
+  // Save the property object based on the changes the user has made.
+  [self saveUIToProperty];
+
+  // For did's, call super first. For will's, call super last.
+  [super viewWillDisappear: animated];
+
+}
+
+- (void) loadUIFromProperty {
+
+  self.headlineTextField.text = self.property.headlineDescription;
+  self.detailsTextView.text = self.property.detailsDescription;
+
+  self.rentTextField.text = [NSString stringWithFormat: @"%ld", (long)self.property.price];
+
+  self.leaseTermSlider.value = self.property.monthsAvailable;
+
+  self.sqFtTextField.text = [NSString stringWithFormat: @"%ld", (long)self.property.squareFeet];
+  self.bedsTextField.text = [NSString stringWithFormat: @"%ld", (long)self.property.numberOfBedrooms];
+  self.bathsTextField.text = [NSString stringWithFormat: @"%ld", (long)self.property.numberOfBathrooms];
+
+  self.petsSwitch.on = self.property.allowsPets;
+  self.smokingSwitch.on = self.property.allowsSmoking;
+
+  self.wdSwitch.on = self.property.hasWasherDryer;
+
+}
+
+- (void) saveUIToProperty {
+
+//  descriptionTextField;
+//  detailsTextView;
+//  descriptionCell;
+//
+//  rentTextField;
+//
+//  leaseTermSlider;
+//  leaseTermLabel;
+//
+//  sqFtTextField;
+//  bedsTextField;
+//  bathsTextField;
+//
+//  petsSwitch;
+//  smokingSwitch;
+//
+//  wdSwitch;
 
 }
 

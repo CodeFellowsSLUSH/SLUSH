@@ -22,9 +22,11 @@ NSString * const kFilterStoryboardID = @"FilterViewController";
 
 @implementation ListingViewController
 
+- (BOOL)shouldPerformSegueWithIdentifier:(NSString *)identifier sender:(id)sender
+{
+  return YES;
+}
 -(void)viewDidLoad{
-  self.containerViewController = [[ContainerViewController alloc]init];
-  
   UIBarButtonItem *filterButton = [[UIBarButtonItem alloc] initWithTitle:@"Filter" style:UIBarButtonItemStylePlain target:self action:@selector(filterWasPressed)];
   self.navigationItem.rightBarButtonItem = filterButton;
   

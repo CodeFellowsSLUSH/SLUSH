@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8191" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="vO1-rI-rGI">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8191" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="dTd-ZA-cEv">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
@@ -68,7 +68,7 @@
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="mTq-YG-Mkf">
                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <connections>
-                                <segue destination="vO1-rI-rGI" kind="show" id="hnI-kn-UHR"/>
+                                <segue destination="vO1-rI-rGI" kind="show" identifier="ProfileToProperty" id="hnI-kn-UHR"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -117,7 +117,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="90"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" ambiguous="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Description" textAlignment="natural" adjustsFontSizeToFit="NO" minimumFontSize="20" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="NBh-Ki-IRZ">
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" ambiguous="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Description" textAlignment="natural" adjustsFontSizeToFit="NO" minimumFontSize="20" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="NBh-Ki-IRZ" userLabel="Headline text">
                                                     <rect key="frame" x="28" y="24" width="556" height="30"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                                     <textInputTraits key="textInputTraits"/>
@@ -128,7 +128,7 @@
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" scrollEnabled="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="fjb-Ts-83N" userLabel="Details text view">
+                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" scrollEnabled="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="fjb-Ts-83N" userLabel="Details text">
                                                     <rect key="frame" x="28" y="96.5" width="556" height="40"/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <constraints>
@@ -151,7 +151,7 @@
                                                 <constraint firstItem="NBh-Ki-IRZ" firstAttribute="leading" secondItem="eoz-38-cKk" secondAttribute="leadingMargin" constant="20" id="u8j-DB-D9M"/>
                                             </constraints>
                                         </tableViewCellContentView>
-                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                        <color key="backgroundColor" red="0.80352163669999999" green="0.91966564740000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Rent" id="Jg2-a4-Jdj">
                                         <rect key="frame" x="0.0" y="180" width="600" height="90"/>
@@ -183,7 +183,7 @@
                                                 <constraint firstItem="CVs-Cw-OZP" firstAttribute="trailing" secondItem="aPx-nw-dhH" secondAttribute="trailingMargin" constant="-8" id="noI-HD-rBl"/>
                                             </constraints>
                                         </tableViewCellContentView>
-                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                        <color key="backgroundColor" red="0.80352163669999999" green="0.91966564740000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" horizontalCompressionResistancePriority="751" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Lease Term" id="r08-2J-dmk">
                                         <rect key="frame" x="0.0" y="270" width="600" height="90"/>
@@ -230,7 +230,7 @@
                                                 <constraint firstItem="iFq-DJ-LLQ" firstAttribute="centerY" secondItem="oG3-5G-a3K" secondAttribute="centerY" id="zWJ-TE-XhI"/>
                                             </constraints>
                                         </tableViewCellContentView>
-                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                        <color key="backgroundColor" red="0.80352163669999999" green="0.91966564740000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" horizontalCompressionResistancePriority="751" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Size" id="gw3-2g-Hez">
                                         <rect key="frame" x="0.0" y="360" width="600" height="90"/>
@@ -301,7 +301,7 @@
                                                 <constraint firstItem="VRI-Nd-1IG" firstAttribute="top" secondItem="zdA-fj-rjN" secondAttribute="bottom" constant="8" id="zrn-mw-SXh"/>
                                             </constraints>
                                         </tableViewCellContentView>
-                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                        <color key="backgroundColor" red="0.80352163669999999" green="0.91966564740000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" horizontalCompressionResistancePriority="751" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Rules" id="okE-E9-lon">
                                         <rect key="frame" x="0.0" y="450" width="600" height="90"/>
@@ -345,7 +345,7 @@
                                                 <constraint firstItem="JdX-Iz-nPq" firstAttribute="bottom" secondItem="D4u-I5-PCz" secondAttribute="bottomMargin" constant="-8" id="wvp-Yc-FM3"/>
                                             </constraints>
                                         </tableViewCellContentView>
-                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                        <color key="backgroundColor" red="0.80352163669999999" green="0.91966564740000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" horizontalCompressionResistancePriority="751" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Amenities" id="QXO-Di-wXT">
                                         <rect key="frame" x="0.0" y="540" width="600" height="90"/>
@@ -374,7 +374,7 @@
                                                 <constraint firstItem="bIJ-Wy-TWI" firstAttribute="bottom" secondItem="3Uf-gQ-UN6" secondAttribute="bottomMargin" constant="-8" id="eCE-of-zy7"/>
                                             </constraints>
                                         </tableViewCellContentView>
-                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                        <color key="backgroundColor" red="0.80352163669999999" green="0.91966564740000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
@@ -385,8 +385,18 @@
                         </connections>
                     </tableView>
                     <connections>
+                        <outlet property="bathsTextField" destination="VRI-Nd-1IG" id="l9S-lO-bv2"/>
+                        <outlet property="bedsTextField" destination="zdA-fj-rjN" id="RxR-55-xrT"/>
                         <outlet property="descriptionCell" destination="qMN-UJ-lQb" id="cmC-vF-auy"/>
                         <outlet property="detailsTextView" destination="fjb-Ts-83N" id="CoA-Mo-6jb"/>
+                        <outlet property="headlineTextField" destination="NBh-Ki-IRZ" id="a0B-3w-nuo"/>
+                        <outlet property="leaseTermLabel" destination="AEe-Eo-few" id="mrd-Sn-S3t"/>
+                        <outlet property="leaseTermSlider" destination="oG3-5G-a3K" id="TN5-Xy-gha"/>
+                        <outlet property="petsSwitch" destination="8iy-7Z-8h0" id="Oap-Gi-wHA"/>
+                        <outlet property="rentTextField" destination="CVs-Cw-OZP" id="6Vl-uf-ttc"/>
+                        <outlet property="smokingSwitch" destination="JdX-Iz-nPq" id="Y2s-b7-jnh"/>
+                        <outlet property="sqFtTextField" destination="oku-3Y-cE7" id="6cJ-GZ-PZ8"/>
+                        <outlet property="wdSwitch" destination="bIJ-Wy-TWI" id="QJe-dk-XPV"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HF6-1G-mq1" userLabel="First Responder" sceneMemberID="firstResponder"/>

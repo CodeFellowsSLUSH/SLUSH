@@ -12,23 +12,43 @@
 #import <CoreLocation/CoreLocation.h>
 #import <Parse/Parse.h>
 
+
+@class UserDataObject;
+
+
 @interface Property : PFObject <PFSubclassing>
 
-@property (strong, nonatomic) NSString *headline;
-@property (strong, nonatomic) NSString *propertyDescription;
-@property (strong, nonatomic) NSNumber *numberOfBedrooms;
-@property (strong, nonatomic) NSNumber *numberOfBathrooms;
+@property (strong, nonatomic) NSString * landlordId;
+
+@property (nonatomic, strong) NSString * headlineDescription;
+@property (nonatomic, strong) NSString * detailsDescription;
+
+@property (nonatomic) NSInteger price;
+@property (nonatomic) NSInteger monthsAvailable;
+
+
+@property (nonatomic) NSInteger numberOfBedrooms;
+@property (nonatomic) NSInteger numberOfBathrooms;
+@property (nonatomic) NSInteger squareFeet;
+
+@property (nonatomic) BOOL allowsSmoking;
 @property (nonatomic) BOOL allowsPets;
-@property (strong, nonatomic) NSNumber *price;
-@property (strong, nonatomic) NSString *streetAddress;
-@property (strong, nonatomic) NSString *city;
-@property (strong, nonatomic) NSString *unitNumber;
-@property (strong, nonatomic) NSString *zipCode;
+@property (nonatomic) BOOL hasWasherDryer;
+
+@property (strong, nonatomic) NSString * streetAddress;
+@property (strong, nonatomic) NSString * unitNumber;
+@property (strong, nonatomic) NSString * city;
+@property (strong, nonatomic) NSString * state;
+@property (strong, nonatomic) NSString * zipCode;
+
 @property (strong, nonatomic) NSArray *photos;
 @property (nonatomic) CLLocationCoordinate2D coordinate;
 
-@property (strong, nonatomic) GMSPlace *placeDetails;
+@property (strong, nonatomic) GMSPlace *googlePlace;
 
 - (void)addImage:(UIImage *)image withBlock:(void(^)(BOOL succeeded, NSError *error))handler;
+
++ (Property *) generateTestPropertyForLandlord: (UserDataObject *) landlord;
+
 
 @end

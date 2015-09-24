@@ -65,8 +65,8 @@
   
   Property *property = self.properties[indexPath.row];
   
-  cell.headerLabel.text = property.headline;
-  cell.descriptionLabel.text = property.propertyDescription;
+  cell.headerLabel.text = property.headlineDescription;
+  cell.descriptionLabel.text = property.detailsDescription;
   
   return cell;
 }
