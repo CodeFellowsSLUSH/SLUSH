@@ -25,6 +25,7 @@
 @property (strong, nonatomic) NSString *unitNumber;
 @property (strong, nonatomic) NSString *zipCode;
 @property (strong, nonatomic) NSArray *photos;
+@property (nonatomic) CLLocationCoordinate2D coordinate;
 
 @property (strong, nonatomic) GMSPlace *placeDetails;
 

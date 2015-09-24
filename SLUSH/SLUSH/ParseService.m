@@ -10,12 +10,27 @@
 #import "PropertyQueryFilter.h"
 #import "Property.h"
 
+CGFloat const kDefaultSearchRadius = 50;
+
 @implementation ParseService
 
 + (void)propertiesWithFilter:(PropertyQueryFilter *)filter completionHandler:(void (^)(NSArray *properties, NSError *))handler {
   PFQuery *query = [Property query];
   if (filter) {
-    
+    if (filter.minPrice) {
+      [query whereKey:@"price" greaterThanOrEqualTo:filter.minPrice];
+    }
+    if (filter.maxPrice && ![filter.maxPrice isEqualToNumber:@0]) {
+      [query whereKey:@"price" lessThanOrEqualTo:filter.maxPrice];
+    }
+    if (filter.minBedrooms && ![filter.minBedrooms isEqualToNumber:@0]) {
+      [query whereKey:@"numberOfBedrooms" greaterThanOrEqualTo:filter.minBedrooms];
+    }
+    if (filter.minBathrooms && ![filter.minBathrooms isEqualToNumber:@0]) {
+      [query whereKey:@"numberOfBathrooms" greaterThanOrEqualTo:filter.minBathrooms];
+    }
+    CGFloat searchRadius = (filter.searchRadius) ? filter.searchRadius : kDefaultSearchRadius;
+    [query whereKey:@"geoPoint" nearGeoPoint:filter.searchNearGeoPoint withinMiles:searchRadius];
   }
   
   [query findObjectsInBackgroundWithBlock:^(NSArray * _Nullable objects, NSError * _Nullable error) {

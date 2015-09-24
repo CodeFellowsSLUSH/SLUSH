@@ -13,6 +13,7 @@ CGFloat const kDefaultImageCompression = 0.8;
 @interface Property ()
 
 @property (strong, nonatomic) PFFile *imagesFile;
+@property (strong, nonatomic) PFGeoPoint *geoPoint;
 
 @end
 
@@ -31,6 +32,7 @@ CGFloat const kDefaultImageCompression = 0.8;
 @dynamic zipCode;
 @dynamic imagesFile;
 @dynamic photos;
+@dynamic geoPoint;
 
 + (NSString *)parseClassName {
   return @"Property";
@@ -53,6 +55,19 @@ CGFloat const kDefaultImageCompression = 0.8;
       }];
     }
   }];
+}
+
+-(void)setCoordinate:(CLLocationCoordinate2D)coordinate {
+  PFGeoPoint *geoPoint = [PFGeoPoint geoPointWithLatitude:coordinate.latitude longitude:coordinate.longitude];
+  self.geoPoint = geoPoint;
+}
+
+-(CLLocationCoordinate2D)coordinate {
+  CGFloat latitude = self.geoPoint.latitude;
+  CGFloat longitude = self.geoPoint.longitude;
+  CLLocationCoordinate2D coordinate = CLLocationCoordinate2DMake(latitude, longitude);
+  
+  return coordinate;
 }
 
 @end

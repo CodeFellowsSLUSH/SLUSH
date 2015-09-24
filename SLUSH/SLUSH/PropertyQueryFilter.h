@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 #import <CoreLocation/CoreLocation.h>
 #import <GoogleMaps/GoogleMaps.h>
+#import <Parse/Parse.h>
 
 @class NSPredicate;
 
@@ -26,7 +27,8 @@
 @property (strong, nonatomic) NSNumber *minSquareFeet;
 
 @property (strong, nonatomic) GMSPlace *searchNearPlace;
-@property (strong, nonatomic) NSNumber *searchRadius;
+@property (strong, readonly, nonatomic) PFGeoPoint *searchNearGeoPoint;
+@property (nonatomic) NSInteger searchRadius;
 
 @property (strong, nonatomic) NSPredicate *minPricePredicate;
 

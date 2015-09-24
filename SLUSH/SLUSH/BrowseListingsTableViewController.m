@@ -11,6 +11,7 @@
 #import "ImageCollectionViewCell.h"
 #import "Property.h"
 #import "ParseService.h"
+#import "Constants.h"
 
 @interface BrowseListingsTableViewController ()<UITableViewDelegate, UITableViewDataSource>
 
@@ -26,10 +27,14 @@
 
 }
 
+-(void)dealloc {
+  [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
 -(void)viewDidLoad{
   [super viewDidLoad];
-  
-  [self loadProperties];
+
+  [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(propertiesDidLoad:) name:kPropertiesDidLoadNotification object:nil];
   
   self.tableView.estimatedRowHeight = 100;
   self.tableView.rowHeight = UITableViewAutomaticDimension;
@@ -37,15 +42,11 @@
 
 #pragma mark - Helper Methods
 
-- (void)loadProperties {
-  [ParseService propertiesWithFilter:nil completionHandler:^(NSArray *properties, NSError *error) {
-    if (error) {
-      NSLog(@"error: %@", error.localizedDescription);
-    } else {
-      self.properties = properties;
-      [self.tableView reloadData];
-    }
-  }];
+- (void)propertiesDidLoad:(NSNotification *)notification {
+
+  NSArray *properties = notification.userInfo[kPropertiesListKey];
+  self.properties = properties;
+  [self.tableView reloadData];
 }
 
 #pragma mark - Table view data source
