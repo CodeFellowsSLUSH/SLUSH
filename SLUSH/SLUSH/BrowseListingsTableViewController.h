@@ -10,7 +10,7 @@
 #import "BrowseListingCellsTableViewCell.h"
 @class PropertyQueryFilter;
 
-@interface BrowseListingsTableViewController : UITableViewController <UICollectionViewDataSource, UICollectionViewDelegate>
+@interface BrowseListingsTableViewController : UITableViewController <UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout>
 
 @property (strong, nonatomic) NSArray *properties;
 

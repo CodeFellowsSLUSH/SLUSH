@@ -7,9 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#import <AWSCognito/AWSCognito.h>
 
-extern AWSRegionType kCognitoRegionType;
 extern NSString * const kCognitoIdentityPoolID;
 extern NSInteger const kMinRentComponent;
 extern NSInteger const kMaxRentComponent;

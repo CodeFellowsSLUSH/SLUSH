@@ -8,6 +8,14 @@
 
 #import "Property.h"
 
+CGFloat const kDefaultImageCompression = 0.8;
+
+@interface Property ()
+
+@property (strong, nonatomic) PFFile *imagesFile;
+
+@end
+
 @implementation Property
 
 @dynamic headline;
@@ -15,16 +23,57 @@
 @dynamic numberOfBedrooms;
 @dynamic numberOfBathrooms;
 @dynamic allowsPets;
-@dynamic photos;
 @dynamic price;
-@dynamic placeDetails;
+@synthesize placeDetails;
 @dynamic streetAddress;
 @dynamic city;
 @dynamic unitNumber;
 @dynamic zipCode;
+@dynamic imagesFile;
+@dynamic photos;
 
 + (NSString *)parseClassName {
   return @"Property";
 }
 
+- (void)addImage:(UIImage *)image withBlock:(void(^)(BOOL succeeded, NSError *error))handler {
+  NSData *imageData = UIImageJPEGRepresentation(image, kDefaultImageCompression);
+  PFFile *imageFile = [PFFile fileWithData:imageData];
+  PFObject *photo = [PFObject objectWithClassName:@"Photo"];
+  photo[@"file"] = imageFile;
+  [photo saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
+    if (succeeded) {
+      [self addUniqueObject:photo forKey:@"photos"];
+      [self saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
+        if (error) {
+          handler(false, error);
+        } else if (succeeded) {
+          handler(true, nil);
+        }
+      }];
+    }
+  }];
+}
+
 @end
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -10,21 +10,17 @@
 #import "BrowseListingCellsTableViewCell.h"
 #import "ImageCollectionViewCell.h"
 #import "Property.h"
+#import "ParseService.h"
 
 @interface BrowseListingsTableViewController ()<UITableViewDelegate, UITableViewDataSource>
 
-@property (strong, nonatomic) NSArray *photoArray;
-
-@property (strong, nonatomic) NSArray *colorsArray;
-
-
-@property (strong, nonatomic) IBOutlet UITableView *browserTabelView;
+//@property (strong, nonatomic) IBOutlet UITableView *browserTabelView;
 
 @end
 
 @implementation BrowseListingsTableViewController
 
-
+#pragma mark - Life Cycle Methods
 -(void)loadView{
   [super loadView];
 
@@ -33,13 +29,24 @@
 -(void)viewDidLoad{
   [super viewDidLoad];
   
-  self.colorsArray = @[[UIColor blueColor], [UIColor grayColor], [UIColor yellowColor]];
+  [self loadProperties];
   
   self.tableView.estimatedRowHeight = 100;
   self.tableView.rowHeight = UITableViewAutomaticDimension;
 }
 
+#pragma mark - Helper Methods
 
+- (void)loadProperties {
+  [ParseService propertiesWithFilter:nil completionHandler:^(NSArray *properties, NSError *error) {
+    if (error) {
+      NSLog(@"error: %@", error.localizedDescription);
+    } else {
+      self.properties = properties;
+      [self.tableView reloadData];
+    }
+  }];
+}
 
 #pragma mark - Table view data source
 
@@ -51,9 +58,9 @@
   return self.properties.count;
 }
 
-
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
   BrowseListingCellsTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"listingCell" forIndexPath:indexPath];
+  
   Property *property = self.properties[indexPath.row];
   
   cell.headerLabel.text = property.headline;
@@ -62,9 +69,7 @@
   return cell;
 }
 
-- (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView{
-  return 1;
-}
+#pragma mark - Table View Delegate
 
 -(void)tableView:(UITableView *)tableView willDisplayCell:(BrowseListingCellsTableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath{
 
@@ -72,9 +77,21 @@
   
 }
 
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+  [tableView deselectRowAtIndexPath:indexPath animated:true];
+  NSLog(@"Selected");
+}
+
+#pragma mark - Collection View Data source
+
+- (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView{
+  return 1;
+}
+
 -(NSInteger)collectionView:(ImageCollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
   
   Property *property = self.properties[collectionView.indexPath.row];
+  NSLog(@"count: %lu", (unsigned long)property.photos.count);
   return property.photos.count;
 }
 
@@ -82,11 +99,29 @@
   ImageCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:collectionViewCellIdentifier forIndexPath:indexPath];
 
   Property *property = self.properties[collectionView.indexPath.row];
+  PFObject *photo = property.photos[indexPath.row];
   
-  UIImage *image = property.photos[indexPath.row];
-  cell.imageView.image = image;
+  cell.tag++;
+  NSInteger tag = cell.tag;
+  
+  [ParseService fetchImageObject:photo withBlock:^(UIImage *image, NSError *error) {
+    if (!error) {
+      if (tag == cell.tag) {
+        cell.imageView.image = image;
+      }
+    }
+  }];
 
   return cell;
+}
+
+#pragma mark - Collection View Flow Layout Delegate
+
+-(CGSize)collectionView:(ImageCollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
+  
+  BrowseListingCellsTableViewCell *cell = [self.tableView cellForRowAtIndexPath:collectionView.indexPath];
+  
+  return cell.frame.size;
 }
 
 @end
