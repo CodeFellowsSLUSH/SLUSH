@@ -119,6 +119,14 @@ NSInteger const kRentMultiplier = 100;
   return prices;
 }
 
+- (NSNumber *)minPriceForRow:(NSInteger)row {
+  return self.minPrices[row];
+}
+
+- (NSNumber *)maxPriceForRow:(NSInteger)row {
+  return self.maxPrices[row];
+}
+
 - (void)setMinPrice:(NSNumber *)minPrice {
   
 }

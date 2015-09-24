@@ -8,6 +8,9 @@
 
 #import "ListingViewController.h"
 #import "ContainerViewController.h"
+#import "FilterViewController.h"
+#import "ParseService.h"
+#import "Constants.h"
 
 @interface ListingViewController ()
 
@@ -36,6 +39,27 @@
 - (IBAction)toggleButton:(id)sender
 {
 [self.containerViewController swapViewControllers];
+}
+
+#pragma mark - Helper Methods
+
+- (void)loadProperties {
+  [ParseService propertiesWithFilter:self.filter completionHandler:^(NSArray *properties, NSError *error) {
+    if (error) {
+      NSLog(@"error: %@", error.localizedDescription);
+    } else {
+      NSDictionary *userInfo = @{ kPropertiesListKey: properties };
+      [[NSNotificationCenter defaultCenter] postNotificationName:kPropertiesDidLoadNotification object:nil userInfo:userInfo];
+    }
+  }];
+}
+
+#pragma mark - Filter Manager Delegate
+
+-(void)filterManager:(FilterViewController *)filterManager didApplyFilter:(PropertyQueryFilter *)filter {
+  self.filter = filter;
+  [self loadProperties];
+  [self.navigationController popToRootViewControllerAnimated:true];
 }
 
 @end

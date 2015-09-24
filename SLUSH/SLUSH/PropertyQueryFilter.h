@@ -9,30 +9,32 @@
 #import <Foundation/Foundation.h>
 #import <CoreLocation/CoreLocation.h>
 #import <GoogleMaps/GoogleMaps.h>
+#import <Parse/Parse.h>
 
 @class NSPredicate;
 
-
 @interface PropertyQueryFilter : NSObject
 
+@property (strong, nonatomic) NSNumber *minPrice;
+@property (strong, nonatomic) NSNumber *maxPrice;
 
-@property (nonatomic) NSInteger minPrice;
-@property (nonatomic) NSInteger maxPrice;
-
-@property (nonatomic) NSInteger minBedrooms;
-@property (nonatomic) NSInteger minBathrooms;
+@property (strong, nonatomic) NSNumber *minBedrooms;
+@property (strong, nonatomic) NSNumber *minBathrooms;
 
 @property (nonatomic) BOOL allowsPets;
 @property (nonatomic) BOOL allowsSmoking;
 @property (nonatomic) BOOL hasWasherDryer;
-@property (nonatomic) NSInteger minSquareFeet;
+@property (strong, nonatomic) NSNumber *minSquareFeet;
 
 @property (strong, nonatomic) GMSPlace *searchNearPlace;
-@property (nonatomic) double searchRadius;
+@property (strong, readonly, nonatomic) PFGeoPoint *searchNearGeoPoint;
+@property (nonatomic) NSInteger searchRadius;
+
+@property (strong, nonatomic) NSPredicate *minPricePredicate;
 
 
 // TODO: specific data sources, like Core Data or SQL Server, should provide these methods as categories of PropertyQueryFilter.
-- (NSPredicate *) asPredicate;
-- (NSString *) asSQLQuery;
+//- (NSPredicate *) asPredicate;
+//- (NSString *) asSQLQuery;
 
 @end

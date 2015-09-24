@@ -10,6 +10,10 @@
 
 @implementation PropertyQueryFilter
 
+-(PFGeoPoint *)searchNearGeoPoint {
+  CLLocationCoordinate2D coordinate = _searchNearPlace.coordinate;
+  return [PFGeoPoint geoPointWithLatitude:coordinate.latitude longitude:coordinate.longitude];
+}
 
 - (NSString *) asSQLQuery {
 

@@ -15,7 +15,6 @@
 #define SegueID1 @"listingSegue"
 #define SegueID2 @"mapSegue"
 
-
 @interface ContainerViewController ()
 @property (strong, nonatomic) NSString *currentSegueIdentifier;
 @property (nonatomic) BOOL inTransition;

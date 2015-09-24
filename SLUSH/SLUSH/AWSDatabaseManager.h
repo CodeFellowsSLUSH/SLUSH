@@ -7,7 +7,6 @@
 //
 
 #import <Foundation/Foundation.h>
-#import <AWSDynamoDB/AWSDynamoDB.h>
 
 @interface AWSDatabaseManager : NSObject
 

@@ -16,5 +16,8 @@
 - (void)setMinPrice:(NSNumber *)minPrice;
 - (void)setMaxPrice:(NSNumber *)maxPrice;
 
+- (NSNumber *)minPriceForRow:(NSInteger)row;
+- (NSNumber *)maxPriceForRow:(NSInteger)row;
+
 
 @end
