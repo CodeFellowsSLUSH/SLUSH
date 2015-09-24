@@ -8,6 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
+@class Property;
+
 @interface NewPropertyViewController : UITableViewController
+
+@property (strong, nonatomic) Property * property;
 
 @end
