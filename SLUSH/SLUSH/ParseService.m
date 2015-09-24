@@ -10,6 +10,8 @@
 #import "PropertyQueryFilter.h"
 #import "Property.h"
 
+CGFloat const kDefaultSearchRadius = 50;
+
 @implementation ParseService
 
 + (void)propertiesWithFilter:(PropertyQueryFilter *)filter completionHandler:(void (^)(NSArray *properties, NSError *))handler {
@@ -27,8 +29,8 @@
     if (filter.minBathrooms && ![filter.minBathrooms isEqualToNumber:@0]) {
       [query whereKey:@"numberOfBathrooms" greaterThanOrEqualTo:filter.minBathrooms];
     }
-#warning set search radius in filter view controller
-    [query whereKey:@"geoPoint" nearGeoPoint:filter.searchNearGeoPoint withinMiles:50];
+    CGFloat searchRadius = (filter.searchRadius) ? filter.searchRadius : kDefaultSearchRadius;
+    [query whereKey:@"geoPoint" nearGeoPoint:filter.searchNearGeoPoint withinMiles:searchRadius];
   }
   
   [query findObjectsInBackgroundWithBlock:^(NSArray * _Nullable objects, NSError * _Nullable error) {

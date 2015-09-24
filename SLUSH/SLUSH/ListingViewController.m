@@ -26,7 +26,6 @@ NSString * const kFilterStoryboardID = @"FilterViewController";
   self.containerViewController = [[ContainerViewController alloc]init];
   
   UIBarButtonItem *filterButton = [[UIBarButtonItem alloc] initWithTitle:@"Filter" style:UIBarButtonItemStylePlain target:self action:@selector(filterWasPressed)];
-  NSLog(@"nav bar: %@", self.navigationItem);
   self.navigationItem.rightBarButtonItem = filterButton;
   
   [self loadProperties];

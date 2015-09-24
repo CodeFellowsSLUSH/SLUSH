@@ -28,7 +28,7 @@
 
 @property (strong, nonatomic) GMSPlace *searchNearPlace;
 @property (strong, readonly, nonatomic) PFGeoPoint *searchNearGeoPoint;
-@property (strong, nonatomic) NSNumber *searchRadius;
+@property (nonatomic) NSInteger searchRadius;
 
 @property (strong, nonatomic) NSPredicate *minPricePredicate;
 

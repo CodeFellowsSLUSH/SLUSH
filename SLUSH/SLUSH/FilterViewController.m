@@ -13,6 +13,8 @@
 #import "PriceRangePickerDataSource.h"
 #import "Constants.h"
 
+CGFloat const kSearchRangeSliderMultiplier = 100;
+
 @interface FilterViewController ()
 
 #pragma mark - Outlets
@@ -21,11 +23,14 @@
 @property (weak, nonatomic) IBOutlet UITableViewCell *resetFiltersCell;
 @property (weak, nonatomic) IBOutlet UITableViewCell *useCurrentLocationCell;
 @property (weak, nonatomic) IBOutlet UIPickerView *priceRangePicker;
+@property (weak, nonatomic) IBOutlet UISlider *searchRangeSlider;
+@property (weak, nonatomic) IBOutlet UILabel *searchRangeLabel;
 
 #pragma mark - Properties
 @property (strong, nonatomic) PriceRangePickerDataSource *priceRangePickerDataSource;
 @property (strong, nonatomic) UISearchController *searchController;
 @property (strong, nonatomic) LocationSearchResultsController *searchResultsController;
+@property (strong, nonatomic) NSNumber *searchRange;
 
 @end
 
@@ -53,6 +58,8 @@
   self.tableView.tableHeaderView = self.searchController.searchBar;
   self.searchController.searchBar.placeholder = @"Current Location";
   self.searchController.searchResultsUpdater = self;
+  
+  [self.searchRangeSlider addTarget:self action:@selector(searchRangeChanged:) forControlEvents:UIControlEventValueChanged];
 }
 
 -(void)viewWillAppear:(BOOL)animated {
@@ -65,11 +72,15 @@
   }
 }
 
+#pragma mark - Helper Methods
 
 - (void)updateFilterDisplay {
   self.bedroomSegmentedControl.selectedSegmentIndex = self.filter.minBedrooms.integerValue;
   self.bathroomSegmentedControl.selectedSegmentIndex = self.filter.minBathrooms.integerValue;
   self.searchController.searchBar.text = self.filter.searchNearPlace.name;
+  
+  self.searchRangeSlider.value = self.filter.searchRadius / kSearchRangeSliderMultiplier;
+  self.searchRange = [NSNumber numberWithLong:self.filter.searchRadius];
   
   NSInteger minRow = [self.priceRangePickerDataSource.minPrices indexOfObject:self.filter.minPrice];
   [self.priceRangePicker selectRow:minRow inComponent:kMinRentComponent animated:true];
@@ -77,6 +88,10 @@
   NSInteger maxRow = [self.priceRangePickerDataSource.maxPrices indexOfObject: self.filter.maxPrice];
   [self.priceRangePicker selectRow:maxRow inComponent:kMaxRentComponent animated:true];
   
+}
+
+- (void)updateSearchRangeLabel {
+  self.searchRangeLabel.text = [NSString stringWithFormat:@"%@ Miles", self.searchRange];
 }
 
 
@@ -87,6 +102,12 @@
 
 - (IBAction)bathroomSegmentWasChanged:(UISegmentedControl *)sender {
   self.filter.minBathrooms = [NSNumber numberWithLong:sender.selectedSegmentIndex];
+}
+
+- (void)searchRangeChanged:(UISlider *)slider {
+  CGFloat searchRangeFloat = slider.value * kSearchRangeSliderMultiplier;
+  NSInteger searchRange = roundf(searchRangeFloat);
+  self.searchRange = [NSNumber numberWithFloat:searchRange];
 }
 
 
@@ -103,6 +124,8 @@
 
   self.filter.minPrice = minPrice;
   self.filter.maxPrice = maxPrice;
+  
+  self.filter.searchRadius = self.searchRange.integerValue;
 
   [self.delegate filterManager:self didApplyFilter:self.filter];
 }
@@ -158,6 +181,11 @@
 
 -(void)setFilter:(PropertyQueryFilter *)filter {
   _filter = filter;
+}
+
+- (void)setSearchRange:(NSNumber *)searchRange {
+  _searchRange = searchRange;
+  [self updateSearchRangeLabel];
 }
 
 -(PriceRangePickerDataSource *)priceRangePickerDataSource {
