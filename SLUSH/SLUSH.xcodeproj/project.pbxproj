@@ -36,6 +36,7 @@
 		B55830361BB1C32100002FE5 /* BrowseListingsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B55830351BB1C32100002FE5 /* BrowseListingsTableViewController.m */; settings = {ASSET_TAGS = (); }; };
 		B558303B1BB1CF2B00002FE5 /* BrowseListingCellsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B558303A1BB1CF2B00002FE5 /* BrowseListingCellsTableViewCell.m */; settings = {ASSET_TAGS = (); }; };
 		B558303E1BB1D10200002FE5 /* ImageCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B558303D1BB1D10200002FE5 /* ImageCollectionViewCell.m */; settings = {ASSET_TAGS = (); }; };
+		B5A6FAC61BB491A00017FADF /* BLDetailedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B5A6FAC51BB491A00017FADF /* BLDetailedViewController.m */; settings = {ASSET_TAGS = (); }; };
 		B5E3407D1BB3159400D43AEF /* Secrets.m in Sources */ = {isa = PBXBuildFile; fileRef = B5E3407C1BB3159400D43AEF /* Secrets.m */; settings = {ASSET_TAGS = (); }; };
 		DF7DA1741BB1E782004882E0 /* UserDataObject.m in Sources */ = {isa = PBXBuildFile; fileRef = DF7DA1731BB1E782004882E0 /* UserDataObject.m */; settings = {ASSET_TAGS = (); }; };
 		DF7DA1771BB1E794004882E0 /* PropertyDataObject.m in Sources */ = {isa = PBXBuildFile; fileRef = DF7DA1761BB1E794004882E0 /* PropertyDataObject.m */; settings = {ASSET_TAGS = (); }; };
@@ -122,6 +123,8 @@
 		B558303A1BB1CF2B00002FE5 /* BrowseListingCellsTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BrowseListingCellsTableViewCell.m; sourceTree = "<group>"; };
 		B558303C1BB1D10200002FE5 /* ImageCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageCollectionViewCell.h; sourceTree = "<group>"; };
 		B558303D1BB1D10200002FE5 /* ImageCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageCollectionViewCell.m; sourceTree = "<group>"; };
+		B5A6FAC41BB491A00017FADF /* BLDetailedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BLDetailedViewController.h; sourceTree = "<group>"; };
+		B5A6FAC51BB491A00017FADF /* BLDetailedViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BLDetailedViewController.m; sourceTree = "<group>"; };
 		B5E3407C1BB3159400D43AEF /* Secrets.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Secrets.m; sourceTree = "<group>"; };
 		DF7DA1721BB1E782004882E0 /* UserDataObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserDataObject.h; sourceTree = "<group>"; };
 		DF7DA1731BB1E782004882E0 /* UserDataObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserDataObject.m; sourceTree = "<group>"; };
@@ -248,6 +251,8 @@
 		B52EA8761BB0628F00A1C98E /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				B5A6FAC41BB491A00017FADF /* BLDetailedViewController.h */,
+				B5A6FAC51BB491A00017FADF /* BLDetailedViewController.m */,
 				B55830341BB1C32100002FE5 /* BrowseListingsTableViewController.h */,
 				B55830351BB1C32100002FE5 /* BrowseListingsTableViewController.m */,
 				AE06B80D1BB23FA500FB9EAE /* ContainerViewController.h */,
@@ -507,6 +512,7 @@
 				4C9AB5FF1BB25D450037B32E /* PriceRangePickerDataSource.m in Sources */,
 				DF7DA1741BB1E782004882E0 /* UserDataObject.m in Sources */,
 				B52EA8391BB060FF00A1C98E /* AppDelegate.m in Sources */,
+				B5A6FAC61BB491A00017FADF /* BLDetailedViewController.m in Sources */,
 				B52EA8361BB060FF00A1C98E /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -12,6 +12,7 @@
 #import "Property.h"
 #import "ParseService.h"
 #import "Constants.h"
+#import "BLDetailedViewController.h"
 
 @interface BrowseListingsTableViewController ()<UITableViewDelegate, UITableViewDataSource>
 
@@ -80,7 +81,7 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
   [tableView deselectRowAtIndexPath:indexPath animated:true];
-  NSLog(@"Selected");
+  [self performSegueWithIdentifier:@"showBLDetailedVC" sender:self];
 }
 
 #pragma mark - Collection View Data source
@@ -124,6 +125,22 @@
   
   return cell.frame.size;
 }
+
+#pragma mark - BLDetailedVC
+
+-(void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
+  if ([[segue identifier]isEqualToString:@"showBLDetailedVC"]) {
+    BLDetailedViewController *bldetailedVC = [segue destinationViewController];
+    
+    NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
+    Property *property = self.properties[indexPath.row];
+    
+    bldetailedVC.BLHeader.text = property.headline;
+    bldetailedVC.BLDetailedLabel.text = property.propertyDescription;
+  }
+}
+
+
 
 @end
 
