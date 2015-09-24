@@ -62,7 +62,8 @@ CGFloat const kDefaultSearchRadius = 50;
 
 + (void)uploadTestProperties {
   
-  Property *property = [Property object];
+  Property *property = [Property generateTestPropertyForLandlord: nil];
+
   [property addImage:[UIImage imageNamed:@"modernHouse"] withBlock:^(BOOL succeeded, NSError *error) {
     if (error) {
       NSLog(@"error: %@", error.localizedDescription);
@@ -80,13 +81,6 @@ CGFloat const kDefaultSearchRadius = 50;
       NSLog(@"error: %@", error.localizedDescription);
     }
   }];
-  
-  property.allowsPets = true;
-  property.numberOfBathrooms = @3;
-  property.numberOfBedrooms = @1;
-  property.headline = @"Charming 1BR in Ballard";
-  property.propertyDescription = @"sdlkajsd;fljasdlfkjsaldkfjasl;dfjkals;dfjklasdkjfl;sdfjlskda;jf;lasdfjks;dlfkj;asldfjk";
-  property.price = @750;
   
   [property saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
     if (error) {

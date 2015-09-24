@@ -8,30 +8,146 @@
 
 #import "NewPropertyViewController.h"
 
-@interface NewPropertyViewController ()
+#import "CustomTableView.h"
+#import "Property.h"
+
+
+@interface NewPropertyViewController () <UITableViewDelegate, UITextViewDelegate>
+
+@property (weak, nonatomic) IBOutlet UITextField *headlineTextField;
+@property (weak, nonatomic) IBOutlet UITextView *detailsTextView;
+@property (weak, nonatomic) IBOutlet UITableViewCell *descriptionCell;
+
+@property (weak, nonatomic) IBOutlet UITextField *rentTextField;
+
+@property (weak, nonatomic) IBOutlet UISlider *leaseTermSlider;
+@property (weak, nonatomic) IBOutlet UILabel *leaseTermLabel;
+
+@property (weak, nonatomic) IBOutlet UITextField *sqFtTextField;
+@property (weak, nonatomic) IBOutlet UITextField *bedsTextField;
+@property (weak, nonatomic) IBOutlet UITextField *bathsTextField;
+
+@property (weak, nonatomic) IBOutlet UISwitch *petsSwitch;
+@property (weak, nonatomic) IBOutlet UISwitch *smokingSwitch;
+
+@property (weak, nonatomic) IBOutlet UISwitch *wdSwitch;
+
 
 @end
 
 @implementation NewPropertyViewController
 
+
 - (void)viewDidLoad {
-    [super viewDidLoad];
-    // Do any additional setup after loading the view.
+  [super viewDidLoad];
+
+  // Configure table view for dynamic row height.
+  self.tableView.rowHeight = UITableViewAutomaticDimension;
+  self.tableView.estimatedRowHeight = 100.0;
+  self.tableView.delegate = self;
+
+  // Capture changes to the Details text, so we can adjust the height of that cell on the fly
+  // as lines are added or deleted in the text.
+  self.detailsTextView.delegate = self;
+
+  // Populate the UI from the property object.
+  NSAssert(self.property && self.property.landlordId, @"You must supply a property object with a link to a landlord's user object");
+  [self loadUIFromProperty];
+
 }
+
+
+- (void) viewWillDisappear:(BOOL)animated {
+
+  // Save the property object based on the changes the user has made.
+  [self saveUIToProperty];
+
+  // For did's, call super first. For will's, call super last.
+  [super viewWillDisappear: animated];
+
+}
+
+- (void) loadUIFromProperty {
+
+  self.headlineTextField.text = self.property.headlineDescription;
+  self.detailsTextView.text = self.property.detailsDescription;
+
+  self.rentTextField.text = [NSString stringWithFormat: @"%ld", (long)self.property.price];
+
+  self.leaseTermSlider.value = self.property.monthsAvailable;
+
+  self.sqFtTextField.text = [NSString stringWithFormat: @"%ld", (long)self.property.squareFeet];
+  self.bedsTextField.text = [NSString stringWithFormat: @"%ld", (long)self.property.numberOfBedrooms];
+  self.bathsTextField.text = [NSString stringWithFormat: @"%ld", (long)self.property.numberOfBathrooms];
+
+  self.petsSwitch.on = self.property.allowsPets;
+  self.smokingSwitch.on = self.property.allowsSmoking;
+
+  self.wdSwitch.on = self.property.hasWasherDryer;
+
+}
+
+- (void) saveUIToProperty {
+
+//  descriptionTextField;
+//  detailsTextView;
+//  descriptionCell;
+//
+//  rentTextField;
+//
+//  leaseTermSlider;
+//  leaseTermLabel;
+//
+//  sqFtTextField;
+//  bedsTextField;
+//  bathsTextField;
+//
+//  petsSwitch;
+//  smokingSwitch;
+//
+//  wdSwitch;
+
+}
+
 
 - (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+  [super didReceiveMemoryWarning];
+  // Dispose of any resources that can be recreated.
 }
 
-/*
-#pragma mark - Navigation
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+- (CGFloat) tableView: (UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+  return UITableViewAutomaticDimension;
 }
-*/
+
+
+- (CGFloat) tableView:(UITableView *)tableView estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+  return UITableViewAutomaticDimension;
+}
+
+
+- (void)textViewDidChange:(UITextView *)textView {
+
+  // Temporarily disable animations and ignore changes to the .bounds property.
+  CustomTableView * customTableView = (CustomTableView *) self.tableView;
+  [customTableView ignoreAnimationsAndBoundsChanges: true];
+
+  // "Move" the cell with the description's text view to the same position that it's already in.
+  // This forces the table view to re-evaluate the height of the cell, which may have changed if the text view
+  // added or deleted a line; and if there has, in fact, been a change, then move the other cells up or down as needed
+  // to make room or fill in the gap.
+  // Unfortunately, the table view then tries to scroll the current cell as low on the screen as it can go,
+  // which is quite annoying when you are in the middle of typing.
+  // That is why we have to disable animations and ignore changes to the .bounds property.
+  NSIndexPath * indexPath = [self.tableView indexPathForCell: self.descriptionCell];
+  [self.tableView moveRowAtIndexPath: indexPath toIndexPath: indexPath];
+
+  // Re-enable animations and ignore changes to the .bounds property.
+  [customTableView ignoreAnimationsAndBoundsChanges: false];
+
+}
+
 
 @end
