@@ -10,9 +10,11 @@
 
 #import "CustomTableView.h"
 #import "Property.h"
+#import "LocationSearchResultsController.h"
+#import "GooglePlaceService.h"
 
 
-@interface NewPropertyViewController () <UITableViewDelegate, UITextViewDelegate>
+@interface NewPropertyViewController () <UITableViewDelegate, UITextViewDelegate, UISearchResultsUpdating, LocationPickerDelegate>
 
 @property (weak, nonatomic) IBOutlet UITextField *headlineTextField;
 @property (weak, nonatomic) IBOutlet UITextView *detailsTextView;
@@ -31,6 +33,10 @@
 @property (weak, nonatomic) IBOutlet UISwitch *smokingSwitch;
 
 @property (weak, nonatomic) IBOutlet UISwitch *wdSwitch;
+@property (weak, nonatomic) IBOutlet UITableViewCell *addressSearchCell;
+
+@property (strong, nonatomic) UISearchController *searchController;
+@property (strong, nonatomic) LocationSearchResultsController *searchResultsController;
 
 
 @end
@@ -53,6 +59,8 @@
   // Populate the UI from the property object.
   NSAssert(self.property && self.property.landlordId, @"You must supply a property object with a link to a landlord's user object");
   [self loadUIFromProperty];
+  
+  [self setupSearchController];
 
 }
 
@@ -107,10 +115,14 @@
 
 }
 
-
-- (void)didReceiveMemoryWarning {
-  [super didReceiveMemoryWarning];
-  // Dispose of any resources that can be recreated.
+- (void)setupSearchController {
+  self.searchResultsController = [[LocationSearchResultsController alloc] initWithStyle:UITableViewStylePlain];
+  self.searchController = [[UISearchController alloc] initWithSearchResultsController:self.searchResultsController];
+  self.searchController.searchResultsUpdater = self;
+  self.searchResultsController.delegate = self;
+  
+  [self.addressSearchCell addSubview:self.searchController.searchBar];
+ 
 }
 
 
@@ -146,6 +158,29 @@
   [customTableView ignoreAnimationsAndBoundsChanges: false];
 
 }
+
+#pragma mark - Search Results Updating
+
+-(void)updateSearchResultsForSearchController:(UISearchController *)searchController {
+  [GooglePlaceService autoCompletePredictionsFromSearchTerm:searchController.searchBar.text withBlock:^(NSArray *predictions, NSError *error) {
+    if (error) {
+      
+    } else {
+      self.searchResultsController.searchResults = predictions;
+    }
+  }];
+}
+
+#pragma mark - Location Picker Delegate
+
+-(void)locationPicker:(LocationSearchResultsController *)picker didPickPlace:(GMSPlace *)place {
+  [picker dismissViewControllerAnimated:true completion:nil];
+ 
+  self.property.coordinate = place.coordinate;
+  self.property.streetAddress = place.attributions.string;
+}
+
+
 
 
 @end

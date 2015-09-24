@@ -77,7 +77,6 @@ CGFloat const kDefaultImageCompression = 0.8;
   }];
 }
 
-
 -(void)setCoordinate:(CLLocationCoordinate2D)coordinate {
   PFGeoPoint *geoPoint = [PFGeoPoint geoPointWithLatitude:coordinate.latitude longitude:coordinate.longitude];
   self.geoPoint = geoPoint;
