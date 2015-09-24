@@ -65,28 +65,18 @@
 }
 
 
-- (void) viewWillDisappear:(BOOL)animated {
-
-  // Save the property object based on the changes the user has made.
-  [self saveUIToProperty];
-
-  // For did's, call super first. For will's, call super last.
-  [super viewWillDisappear: animated];
-
-}
-
 - (void) loadUIFromProperty {
 
   self.headlineTextField.text = self.property.headlineDescription;
   self.detailsTextView.text = self.property.detailsDescription;
 
-  self.rentTextField.text = [NSString stringWithFormat: @"%ld", (long)self.property.price];
+  self.rentTextField.text = (self.property.price > 0) ? [NSString stringWithFormat: @"%ld", (long)self.property.price] : @"";
 
   self.leaseTermSlider.value = self.property.monthsAvailable;
 
-  self.sqFtTextField.text = [NSString stringWithFormat: @"%ld", (long)self.property.squareFeet];
-  self.bedsTextField.text = [NSString stringWithFormat: @"%ld", (long)self.property.numberOfBedrooms];
-  self.bathsTextField.text = [NSString stringWithFormat: @"%ld", (long)self.property.numberOfBathrooms];
+  self.sqFtTextField.text = (self.property.squareFeet > 0) ? [NSString stringWithFormat: @"%ld", (long)self.property.squareFeet] : @"";
+  self.bedsTextField.text = (self.property.numberOfBedrooms > 0) ? [NSString stringWithFormat: @"%ld", (long)self.property.numberOfBedrooms] : @"";
+  self.bathsTextField.text = (self.property.numberOfBathrooms > 0) ? [NSString stringWithFormat: @"%ld", (long)self.property.numberOfBathrooms] : @"";
 
   self.petsSwitch.on = self.property.allowsPets;
   self.smokingSwitch.on = self.property.allowsSmoking;

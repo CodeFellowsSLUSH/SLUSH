@@ -13,6 +13,7 @@
 #import <CoreLocation/CoreLocation.h>
 #import <Parse/Parse.h>
 #import "Property.h"
+#import "User.h"
 
 @interface AppDelegate ()
 
@@ -25,6 +26,8 @@
   
   
   [Property registerSubclass];
+  [User registerSubclass];
+  
   [Parse setApplicationId:kParseApplicationID clientKey:kParseClientKey];
 
   [GMSServices provideAPIKey:kSecretMapKey];
