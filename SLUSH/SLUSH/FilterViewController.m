@@ -36,12 +36,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
   
-  if (self.filter) {
-    [self updateFilterDisplay];
-  } else {
-    self.filter = [[PropertyQueryFilter alloc] init];
-  }
-  
   self.priceRangePicker.dataSource = self.priceRangePickerDataSource;
   self.priceRangePicker.delegate = self.priceRangePickerDataSource;
   
@@ -59,6 +53,16 @@
   self.tableView.tableHeaderView = self.searchController.searchBar;
   self.searchController.searchBar.placeholder = @"Current Location";
   self.searchController.searchResultsUpdater = self;
+}
+
+-(void)viewWillAppear:(BOOL)animated {
+  [super viewWillAppear:animated];
+  
+  if (self.filter) {
+    [self updateFilterDisplay];
+  } else {
+    self.filter = [[PropertyQueryFilter alloc] init];
+  }
 }
 
 
@@ -91,11 +95,14 @@
 }
 
 - (void)applyFilterWasPressed {
-  NSInteger minPriceFromComponent = [self.priceRangePicker selectedRowInComponent:kMinRentComponent];
-  NSInteger maxPriceFromComponent = [self.priceRangePicker selectedRowInComponent:kMaxRentComponent];
+  NSInteger minPriceRow = [self.priceRangePicker selectedRowInComponent:kMinRentComponent];
+  NSInteger maxPriceRow = [self.priceRangePicker selectedRowInComponent:kMaxRentComponent];
   
-  self.filter.minPrice = [NSNumber numberWithLong:minPriceFromComponent];
-  self.filter.maxPrice = [NSNumber numberWithLong:maxPriceFromComponent]; 
+  NSNumber *minPrice = [self.priceRangePickerDataSource minPriceForRow:minPriceRow];
+  NSNumber *maxPrice = [self.priceRangePickerDataSource maxPriceForRow:maxPriceRow];
+
+  self.filter.minPrice = minPrice;
+  self.filter.maxPrice = maxPrice;
 
   [self.delegate filterManager:self didApplyFilter:self.filter];
 }

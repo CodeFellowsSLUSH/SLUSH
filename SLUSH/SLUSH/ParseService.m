@@ -15,7 +15,20 @@
 + (void)propertiesWithFilter:(PropertyQueryFilter *)filter completionHandler:(void (^)(NSArray *properties, NSError *))handler {
   PFQuery *query = [Property query];
   if (filter) {
-    
+    if (filter.minPrice) {
+      [query whereKey:@"price" greaterThanOrEqualTo:filter.minPrice];
+    }
+    if (filter.maxPrice && ![filter.maxPrice isEqualToNumber:@0]) {
+      [query whereKey:@"price" lessThanOrEqualTo:filter.maxPrice];
+    }
+    if (filter.minBedrooms && ![filter.minBedrooms isEqualToNumber:@0]) {
+      [query whereKey:@"numberOfBedrooms" greaterThanOrEqualTo:filter.minBedrooms];
+    }
+    if (filter.minBathrooms && ![filter.minBathrooms isEqualToNumber:@0]) {
+      [query whereKey:@"numberOfBathrooms" greaterThanOrEqualTo:filter.minBathrooms];
+    }
+#warning set search radius in filter view controller
+    [query whereKey:@"geoPoint" nearGeoPoint:filter.searchNearGeoPoint withinMiles:50];
   }
   
   [query findObjectsInBackgroundWithBlock:^(NSArray * _Nullable objects, NSError * _Nullable error) {
