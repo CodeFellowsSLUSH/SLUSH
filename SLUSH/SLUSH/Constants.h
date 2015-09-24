@@ -15,3 +15,6 @@ extern NSString * const kParseApplicationID;
 
 extern NSString * const kPropertiesDidLoadNotification;
 extern NSString * const kPropertiesListKey;
+
+extern NSString * const kFilterDidChangeNotification;
+extern NSString * const kFilterUserInfoKey;
