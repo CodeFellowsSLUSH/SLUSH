@@ -43,10 +43,7 @@
 
 - (void) setBounds:(CGRect)bounds {
 
-  NSLog(@"setBounds: %f %f %f %f", bounds.origin.x, bounds.origin.y, bounds.size.width, bounds.size.height);
-
   if (self.ignoreBoundsChanges) {
-    NSLog(@"...ignored");
     return;
   }
 
