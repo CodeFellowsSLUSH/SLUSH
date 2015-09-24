@@ -72,6 +72,11 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="emailTextField" destination="ZXq-LD-wjy" id="P8f-1l-Ocp"/>
+                        <outlet property="nameTextField" destination="gSU-Ag-b6h" id="sUm-xe-2y5"/>
+                        <outlet property="phoneTextField" destination="UgS-ue-de2" id="KHG-EL-Gfc"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MBY-h4-vL0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -384,6 +389,15 @@
                             <outlet property="delegate" destination="vO1-rI-rGI" id="D3n-ma-O22"/>
                         </connections>
                     </tableView>
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" title="Property Information" id="7qh-8k-CTl">
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="pjB-63-Exy">
+                            <connections>
+                                <action selector="saveButtonPressed:" destination="vO1-rI-rGI" id="9qO-oa-9Kw"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="bathsTextField" destination="VRI-Nd-1IG" id="l9S-lO-bv2"/>
                         <outlet property="bedsTextField" destination="zdA-fj-rjN" id="RxR-55-xrT"/>

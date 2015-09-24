@@ -10,23 +10,58 @@
 #import "LoginViewController.h"
 #import "Property.h"
 #import "NewPropertyViewController.h"
+#import "User.h"
 
 
 @interface ProfileViewController ()
 
+@property (weak, nonatomic) IBOutlet UITextField *nameTextField;
+@property (weak, nonatomic) IBOutlet UITextField *emailTextField;
+@property (weak, nonatomic) IBOutlet UITextField *phoneTextField;
+
 @end
+
 
 @implementation ProfileViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-  
+
+  if (!self.user) {
+
+//    self.user = [User object];
+
+    self.user = [User generateTestUser];
+    [self.user save];
+
+  }
+
+  [self loadUIFromUser];
+
 }
 
 // Put the Add Property button in the top right corner.
 // Must do this each time we appear.
 - (void) viewWillAppear:(BOOL)animated {
   [super viewWillAppear: animated];
+}
+
+
+- (void) loadUIFromUser {
+
+  self.nameTextField.text = self.user.name;
+  self.phoneTextField.text = self.user.phoneNumber;
+  self.emailTextField.text = self.user.emailAddress;
+
+}
+
+
+- (void) saveUIToUser {
+
+  self.user.name = self.nameTextField.text;
+  self.user.phoneNumber = self.phoneTextField.text;
+  self.user.emailAddress = self.emailTextField.text;
+
 }
 
 
@@ -39,8 +74,11 @@
 
     if (sender == self.navigationItem.rightBarButtonItem) {
 
-      Property * newProperty = [Property object];
-      newProperty.landlordId = @"some landlord"; // TODO: replace this with the objectId of our own User object!
+      Property * newProperty = [Property generateTestPropertyForLandlord: self.user];
+
+//      Property * newProperty = [Property object];
+//      newProperty.landlordId = self.user.objectId;
+
       propertyVC.property = newProperty;
 
     } else {

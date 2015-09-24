@@ -13,7 +13,7 @@
 #import <Parse/Parse.h>
 
 
-@class UserDataObject;
+@class User;
 
 
 @interface Property : PFObject <PFSubclassing>
@@ -50,7 +50,7 @@
 
 - (void) save;
 
-+ (Property *) generateTestPropertyForLandlord: (UserDataObject *) landlord;
++ (Property *) generateTestPropertyForLandlord: (User *) landlord;
 
 
 @end
