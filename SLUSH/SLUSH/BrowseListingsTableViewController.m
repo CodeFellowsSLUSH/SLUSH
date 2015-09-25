@@ -13,6 +13,8 @@
 #import "ParseService.h"
 #import "Constants.h"
 
+CGFloat const kCellFadeInDuration = 0.3;
+
 @interface BrowseListingsTableViewController ()<UITableViewDelegate, UITableViewDataSource>
 
 //@property (strong, nonatomic) IBOutlet UITableView *browserTabelView;
@@ -66,6 +68,7 @@
   
   cell.headerLabel.text = property.headlineDescription;
   cell.descriptionLabel.text = property.detailsDescription;
+  cell.priceLabel.text = [NSString stringWithFormat:@"$%ld", (long)property.price];
   
   return cell;
 }
@@ -73,7 +76,9 @@
 #pragma mark - Table View Delegate
 
 -(void)tableView:(UITableView *)tableView willDisplayCell:(BrowseListingCellsTableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath{
-
+  
+  cell.collectionView.dataSource = nil;
+  [cell.collectionView reloadData];
   [cell setCollectionViewDataSourceDelegate:self indexPath:indexPath];
   
 }
@@ -92,7 +97,6 @@
 -(NSInteger)collectionView:(ImageCollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
   
   Property *property = self.properties[collectionView.indexPath.row];
-  NSLog(@"count: %lu", (unsigned long)property.photos.count);
   return property.photos.count;
 }
 
@@ -102,6 +106,8 @@
   Property *property = self.properties[collectionView.indexPath.row];
   PFObject *photo = property.photos[indexPath.row];
   
+  cell.imageView.image = nil;
+  cell.alpha = 0;
   cell.tag++;
   NSInteger tag = cell.tag;
   
@@ -109,6 +115,9 @@
     if (!error) {
       if (tag == cell.tag) {
         cell.imageView.image = image;
+        [UIView animateWithDuration:kCellFadeInDuration animations:^{
+          cell.alpha = 1.0;
+        }];
       }
     }
   }];
@@ -120,9 +129,7 @@
 
 -(CGSize)collectionView:(ImageCollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
   
-  BrowseListingCellsTableViewCell *cell = [self.tableView cellForRowAtIndexPath:collectionView.indexPath];
-  
-  return cell.frame.size;
+  return collectionView.frame.size;
 }
 
 @end

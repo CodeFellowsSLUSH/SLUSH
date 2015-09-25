@@ -37,6 +37,8 @@
 		B558303B1BB1CF2B00002FE5 /* BrowseListingCellsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B558303A1BB1CF2B00002FE5 /* BrowseListingCellsTableViewCell.m */; settings = {ASSET_TAGS = (); }; };
 		B558303E1BB1D10200002FE5 /* ImageCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B558303D1BB1D10200002FE5 /* ImageCollectionViewCell.m */; settings = {ASSET_TAGS = (); }; };
 		B5E3407D1BB3159400D43AEF /* Secrets.m in Sources */ = {isa = PBXBuildFile; fileRef = B5E3407C1BB3159400D43AEF /* Secrets.m */; settings = {ASSET_TAGS = (); }; };
+		DF791F881BB4DA8E0054A55E /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C74AF361BB0B58500D2770F /* LoginViewController.m */; };
+		DF7DA1741BB1E782004882E0 /* UserDataObject.m in Sources */ = {isa = PBXBuildFile; fileRef = DF7DA1731BB1E782004882E0 /* UserDataObject.m */; settings = {ASSET_TAGS = (); }; };
 		DF7DA1741BB1E782004882E0 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = DF7DA1731BB1E782004882E0 /* User.m */; settings = {ASSET_TAGS = (); }; };
 		DF7DA17A1BB1E7BC004882E0 /* PropertyQueryFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = DF7DA1791BB1E7BC004882E0 /* PropertyQueryFilter.m */; settings = {ASSET_TAGS = (); }; };
 		DFC9B37C1BB38EB800E12FC4 /* CustomTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = DFC9B37B1BB38EB800E12FC4 /* CustomTableView.m */; settings = {ASSET_TAGS = (); }; };
@@ -276,6 +278,10 @@
 		B52EA8771BB0629A00A1C98E /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				B55830391BB1CF2B00002FE5 /* BrowseListingCellsTableViewCell.h */,
+				B558303A1BB1CF2B00002FE5 /* BrowseListingCellsTableViewCell.m */,
+				B558303C1BB1D10200002FE5 /* ImageCollectionViewCell.h */,
+				B558303D1BB1D10200002FE5 /* ImageCollectionViewCell.m */,
 				4CAB46271BB34A9A0091EE38 /* ImageCollectionView.h */,
 				4CAB46281BB34A9A0091EE38 /* ImageCollectionView.m */,
 				B52EA83D1BB060FF00A1C98E /* Listings.storyboard */,
@@ -300,10 +306,6 @@
 				DF7DA1791BB1E7BC004882E0 /* PropertyQueryFilter.m */,
 				DF7DA1721BB1E782004882E0 /* User.h */,
 				DF7DA1731BB1E782004882E0 /* User.m */,
-				B55830391BB1CF2B00002FE5 /* BrowseListingCellsTableViewCell.h */,
-				B558303A1BB1CF2B00002FE5 /* BrowseListingCellsTableViewCell.m */,
-				B558303C1BB1D10200002FE5 /* ImageCollectionViewCell.h */,
-				B558303D1BB1D10200002FE5 /* ImageCollectionViewCell.m */,
 				4C9AB6001BB3290D0037B32E /* ParseService.h */,
 				4C9AB6011BB3290D0037B32E /* ParseService.m */,
 			);
@@ -476,6 +478,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DF791F881BB4DA8E0054A55E /* LoginViewController.m in Sources */,
 				4C9AB5F61BB215470037B32E /* LocationSearchResultsController.m in Sources */,
 				4CAB46291BB34A9A0091EE38 /* ImageCollectionView.m in Sources */,
 				DF7DA17A1BB1E7BC004882E0 /* PropertyQueryFilter.m in Sources */,
