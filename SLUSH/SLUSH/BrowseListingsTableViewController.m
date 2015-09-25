@@ -144,16 +144,27 @@ CGFloat const kCellFadeInDuration = 0.3;
   NSLog(@"the collection View Should change");
 }
 
-#pragma mark - BLDetailedVC
+#pragma mark - Segues
 
 -(void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
+
   if ([[segue identifier]isEqualToString:@"showBLDetailedVC"]) {
-    BLDetailedViewController *bldetailedVC = [segue destinationViewController];
-    
-    ImageCollectionView *collectionView = sender;
-    NSIndexPath *indexPath = collectionView.indexPath;
-    
-    Property *property = self.properties[indexPath.row];
+
+    BLDetailedViewController *bldetailedVC = segue.destinationViewController;
+
+    long row = 0;
+    if ([sender isKindOfClass: [ImageCollectionView class]]) {
+      ImageCollectionView *collectionView = sender;
+      NSIndexPath *indexPath = collectionView.indexPath;
+      row = indexPath.row;
+    }
+    else if ([sender isKindOfClass: [BrowseListingsTableViewController class]]) {
+      BrowseListingsTableViewController * tableVC = (BrowseListingsTableViewController *) sender;
+      NSIndexPath * indexPath = [tableVC.tableView indexPathForSelectedRow];
+      row = indexPath.row;
+    }
+
+    Property *property = self.properties[row];
     
     bldetailedVC.property = property;
     
