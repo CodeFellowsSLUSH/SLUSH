@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 @class Property;
+@class User;
 
 @interface BLDetailedViewController : UIViewController <UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout>
 @property (weak, nonatomic) IBOutlet UILabel *BLHeader;
@@ -15,5 +16,6 @@
 @property (weak, nonatomic) IBOutlet UICollectionView *BLCollectionView;
 @property (strong, nonatomic) NSIndexPath *indexPath;
 @property (strong, nonatomic) Property *property;
+@property (strong, nonatomic) User *user;
 
 @end

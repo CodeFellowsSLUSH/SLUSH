@@ -10,6 +10,8 @@
 #import "Property.h"
 #import "BLDetailedCollectionViewCell.h"
 #import "ParseService.h"
+#import "User.h"
+#import "ErrorAlertController.h"
 
 @interface BLDetailedViewController ()
 
@@ -24,8 +26,13 @@
   self.BLDetailedLabel.text = self.property.detailsDescription;
   self.automaticallyAdjustsScrollViewInsets = NO;
   
-  
-
+  [ParseService fetchUserObjectWithId:self.property.landlordId withBlock:^(User *user, NSError *error) {
+    if (error) {
+      //Handle error or ignore
+    } else {
+      self.user = user;
+    }
+  }];
 }
 
 -(NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView{
@@ -46,7 +53,6 @@
   cell.tag++;
   NSInteger tag = cell.tag;
   
-
   [ParseService fetchImageObject:imageObject withBlock:^(UIImage *image, NSError *error) {
     if (!error) {
       if (tag == cell.tag) {

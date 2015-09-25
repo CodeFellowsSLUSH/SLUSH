@@ -11,10 +11,12 @@
 
 @class Property;
 @class PropertyQueryFilter;
+@class User;
 
 @interface ParseService : NSObject
 
 + (void)propertiesWithFilter:(PropertyQueryFilter *)filter completionHandler:(void (^)(NSArray *properties, NSError *))handler;
 + (void)fetchImageObject:(PFObject *)imageObject withBlock:(void(^)(UIImage *image, NSError *error))handler;
++ (void)fetchUserObjectWithId:(NSString *)userObjectId withBlock:(void(^)(User *user, NSError *error))handler;
 
 @end
