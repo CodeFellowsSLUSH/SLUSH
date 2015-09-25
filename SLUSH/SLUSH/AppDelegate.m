@@ -28,8 +28,6 @@
   [Property registerSubclass];
   [User registerSubclass];
   
-  [UINavigationBar appearance].tintColor = [UIColor whiteColor];
-  
   [Parse setApplicationId:kParseApplicationID clientKey:kParseClientKey];
 
   [GMSServices provideAPIKey:kSecretMapKey];
