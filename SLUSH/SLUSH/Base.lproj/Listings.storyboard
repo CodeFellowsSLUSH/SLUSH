@@ -236,14 +236,20 @@
                                     <outlet property="delegate" destination="r7F-FF-ba5" id="NyW-cz-AJg"/>
                                 </connections>
                             </collectionView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NZf-iF-52a">
-                                <rect key="frame" x="20" y="408" width="580" height="32.5"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NZf-iF-52a">
+                                <rect key="frame" x="20" y="408" width="580" height="26.5"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="580" id="cPO-rw-BQU"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pCv-yB-58l">
-                                <rect key="frame" x="20" y="448.5" width="580" height="20.5"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pCv-yB-58l">
+                                <rect key="frame" x="20" y="442.5" width="580" height="20.5"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="580" id="BeT-Lr-xr6"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -251,8 +257,13 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="NZf-iF-52a" firstAttribute="leading" secondItem="6eE-ry-kaA" secondAttribute="leadingMargin" id="15q-uY-g1U"/>
                             <constraint firstAttribute="trailingMargin" secondItem="0HK-3j-M8H" secondAttribute="trailing" constant="-20" id="9AG-Te-kob"/>
                             <constraint firstItem="0HK-3j-M8H" firstAttribute="leading" secondItem="6eE-ry-kaA" secondAttribute="leadingMargin" constant="-20" id="9sQ-0P-30m"/>
+                            <constraint firstItem="NZf-iF-52a" firstAttribute="top" secondItem="0HK-3j-M8H" secondAttribute="bottom" constant="8" id="NRQ-PD-M9Y"/>
+                            <constraint firstItem="pCv-yB-58l" firstAttribute="top" secondItem="NZf-iF-52a" secondAttribute="bottom" constant="8" id="SaZ-dK-gGl"/>
+                            <constraint firstItem="pCv-yB-58l" firstAttribute="top" secondItem="NZf-iF-52a" secondAttribute="bottom" constant="8" id="Urk-lH-3BJ"/>
+                            <constraint firstItem="pCv-yB-58l" firstAttribute="leading" secondItem="6eE-ry-kaA" secondAttribute="leadingMargin" id="ZcG-bs-Nf2"/>
                             <constraint firstItem="0HK-3j-M8H" firstAttribute="top" secondItem="6eE-ry-kaA" secondAttribute="topMargin" id="gBQ-f6-kii"/>
                         </constraints>
                     </view>
