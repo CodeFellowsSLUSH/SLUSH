@@ -215,16 +215,26 @@
 }
 
 - (IBAction)PhotoButton:(UIButton *)sender {
-
+  
   if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
-    self.imageViewPicker.sourceType = UIImagePickerControllerSourceTypeCamera;
+    
+    UIAlertController *choosePhotoSourceAlert = [UIAlertController alertControllerWithTitle:nil message:nil preferredStyle:UIAlertControllerStyleActionSheet];
+    [choosePhotoSourceAlert addAction:[UIAlertAction actionWithTitle:@"Camera" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+      self.imageViewPicker.sourceType = UIImagePickerControllerSourceTypeCamera;
+      [self presentViewController:self.imageViewPicker animated:true completion:nil];
+    }]];
+    
+    [choosePhotoSourceAlert addAction:[UIAlertAction actionWithTitle:@"Camera Roll" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+      self.imageViewPicker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+      [self presentViewController:self.imageViewPicker animated:true completion:nil];
+    }]];
+    
+    [self presentViewController:choosePhotoSourceAlert animated:true completion:nil];
   }
   else{
     self.imageViewPicker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+    [self presentViewController:self.imageViewPicker animated:true completion:nil];
   }
-  
-  [self presentViewController:self.imageViewPicker animated:true completion:^{
-  }];
 }
 
 -(void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info{
