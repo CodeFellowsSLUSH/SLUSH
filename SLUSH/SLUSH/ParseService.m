@@ -60,33 +60,4 @@ CGFloat const kDefaultSearchRadius = 50;
   }];
 }
 
-+ (void)uploadTestProperties {
-  
-  Property *property = [Property generateTestPropertyForLandlord: nil];
-
-  [property addImage:[UIImage imageNamed:@"modernHouse"] withBlock:^(BOOL succeeded, NSError *error) {
-    if (error) {
-      NSLog(@"error: %@", error.localizedDescription);
-    }
-  }];
-  
-  [property addImage:[UIImage imageNamed:@"craftsman"] withBlock:^(BOOL succeeded, NSError *error) {
-    if (error) {
-      NSLog(@"error: %@", error.localizedDescription);
-    }
-  }];
-  
-  [property addImage:[UIImage imageNamed:@"seattleRoom"] withBlock:^(BOOL succeeded, NSError *error) {
-    if (error) {
-      NSLog(@"error: %@", error.localizedDescription);
-    }
-  }];
-  
-  [property saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
-    if (error) {
-      NSLog(@"Error: %@", error.localizedDescription);
-    }
-  }];
-}
-
 @end
