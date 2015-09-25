@@ -22,5 +22,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *BLSmokingPetsWash;
 @property (weak, nonatomic) IBOutlet UILabel *BLLandLordInfo;
 @property (weak, nonatomic) IBOutlet UILabel *BLPriceLabel;
+@property (strong, nonatomic) User *user;
 
 @end

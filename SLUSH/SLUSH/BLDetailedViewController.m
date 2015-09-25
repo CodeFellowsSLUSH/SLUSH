@@ -27,19 +27,20 @@
   self.automaticallyAdjustsScrollViewInsets = NO;
   self.BLPriceLabel.text = [NSString stringWithFormat:@"$%ld", (long)self.property.price];
   self.BLaddressLabel.text = self.property.address;
-  NSString* months = [NSString stringWithFormat:@"Avalible For: %ld month", (long)self.property.monthsAvailable];
+  NSString* months = [NSString stringWithFormat:@"Available For: %ld month", (long)self.property.monthsAvailable];
   self.BLLengthLabel.text = months;
   NSString* bedAndBath = [NSString stringWithFormat:@"%ld Beds: %ld Baths", (long)self.property.numberOfBedrooms, (long)self.property.numberOfBathrooms];
   self.BLBedAndBathroomLabel.text = bedAndBath;
-  self.BLLandLordInfo.text = 
-  self.BLSmokingPetsWash.text =
   
+  self.BLSmokingPetsWash.text =self.user.email;
   
-  
-  
-
-  
-
+  [ParseService fetchUserObjectWithId:self.property.landlordId withBlock:^(User *user, NSError *error) {
+    if (error) {
+      //Handle error or ignore
+    } else {
+      self.user = user;
+    }
+  }];
 }
 
 -(NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView{

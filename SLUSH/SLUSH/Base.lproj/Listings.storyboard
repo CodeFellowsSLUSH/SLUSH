@@ -307,15 +307,6 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fqs-84-I5s">
-                                <rect key="frame" x="20" y="585" width="580" height="20.5"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="580" id="xnf-yz-jyQ"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -324,10 +315,8 @@
                             <constraint firstItem="Dvd-XZ-Ix2" firstAttribute="top" secondItem="dtV-oC-j4a" secondAttribute="bottom" constant="8" id="99P-zP-Fmp"/>
                             <constraint firstAttribute="trailingMargin" secondItem="0HK-3j-M8H" secondAttribute="trailing" constant="-20" id="9AG-Te-kob"/>
                             <constraint firstItem="0HK-3j-M8H" firstAttribute="leading" secondItem="6eE-ry-kaA" secondAttribute="leadingMargin" constant="-20" id="9sQ-0P-30m"/>
-                            <constraint firstItem="Fqs-84-I5s" firstAttribute="top" secondItem="qfr-Au-Wqk" secondAttribute="bottom" constant="8" id="GUm-VI-oxR"/>
                             <constraint firstAttribute="trailingMargin" secondItem="5a7-xB-RhI" secondAttribute="trailing" constant="-20" id="I6X-cJ-bDb"/>
                             <constraint firstItem="dtV-oC-j4a" firstAttribute="leading" secondItem="6eE-ry-kaA" secondAttribute="leadingMargin" id="J1R-d7-kDY"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="Fqs-84-I5s" secondAttribute="trailing" constant="-20" id="KQY-D5-lTQ"/>
                             <constraint firstItem="NZf-iF-52a" firstAttribute="top" secondItem="0HK-3j-M8H" secondAttribute="bottom" constant="8" id="NRQ-PD-M9Y"/>
                             <constraint firstItem="dtV-oC-j4a" firstAttribute="top" secondItem="5a7-xB-RhI" secondAttribute="bottom" constant="8" id="PnU-t1-uCq"/>
                             <constraint firstItem="qfr-Au-Wqk" firstAttribute="top" secondItem="Dvd-XZ-Ix2" secondAttribute="bottom" constant="8" id="Q3U-Gi-1VG"/>
@@ -336,7 +325,6 @@
                             <constraint firstAttribute="trailingMargin" secondItem="Dvd-XZ-Ix2" secondAttribute="trailing" constant="-20" id="VFu-jA-H3A"/>
                             <constraint firstItem="5a7-xB-RhI" firstAttribute="leading" secondItem="6eE-ry-kaA" secondAttribute="leadingMargin" id="Zbz-tJ-lr0"/>
                             <constraint firstItem="pCv-yB-58l" firstAttribute="leading" secondItem="6eE-ry-kaA" secondAttribute="leadingMargin" id="ZcG-bs-Nf2"/>
-                            <constraint firstItem="Fqs-84-I5s" firstAttribute="leading" secondItem="6eE-ry-kaA" secondAttribute="leadingMargin" id="dLV-We-rqO"/>
                             <constraint firstItem="Wed-g3-8Gz" firstAttribute="trailing" secondItem="0HK-3j-M8H" secondAttribute="trailing" id="dSM-Vc-FFq"/>
                             <constraint firstItem="0HK-3j-M8H" firstAttribute="top" secondItem="6eE-ry-kaA" secondAttribute="topMargin" id="gBQ-f6-kii"/>
                             <constraint firstAttribute="trailingMargin" secondItem="qfr-Au-Wqk" secondAttribute="trailing" constant="-20" id="gVc-ft-aPz"/>
@@ -352,7 +340,6 @@
                         <outlet property="BLCollectionView" destination="0HK-3j-M8H" id="UbH-2L-Ud0"/>
                         <outlet property="BLDetailedLabel" destination="pCv-yB-58l" id="GuN-M0-Gqo"/>
                         <outlet property="BLHeader" destination="NZf-iF-52a" id="SN3-3G-J0E"/>
-                        <outlet property="BLLandLordInfo" destination="Fqs-84-I5s" id="vMv-IU-g2Y"/>
                         <outlet property="BLLengthLabel" destination="dtV-oC-j4a" id="F6V-Op-H8b"/>
                         <outlet property="BLPriceLabel" destination="aYb-tF-7f7" id="A5y-70-0xQ"/>
                         <outlet property="BLSmokingPetsWash" destination="qfr-Au-Wqk" id="WKt-gV-f7Y"/>
