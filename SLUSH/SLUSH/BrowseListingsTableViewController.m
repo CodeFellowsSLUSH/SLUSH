@@ -85,8 +85,8 @@ CGFloat const kCellFadeInDuration = 0.3;
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-  [tableView deselectRowAtIndexPath:indexPath animated:true];
   [self performSegueWithIdentifier:@"showBLDetailedVC" sender:self];
+  [tableView deselectRowAtIndexPath:indexPath animated:true];
 }
 
 
@@ -140,7 +140,7 @@ CGFloat const kCellFadeInDuration = 0.3;
 
 
 -(void)collectionView:(ImageCollectionView *)collectionView didSelectItemAtIndexPath:(nonnull NSIndexPath *)indexPath{
-  [self performSegueWithIdentifier:@"showBLDetailedVC" sender:self];
+  [self performSegueWithIdentifier:@"showBLDetailedVC" sender:collectionView];
   NSLog(@"the collection View Should change");
 }
 
@@ -150,7 +150,9 @@ CGFloat const kCellFadeInDuration = 0.3;
   if ([[segue identifier]isEqualToString:@"showBLDetailedVC"]) {
     BLDetailedViewController *bldetailedVC = [segue destinationViewController];
     
-    NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
+    ImageCollectionView *collectionView = sender;
+    NSIndexPath *indexPath = collectionView.indexPath;
+    
     Property *property = self.properties[indexPath.row];
     
     bldetailedVC.property = property;

@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 @class Property;
 
-@interface BLDetailedViewController : UIViewController <UICollectionViewDataSource, UICollectionViewDelegate>
+@interface BLDetailedViewController : UIViewController <UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout>
 @property (weak, nonatomic) IBOutlet UILabel *BLHeader;
 @property (weak, nonatomic) IBOutlet UILabel *BLDetailedLabel;
 @property (weak, nonatomic) IBOutlet UICollectionView *BLCollectionView;
