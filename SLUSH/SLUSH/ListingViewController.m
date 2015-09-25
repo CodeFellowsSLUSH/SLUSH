@@ -33,9 +33,13 @@ NSString * const kFilterStoryboardID = @"FilterViewController";
 
 -(void)viewDidLoad{
   
-
+  self.title = @"Browse Properties";
+  
   UIBarButtonItem *filterButton = [[UIBarButtonItem alloc] initWithTitle:@"Filter" style:UIBarButtonItemStylePlain target:self action:@selector(filterWasPressed)];
-  self.navigationItem.rightBarButtonItem = filterButton;
+  self.navigationItem.leftBarButtonItem = filterButton;
+  
+  UIBarButtonItem *toggleButton = [[UIBarButtonItem alloc] initWithTitle:@"Map" style:UIBarButtonItemStylePlain target:self action:@selector(toggleButtonWasPressed:)];
+  self.navigationItem.rightBarButtonItem = toggleButton;
   
   [self loadProperties];
   
@@ -49,6 +53,15 @@ NSString * const kFilterStoryboardID = @"FilterViewController";
   filterVC.filter = self.filter;
   filterVC.delegate = self;
   [self.navigationController pushViewController:filterVC animated:true];
+}
+
+- (void)toggleButtonWasPressed:(UIBarButtonItem *)button {
+  if ([button.title isEqualToString:@"Map"]) {
+    [button setTitle:@"List"];
+  } else if ([button.title isEqualToString:@"List"]) {
+    [button setTitle:@"Map"];
+  }
+  [self.containerViewController swapViewControllers];
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
