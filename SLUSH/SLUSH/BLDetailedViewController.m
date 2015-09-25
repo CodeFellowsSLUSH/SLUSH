@@ -10,6 +10,8 @@
 #import "Property.h"
 #import "BLDetailedCollectionViewCell.h"
 #import "ParseService.h"
+#import "User.h"
+#import "ErrorAlertController.h"
 
 @interface BLDetailedViewController ()
 
@@ -58,7 +60,6 @@
   cell.tag++;
   NSInteger tag = cell.tag;
   
-
   [ParseService fetchImageObject:imageObject withBlock:^(UIImage *image, NSError *error) {
     if (!error) {
       if (tag == cell.tag) {

@@ -9,6 +9,7 @@
 #import "ParseService.h"
 #import "PropertyQueryFilter.h"
 #import "Property.h"
+#import "User.h"
 
 CGFloat const kDefaultSearchRadius = 50;
 
@@ -42,6 +43,18 @@ CGFloat const kDefaultSearchRadius = 50;
       handler(nil, error);
     } else {
       handler(objects, nil);
+    }
+  }];
+}
+
++ (void)fetchUserObjectWithId:(NSString *)userObjectId withBlock:(void(^)(User *user, NSError *error))handler {
+  PFQuery *query = [User query];
+  [query getObjectInBackgroundWithId:userObjectId block:^(PFObject * _Nullable object, NSError * _Nullable error) {
+    if (error) {
+      handler(nil, error);
+    } else {
+      User *user = (User *)object;
+      handler(user, nil);
     }
   }];
 }
