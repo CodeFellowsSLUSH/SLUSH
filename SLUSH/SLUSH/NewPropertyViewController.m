@@ -13,9 +13,10 @@
 #import "LocationSearchResultsController.h"
 #import "GooglePlaceService.h"
 #import "ThumbNailViewCell.h"
+#import "ErrorAlertController.h"
 
 
-@interface NewPropertyViewController () <UITableViewDelegate, UITextViewDelegate, UISearchResultsUpdating, UIImagePickerControllerDelegate, LocationPickerDelegate, UICollectionViewDataSource, UICollectionViewDelegate>
+@interface NewPropertyViewController () <UITableViewDelegate, UITextViewDelegate, UISearchResultsUpdating, UIImagePickerControllerDelegate, UINavigationControllerDelegate, LocationPickerDelegate, UICollectionViewDataSource, UICollectionViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
 
@@ -52,6 +53,9 @@
 
 - (void)viewDidLoad {
   [super viewDidLoad];
+  
+  self.imageViewPicker = [[UIImagePickerController alloc]init];
+  self.imageViewPicker.delegate = self;
 
   // Configure table view for dynamic row height.
   self.tableView.rowHeight = UITableViewAutomaticDimension;
@@ -196,10 +200,7 @@
 }
 
 - (IBAction)PhotoButton:(UIButton *)sender {
-  self.imageViewPicker = [[UIImagePickerController alloc]init];
-  
-  self.imageViewPicker.delegate = self;
-  
+
   if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
     self.imageViewPicker.sourceType = UIImagePickerControllerSourceTypeCamera;
   }
@@ -212,9 +213,16 @@
 }
 
 -(void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info{
-  self.imagePicked = [[UIImage alloc]init];
   self.imagePicked = info[UIImagePickerControllerOriginalImage];
   [self.picturesStored addObject:self.imagePicked];
+  
+  __weak NewPropertyViewController *weakSelf = self;
+  [self.property addImage:self.imagePicked withBlock:^(BOOL succeeded, NSError *error) {
+    if (error) {
+      UIAlertController *alert = [ErrorAlertController alertWithErrorString:@"Unable to upload photo. Please try again"];
+      [weakSelf presentViewController:alert animated:true completion:nil];
+    }
+  }];
   [self.collectionView reloadData];
   [self.imageViewPicker dismissViewControllerAnimated:true completion:^{
   }];
