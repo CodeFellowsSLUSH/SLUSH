@@ -22,7 +22,7 @@
     
   self.BLHeader.text = self.property.headlineDescription;
   self.BLDetailedLabel.text = self.property.detailsDescription;
-  
+  self.automaticallyAdjustsScrollViewInsets = NO;
   
   
 
@@ -65,6 +65,14 @@
   
   return collectionView.frame.size;
 }
+
+//-(void) viewDidLayoutSubviews{
+//  CGFloat top = self.topLayoutGuide.length;
+//  CGFloat bottom = self.bottomLayoutGuide.length;
+//  UIEdgeInsets newInserts = UIEdgeInsetsMake(top, 0, bottom, 0);
+//  self.BLCollectionView.contentInset = newInserts;
+//}
+
 
 
 @end
