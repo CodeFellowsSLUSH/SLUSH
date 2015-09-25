@@ -23,7 +23,19 @@
   self.BLHeader.text = self.property.headlineDescription;
   self.BLDetailedLabel.text = self.property.detailsDescription;
   self.automaticallyAdjustsScrollViewInsets = NO;
+  self.BLPriceLabel.text = [NSString stringWithFormat:@"$%ld", (long)self.property.price];
+  self.BLaddressLabel.text = self.property.address;
+  NSString* months = [NSString stringWithFormat:@"Avalible For: %ld month", (long)self.property.monthsAvailable];
+  self.BLLengthLabel.text = months;
+  NSString* bedAndBath = [NSString stringWithFormat:@"%ld Beds: %ld Baths", (long)self.property.numberOfBedrooms, (long)self.property.numberOfBathrooms];
+  self.BLBedAndBathroomLabel.text = bedAndBath;
+  self.BLLandLordInfo.text = 
+  self.BLSmokingPetsWash.text =
   
+  
+  
+  
+
   
 
 }
