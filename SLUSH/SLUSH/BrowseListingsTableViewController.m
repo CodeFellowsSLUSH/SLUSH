@@ -12,6 +12,7 @@
 #import "Property.h"
 #import "ParseService.h"
 #import "Constants.h"
+#import "BLDetailedViewController.h"
 
 CGFloat const kCellFadeInDuration = 0.3;
 
@@ -84,9 +85,11 @@ CGFloat const kCellFadeInDuration = 0.3;
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+  [self performSegueWithIdentifier:@"showBLDetailedVC" sender:self];
   [tableView deselectRowAtIndexPath:indexPath animated:true];
-  NSLog(@"Selected");
 }
+
+
 
 #pragma mark - Collection View Data source
 
@@ -102,7 +105,7 @@ CGFloat const kCellFadeInDuration = 0.3;
 
 -(UICollectionViewCell *)collectionView:(ImageCollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
   ImageCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:collectionViewCellIdentifier forIndexPath:indexPath];
-
+  
   Property *property = self.properties[collectionView.indexPath.row];
   PFObject *photo = property.photos[indexPath.row];
   
@@ -119,7 +122,10 @@ CGFloat const kCellFadeInDuration = 0.3;
           cell.alpha = 1.0;
         }];
       }
+
+
     }
+    
   }];
 
   return cell;
@@ -131,6 +137,30 @@ CGFloat const kCellFadeInDuration = 0.3;
   
   return collectionView.frame.size;
 }
+
+
+-(void)collectionView:(ImageCollectionView *)collectionView didSelectItemAtIndexPath:(nonnull NSIndexPath *)indexPath{
+  [self performSegueWithIdentifier:@"showBLDetailedVC" sender:collectionView];
+  NSLog(@"the collection View Should change");
+}
+
+#pragma mark - BLDetailedVC
+
+-(void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
+  if ([[segue identifier]isEqualToString:@"showBLDetailedVC"]) {
+    BLDetailedViewController *bldetailedVC = [segue destinationViewController];
+    
+    ImageCollectionView *collectionView = sender;
+    NSIndexPath *indexPath = collectionView.indexPath;
+    
+    Property *property = self.properties[indexPath.row];
+    
+    bldetailedVC.property = property;
+    
+  }
+}
+
+
 
 @end
 
