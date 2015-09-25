@@ -10,7 +10,7 @@
 
 @interface MapViewController : UIViewController
 
-@property (strong, nonatomic) NSArray *listOfInterestedProperty;
+@property (strong, nonatomic) NSMutableArray *listOfInterestedProperty;
 
 
 @end
