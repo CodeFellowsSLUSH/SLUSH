@@ -23,8 +23,6 @@ NSString * const kFilterStoryboardID = @"FilterViewController";
 @property (strong, nonatomic) ContainerViewController *containerViewController;
 @property (strong, nonatomic) CLLocationManager *locationManager;
 
-- (IBAction)toggleButton:(id)sender;
-
 @end
 
 @implementation ListingViewController
@@ -69,11 +67,6 @@ NSString * const kFilterStoryboardID = @"FilterViewController";
   if ([segue.identifier isEqualToString:@"embedContainer"]) {
     self.containerViewController = segue.destinationViewController;
   }
-}
-
-- (IBAction)toggleButton:(id)sender
-{
-[self.containerViewController swapViewControllers];
 }
 
 #pragma mark - Helper Methods
@@ -130,6 +123,7 @@ NSString * const kFilterStoryboardID = @"FilterViewController";
 
 -(void)setFilter:(PropertyQueryFilter *)filter {
   _filter = filter;
+  self.containerViewController.filter = filter;
 }
 
 @end
