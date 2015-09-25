@@ -11,11 +11,7 @@
 #import <Parse/Parse.h>
 #import <ParseUI/ParseUI.h>
 
-#import "UserDataObject.h"
-
-
-// Magic
-static NSString * const kLoginSuccessfulSegue = @"LoginSuccessful";
+#import "User.h"
 
 
 @interface LoginViewController () <PFLogInViewControllerDelegate, PFSignUpViewControllerDelegate>
@@ -27,12 +23,11 @@ static NSString * const kLoginSuccessfulSegue = @"LoginSuccessful";
 
 - (void) loadView {
 
-  [super loadView];
-
   NSLog(@"LoginViewController loadView");
 
-  // Allow log in or sign up, not cancel. If the user wants to cancel, she can just switch back to the other tab.
-  self.fields = PFLogInFieldsUsernameAndPassword | PFLogInFieldsSignUpButton | PFLogInFieldsLogInButton;
+  self.fields = PFLogInFieldsUsernameAndPassword | PFLogInFieldsSignUpButton | PFLogInFieldsLogInButton | PFLogInFieldsDismissButton;
+
+  [super loadView];
 
 }
 
@@ -47,19 +42,19 @@ static NSString * const kLoginSuccessfulSegue = @"LoginSuccessful";
   // to the login VC now, even if it never gets used.
   PFSignUpViewController *signUpVC = [[PFSignUpViewController alloc] init];
 
-  signUpVC.fields = PFSignUpFieldsUsernameAndPassword | PFSignUpFieldsSignUpButton | PFSignUpFieldsDismissButton;
+  signUpVC.fields = PFSignUpFieldsUsernameAndPassword | PFSignUpFieldsEmail | PFSignUpFieldsSignUpButton | PFSignUpFieldsDismissButton;
   signUpVC.delegate = self;
 
   self.signUpController = signUpVC;
 
-  // Yeah, this is weird...
-  self.delegate = self;
+  // Install our custom logo.
+  UILabel * loginLogo = [[UILabel alloc] initWithFrame: CGRectMake(0.0, 0.0, 100.0, 100.0)];
+  loginLogo.text = @"S.L.U.S.H.";
+  self.logInView.logo = loginLogo;
 
-  // If we have a cached login from a previous run, go immediately to the next VC.
-  PFUser * user = [PFUser currentUser];
-  if (user) {
-    [self handleSuccessfulLogIn: user];
-  }
+  UILabel * signupLogo = [[UILabel alloc] initWithFrame: CGRectMake(0.0, 0.0, 100.0, 100.0)];
+  signupLogo.text = @"S.L.U.S.H.";
+  self.signUpController.signUpView.logo = signupLogo;
 
 }
 
@@ -70,15 +65,6 @@ static NSString * const kLoginSuccessfulSegue = @"LoginSuccessful";
 }
 
 
-#pragma mark - Navigation
-
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-
-  // Get the new view controller using [segue destinationViewController].
-
-}
-
-
 #pragma mark - Helpers
 
 // Factor out some common logic for handling both new users and existing users.
@@ -86,19 +72,8 @@ static NSString * const kLoginSuccessfulSegue = @"LoginSuccessful";
 
   NSLog(@"%@ is now logged in", user.username);
 
-  // Segue to the post-login view.
-  // Always use "self" as the sender, even if we're coming from the sign up VC, so our own prepareForSegue gets called.
-  NSLog(@"Login view controller segueing to Profile view controller");
-  [self performSegueWithIdentifier: kLoginSuccessfulSegue sender: self];
-
-}
-
-
-#pragma mark - PFLogInViewControllerDelegate
-
-- (void)logInViewController:(PFLogInViewController *)logInController didLogInUser:(PFUser *)user {
-
-  [self handleSuccessfulLogIn: user];
+  // Dismiss ourselves.
+  [self dismissViewControllerAnimated:true completion: nil];
 
 }
 
