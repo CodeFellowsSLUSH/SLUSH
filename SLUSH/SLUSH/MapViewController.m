@@ -36,34 +36,34 @@ MapViewController{}
   
   // for testing purposes of creating...
   Property *firstProperty = [[Property alloc]init];
-  firstProperty.headline = @"First Awesome Property";
-  firstProperty.propertyDescription = @"uhhhhh......dude..";
-  firstProperty.numberOfBathrooms = [NSNumber numberWithInt:4];
-  firstProperty.numberOfBedrooms = [NSNumber numberWithInt:3];
+  firstProperty.headlineDescription = @"First Awesome Property";
+  firstProperty.detailsDescription = @"uhhhhh......dude..";
+  firstProperty.numberOfBathrooms = 4;
+  firstProperty.numberOfBedrooms = 3;
   firstProperty.coordinate = CLLocationCoordinate2DMake(47.60, -122.33);
   [self.listOfInterestedProperty addObject:firstProperty];
   
   Property *secondProperty = [[Property alloc]init];
-  secondProperty.headline = @"A Place";
-  secondProperty.propertyDescription = @"sorry no bathroom";
-  secondProperty.numberOfBathrooms = [NSNumber numberWithInt:0];
-  secondProperty.numberOfBedrooms = [NSNumber numberWithInt:100];
+  secondProperty.headlineDescription = @"A Place";
+  secondProperty.detailsDescription = @"sorry no bathroom";
+  secondProperty.numberOfBathrooms = 0;
+  secondProperty.numberOfBedrooms = 100;
   secondProperty.coordinate = CLLocationCoordinate2DMake(47.62, -122.31);
   [self.listOfInterestedProperty addObject:secondProperty];
   
   Property *thirdProperty = [[Property alloc]init];
-  thirdProperty.headline = @"great house on the hill";
-  thirdProperty.propertyDescription = @"i just saw a mdk outside";
-  thirdProperty.numberOfBathrooms = [NSNumber numberWithInt:3];
-  thirdProperty.numberOfBedrooms = [NSNumber numberWithInt:2];
+  thirdProperty.headlineDescription = @"great house on the hill";
+  thirdProperty.detailsDescription = @"i just saw a mdk outside";
+  thirdProperty.numberOfBathrooms = 3;
+  thirdProperty.numberOfBedrooms = 2;
   thirdProperty.coordinate = CLLocationCoordinate2DMake(47.63, -122.32);
   [self.listOfInterestedProperty addObject:thirdProperty];
   
   Property *fourthProperty = [[Property alloc]init];
-  fourthProperty.headline = @"luxury mansion";
-  fourthProperty.propertyDescription = @"Great property, no doors.";
-  fourthProperty.numberOfBathrooms = [NSNumber numberWithInt:5];
-  fourthProperty.numberOfBedrooms = [NSNumber numberWithInt:10];
+  fourthProperty.headlineDescription = @"luxury mansion";
+  fourthProperty.detailsDescription = @"Great property, no doors.";
+  fourthProperty.numberOfBathrooms = 5;
+  fourthProperty.numberOfBedrooms = 10;
   fourthProperty.coordinate = CLLocationCoordinate2DMake(47.64, -122.33);
   [self.listOfInterestedProperty addObject:fourthProperty];
   // end testing
@@ -90,9 +90,9 @@ MapViewController{}
     Property *specificPropertyInArray = self.listOfInterestedProperty[i];
     GMSMarker *marker = [GMSMarker markerWithPosition:specificPropertyInArray.coordinate];
     marker.userData = specificPropertyInArray;
-    marker.title = specificPropertyInArray.headline;
+    marker.title = specificPropertyInArray.headlineDescription;
     
-    marker.snippet = [NSString stringWithFormat: @"%@ \n Bed/Bath: %@/%@",specificPropertyInArray.propertyDescription, specificPropertyInArray.numberOfBedrooms, specificPropertyInArray.numberOfBathrooms];
+    marker.snippet = [NSString stringWithFormat: @"%@ \n Bed/Bath: %ld/%ld",specificPropertyInArray.detailsDescription, (long)specificPropertyInArray.numberOfBedrooms, (long)specificPropertyInArray.numberOfBathrooms];
 
 //    self.coordinateCollection = [[GMSMutablePath alloc]init];
 //    [self.coordinateCollection addCoordinate:specificPropertyInArray.coordinate];
