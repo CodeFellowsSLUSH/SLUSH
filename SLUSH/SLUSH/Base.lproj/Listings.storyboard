@@ -136,7 +136,7 @@
                                         </view>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="m3s-Jc-8VP" userLabel="thin blue line">
                                             <rect key="frame" x="8" y="374.5" width="584" height="1"/>
-                                            <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="backgroundColor" red="0.11866962390000001" green="0.1798793122" blue="0.29578993059999997" alpha="0.75" colorSpace="calibratedRGB"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="1" id="vxJ-kz-MZB"/>
                                             </constraints>
