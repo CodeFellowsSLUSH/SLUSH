@@ -12,9 +12,12 @@
 #import "Property.h"
 #import "LocationSearchResultsController.h"
 #import "GooglePlaceService.h"
+#import "ThumbNailViewCell.h"
 
 
-@interface NewPropertyViewController () <UITableViewDelegate, UITextViewDelegate, UISearchResultsUpdating, LocationPickerDelegate>
+@interface NewPropertyViewController () <UITableViewDelegate, UITextViewDelegate, UISearchResultsUpdating, UIImagePickerControllerDelegate, LocationPickerDelegate, UICollectionViewDataSource, UICollectionViewDelegate>
+
+@property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
 
 @property (weak, nonatomic) IBOutlet UITextField *headlineTextField;
 @property (weak, nonatomic) IBOutlet UITextView *detailsTextView;
@@ -34,10 +37,13 @@
 
 @property (weak, nonatomic) IBOutlet UISwitch *wdSwitch;
 @property (weak, nonatomic) IBOutlet UITableViewCell *addressSearchCell;
+@property (strong, nonatomic) NSMutableArray *picturesStored;
 
 @property (strong, nonatomic) UISearchController *searchController;
 @property (strong, nonatomic) LocationSearchResultsController *searchResultsController;
-
+@property (strong, nonatomic) UIImage *imagePicked;
+@property (strong, nonatomic) UIImagePickerController *imageViewPicker;
+@property (strong, nonatomic) UICollectionViewCell *cellInCollection;
 
 @end
 
@@ -51,6 +57,7 @@
   self.tableView.rowHeight = UITableViewAutomaticDimension;
   self.tableView.estimatedRowHeight = 100.0;
   self.tableView.delegate = self;
+  self.picturesStored = [[NSMutableArray alloc]init];
 
   // Capture changes to the Details text, so we can adjust the height of that cell on the fly
   // as lines are added or deleted in the text.
@@ -61,6 +68,9 @@
   [self loadUIFromProperty];
   
   [self setupSearchController];
+  self.collectionView.delegate = self;
+  self.collectionView.dataSource = self;
+  
 
 }
 
@@ -185,6 +195,41 @@
   
 }
 
+- (IBAction)PhotoButton:(UIButton *)sender {
+  self.imageViewPicker = [[UIImagePickerController alloc]init];
+  
+  self.imageViewPicker.delegate = self;
+  
+  if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
+    self.imageViewPicker.sourceType = UIImagePickerControllerSourceTypeCamera;
+  }
+  else{
+    self.imageViewPicker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+  }
+  
+  [self presentViewController:self.imageViewPicker animated:true completion:^{
+  }];
+}
+
+-(void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info{
+  self.imagePicked = [[UIImage alloc]init];
+  self.imagePicked = info[UIImagePickerControllerOriginalImage];
+  [self.picturesStored addObject:self.imagePicked];
+  [self.collectionView reloadData];
+  [self.imageViewPicker dismissViewControllerAnimated:true completion:^{
+  }];
+}
+
+-(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
+  return self.picturesStored.count;
+}
+
+-(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
+   ThumbNailViewCell *cell = [self.collectionView dequeueReusableCellWithReuseIdentifier:@"Cell" forIndexPath:indexPath];
+  cell.imageViewCell.image = self.picturesStored[indexPath.row];
+  
+  return cell;
+}
 
 
 
