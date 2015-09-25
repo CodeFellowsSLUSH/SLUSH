@@ -80,23 +80,41 @@
                                                 <constraint firstAttribute="width" secondItem="Pff-5w-6aR" secondAttribute="height" multiplier="2:1" id="gat-mW-Acm"/>
                                             </constraints>
                                             <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="gpi-gR-EKa">
-                                                <size key="itemSize" width="600" height="315"/>
+                                                <size key="itemSize" width="600" height="304"/>
                                                 <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                                 <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                                 <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                             </collectionViewFlowLayout>
                                             <cells>
                                                 <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" restorationIdentifier="cellectionViewCell" reuseIdentifier="imagesInCollectionView" id="GrK-9C-Ujh" customClass="ImageCollectionViewCell">
-                                                    <rect key="frame" x="0.0" y="-7.5" width="600" height="315"/>
+                                                    <rect key="frame" x="0.0" y="-2" width="600" height="304"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                                        <rect key="frame" x="0.0" y="0.0" width="600" height="315"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="600" height="304"/>
                                                         <autoresizingMask key="autoresizingMask"/>
                                                         <subviews>
-                                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zW1-AZ-8z4">
+                                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="zW1-AZ-8z4">
                                                                 <rect key="frame" x="0.0" y="0.0" width="600" height="300"/>
                                                                 <animations/>
                                                             </imageView>
+                                                            <view alpha="0.75" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8SU-Vh-DB6">
+                                                                <rect key="frame" x="8" y="271" width="75" height="25"/>
+                                                                <subviews>
+                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="9999" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TSW-WY-tqN">
+                                                                        <rect key="frame" x="14" y="2" width="46" height="21"/>
+                                                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                                        <nil key="highlightedColor"/>
+                                                                    </label>
+                                                                </subviews>
+                                                                <color key="backgroundColor" red="0.11866962390000001" green="0.1798793122" blue="0.29578993059999997" alpha="0.75" colorSpace="calibratedRGB"/>
+                                                                <constraints>
+                                                                    <constraint firstItem="TSW-WY-tqN" firstAttribute="leading" secondItem="8SU-Vh-DB6" secondAttribute="leading" constant="14" id="IQ4-bw-ZVt"/>
+                                                                    <constraint firstItem="TSW-WY-tqN" firstAttribute="centerY" secondItem="8SU-Vh-DB6" secondAttribute="centerY" id="YcO-RN-WXA"/>
+                                                                    <constraint firstItem="TSW-WY-tqN" firstAttribute="top" secondItem="8SU-Vh-DB6" secondAttribute="top" constant="2" id="j20-Zz-9yd"/>
+                                                                    <constraint firstItem="TSW-WY-tqN" firstAttribute="centerX" secondItem="8SU-Vh-DB6" secondAttribute="centerX" id="vOr-fP-TKv"/>
+                                                                </constraints>
+                                                            </view>
                                                         </subviews>
                                                         <animations/>
                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -104,12 +122,17 @@
                                                     <animations/>
                                                     <constraints>
                                                         <constraint firstAttribute="trailing" secondItem="zW1-AZ-8z4" secondAttribute="trailing" id="LJr-Oh-pna"/>
+                                                        <constraint firstAttribute="trailing" secondItem="8SU-Vh-DB6" secondAttribute="trailing" constant="517" id="M89-uK-HMD"/>
+                                                        <constraint firstItem="8SU-Vh-DB6" firstAttribute="top" secondItem="GrK-9C-Ujh" secondAttribute="top" constant="271" id="Qte-p4-bD2"/>
                                                         <constraint firstItem="zW1-AZ-8z4" firstAttribute="top" secondItem="GrK-9C-Ujh" secondAttribute="top" id="WTN-nK-HIj"/>
-                                                        <constraint firstAttribute="bottom" secondItem="zW1-AZ-8z4" secondAttribute="bottom" id="vtg-oG-S5x"/>
+                                                        <constraint firstItem="8SU-Vh-DB6" firstAttribute="bottom" secondItem="GrK-9C-Ujh" secondAttribute="bottomMargin" id="oiN-GD-M7N"/>
+                                                        <constraint firstAttribute="bottom" secondItem="zW1-AZ-8z4" secondAttribute="bottom" constant="4" id="vtg-oG-S5x"/>
                                                         <constraint firstItem="zW1-AZ-8z4" firstAttribute="leading" secondItem="GrK-9C-Ujh" secondAttribute="leading" id="w3W-UX-cNP"/>
+                                                        <constraint firstItem="8SU-Vh-DB6" firstAttribute="leading" secondItem="GrK-9C-Ujh" secondAttribute="leadingMargin" id="xZg-Yh-fNm"/>
                                                     </constraints>
                                                     <connections>
                                                         <outlet property="imageView" destination="zW1-AZ-8z4" id="wZS-sg-YZ2"/>
+                                                        <outlet property="priceLabel" destination="TSW-WY-tqN" id="A4r-sS-uVS"/>
                                                     </connections>
                                                 </collectionViewCell>
                                             </cells>
@@ -162,7 +185,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="C44-Az-sA8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1026" y="301"/>
+            <point key="canvasLocation" x="1026" y="297"/>
         </scene>
         <!--Detailed View Controller-->
         <scene sceneID="wcE-ko-je7">
@@ -189,7 +212,7 @@
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="s70-2I-FJl">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="s70-2I-FJl" customClass="BLDetailedCollectionViewCell">
                                         <rect key="frame" x="0.0" y="0.0" width="600" height="400"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -208,6 +231,9 @@
                                             <constraint firstItem="Nqr-4w-STO" firstAttribute="top" secondItem="s70-2I-FJl" secondAttribute="top" id="dB6-BC-1iC"/>
                                             <constraint firstItem="Nqr-4w-STO" firstAttribute="leading" secondItem="s70-2I-FJl" secondAttribute="leading" id="ydi-zB-8iz"/>
                                         </constraints>
+                                        <connections>
+                                            <outlet property="blImageView" destination="Nqr-4w-STO" id="AwJ-T6-ww4"/>
+                                        </connections>
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>

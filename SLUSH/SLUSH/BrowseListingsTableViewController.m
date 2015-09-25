@@ -110,6 +110,7 @@
     if (!error) {
       if (tag == cell.tag) {
         cell.imageView.image = image;
+        
       }
     }
   }];
@@ -135,8 +136,8 @@
     NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
     Property *property = self.properties[indexPath.row];
     
-    bldetailedVC.BLHeader.text = property.headline;
-    bldetailedVC.BLDetailedLabel.text = property.propertyDescription;
+    bldetailedVC.property = property;
+    
   }
 }
 

@@ -7,9 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+@class Property;
 
 @interface BLDetailedViewController : UIViewController
 @property (weak, nonatomic) IBOutlet UILabel *BLHeader;
 @property (weak, nonatomic) IBOutlet UILabel *BLDetailedLabel;
+
+@property (strong, nonatomic) Property *property;
 
 @end
