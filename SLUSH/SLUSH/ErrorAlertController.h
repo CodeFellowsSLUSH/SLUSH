@@ -11,5 +11,6 @@
 @interface ErrorAlertController : NSObject
 
 + (UIAlertController *)alertWithError:(NSError *)error;
++(UIAlertController *)alertWithErrorString:(NSString *)errorString;
 
 @end

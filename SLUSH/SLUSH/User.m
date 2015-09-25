@@ -1,25 +1,41 @@
 //
-//  UserDataObject.m
+//  User.m
 //  SLUSH
 //
 //  Created by Stephen Lardieri on 9/22/2015.
 //  Copyright © 2015 Chris Budro, Benjamin Laddin, Stephen Lardieri, and Mark Lin. All rights reserved.
 //
 
-#import "UserDataObject.h"
+#import "User.h"
 
 
-@implementation UserDataObject
+@implementation User
+
+@dynamic name;
+@dynamic emailAddress;
+@dynamic phoneNumber;
+
+@dynamic favoriteProperties;
 
 
-+ (UserDataObject *) generateTestUser {
++ (NSString *) parseClassName {
+  return @"User";
+}
+
+
+- (void) save {
+
+  [self saveEventually];
+
+}
+
+
++ (User *) generateTestUser {
 
   NSArray * firstNames = @[ @"Chris", @"Stephen", @"Ben", @"Mark" ];
   NSArray * lastNames = @[ @"Budro", @"Lardieri", @"Laddin", @"Lin" ];
 
-  UserDataObject * user = [[UserDataObject alloc] init];
-
-  user.objectId = [NSString stringWithFormat: @"%8.8u", arc4random_uniform(100000000)];
+  User * user = [User object];
 
   NSString * firstName = [firstNames objectAtIndex: arc4random_uniform((unsigned int)firstNames.count)];
   NSString * lastName = [lastNames objectAtIndex: arc4random_uniform((unsigned int)lastNames.count)];

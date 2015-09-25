@@ -11,26 +11,37 @@
 #import "FilterViewController.h"
 #import "ParseService.h"
 #import "Constants.h"
+#import <CoreLocation/CoreLocation.h>
+#import "GooglePlaceService.h"
+#import "ErrorAlertController.h"
+#import "PropertyQueryFilter.h"
+
 
 NSString * const kFilterStoryboardID = @"FilterViewController";
 
-@interface ListingViewController () <FilterManagerDelegate>
-@property (nonatomic, strong) ContainerViewController *containerViewController;
+@interface ListingViewController () <FilterManagerDelegate, CLLocationManagerDelegate>
+@property (strong, nonatomic) ContainerViewController *containerViewController;
+@property (strong, nonatomic) CLLocationManager *locationManager;
+
 - (IBAction)toggleButton:(id)sender;
 
 @end
 
 @implementation ListingViewController
 
-- (BOOL)shouldPerformSegueWithIdentifier:(NSString *)identifier sender:(id)sender
-{
-  return YES;
-}
+@synthesize filter = _filter;
+
 -(void)viewDidLoad{
+  
+
   UIBarButtonItem *filterButton = [[UIBarButtonItem alloc] initWithTitle:@"Filter" style:UIBarButtonItemStylePlain target:self action:@selector(filterWasPressed)];
   self.navigationItem.rightBarButtonItem = filterButton;
   
   [self loadProperties];
+  
+  self.locationManager.delegate = self;
+  [self.locationManager requestWhenInUseAuthorization];
+
 }
 
 - (void)filterWasPressed {
@@ -71,6 +82,41 @@ NSString * const kFilterStoryboardID = @"FilterViewController";
   self.filter = filter;
   [self loadProperties];
   [self.navigationController popToRootViewControllerAnimated:true];
+}
+
+-(CLLocationManager *)locationManager {
+  if (!_locationManager) {
+    _locationManager = [[CLLocationManager alloc] init];
+  }
+  return _locationManager;
+}
+
+#pragma mark - Location Manager Delegate
+
+- (void)locationManager:(CLLocationManager *)manager didChangeAuthorizationStatus:(CLAuthorizationStatus)status {
+  if ([CLLocationManager authorizationStatus] == kCLAuthorizationStatusAuthorizedAlways || [CLLocationManager authorizationStatus] == kCLAuthorizationStatusAuthorizedWhenInUse) {
+    [GooglePlaceService currentPlaceWithBlock:^(GMSPlace *place, NSError *error) {
+      if (error) {
+        UIAlertController *alert = [ErrorAlertController alertWithError:error];
+        [self presentViewController:alert animated:true completion:nil];
+      } else {
+        self.filter.searchNearPlace = place;
+        NSDictionary *userInfo = @{kFilterUserInfoKey: self.filter };
+        [[NSNotificationCenter defaultCenter] postNotificationName:kFilterDidChangeNotification object:nil userInfo:userInfo];
+      }
+    }];
+  }
+}
+
+-(PropertyQueryFilter *)filter {
+  if (!_filter) {
+    _filter = [[PropertyQueryFilter alloc] init];
+  }
+  return _filter;
+}
+
+-(void)setFilter:(PropertyQueryFilter *)filter {
+  _filter = filter;
 }
 
 @end

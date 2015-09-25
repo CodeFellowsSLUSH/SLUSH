@@ -15,3 +15,6 @@ NSString * const kParseApplicationID = @"JI41kdZGaNhE1WVyuLUrPN6d8DViTRMrsxmtZac
 
 NSString * const kPropertiesDidLoadNotification = @"PropertiesDidLoaded";
 NSString * const kPropertiesListKey = @"Properties";
+
+NSString * const kFilterDidChangeNotification = @"FilterDidChange";
+NSString * const kFilterUserInfoKey = @"FilterUserInfoKey";

@@ -1,5 +1,5 @@
 //
-//  UserDataObject.h
+//  User.h
 //  SLUSH
 //
 //  Created by Stephen Lardieri on 9/22/2015.
@@ -7,10 +7,10 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <Parse/Parse.h>
 
-@interface UserDataObject : NSObject
 
-@property (strong, nonatomic) NSString * objectId;
+@interface User : PFObject <PFSubclassing>
 
 @property (strong, nonatomic) NSString * name;
 @property (strong, nonatomic) NSString * emailAddress;
@@ -18,7 +18,8 @@
 
 @property (strong, nonatomic) NSArray * favoriteProperties;
 
+- (void) save;
 
-+ (UserDataObject *) generateTestUser;
++ (User *) generateTestUser;
 
 @end

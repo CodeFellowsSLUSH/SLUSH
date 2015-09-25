@@ -30,7 +30,11 @@ CGFloat const kDefaultSearchRadius = 50;
       [query whereKey:@"numberOfBathrooms" greaterThanOrEqualTo:filter.minBathrooms];
     }
     CGFloat searchRadius = (filter.searchRadius) ? filter.searchRadius : kDefaultSearchRadius;
-    [query whereKey:@"geoPoint" nearGeoPoint:filter.searchNearGeoPoint withinMiles:searchRadius];
+    
+    if (filter.searchNearGeoPoint && filter.searchNearGeoPoint.latitude != 0 && filter.searchNearGeoPoint.longitude != 0) {
+      NSLog(@"Filter: %@", filter.searchNearGeoPoint);
+      [query whereKey:@"geoPoint" nearGeoPoint:filter.searchNearGeoPoint withinMiles:searchRadius];
+    }
   }
   
   [query findObjectsInBackgroundWithBlock:^(NSArray * _Nullable objects, NSError * _Nullable error) {
@@ -53,41 +57,6 @@ CGFloat const kDefaultSearchRadius = 50;
         handler(image, nil);
       }
     }];
-  }];
-}
-
-+ (void)uploadTestProperties {
-  
-  Property *property = [Property object];
-  [property addImage:[UIImage imageNamed:@"modernHouse"] withBlock:^(BOOL succeeded, NSError *error) {
-    if (error) {
-      NSLog(@"error: %@", error.localizedDescription);
-    }
-  }];
-  
-  [property addImage:[UIImage imageNamed:@"craftsman"] withBlock:^(BOOL succeeded, NSError *error) {
-    if (error) {
-      NSLog(@"error: %@", error.localizedDescription);
-    }
-  }];
-  
-  [property addImage:[UIImage imageNamed:@"seattleRoom"] withBlock:^(BOOL succeeded, NSError *error) {
-    if (error) {
-      NSLog(@"error: %@", error.localizedDescription);
-    }
-  }];
-  
-  property.allowsPets = true;
-  property.numberOfBathrooms = @3;
-  property.numberOfBedrooms = @1;
-  property.headline = @"Charming 1BR in Ballard";
-  property.propertyDescription = @"sdlkajsd;fljasdlfkjsaldkfjasl;dfjkals;dfjklasdkjfl;sdfjlskda;jf;lasdfjks;dlfkj;asldfjk";
-  property.price = @750;
-  
-  [property saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
-    if (error) {
-      NSLog(@"Error: %@", error.localizedDescription);
-    }
   }];
 }
 
