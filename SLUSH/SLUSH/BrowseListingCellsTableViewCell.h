@@ -16,6 +16,7 @@ static NSString *collectionViewCellIdentifier = @"imagesInCollectionView";
 @property (weak, nonatomic) IBOutlet UILabel *headerLabel;
 @property (weak, nonatomic) IBOutlet UILabel *descriptionLabel;
 @property (weak, nonatomic) IBOutlet ImageCollectionView *collectionView;
+@property (weak, nonatomic) IBOutlet UILabel *priceLabel;
 
 - (void)setCollectionViewDataSourceDelegate:(id<UICollectionViewDataSource, UICollectionViewDelegate>)dataSourceDelegate indexPath:(NSIndexPath *)indexPath;
 

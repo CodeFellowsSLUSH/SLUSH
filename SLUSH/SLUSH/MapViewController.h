@@ -7,10 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+@class PropertyQueryFilter;
 
 @interface MapViewController : UIViewController
 
-@property (strong, nonatomic) NSArray *listOfInterestedProperty;
+@property (strong, nonatomic) NSArray *properties;
+@property (strong, nonatomic) PropertyQueryFilter *filter;
 
 
 @end
