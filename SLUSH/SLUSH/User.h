@@ -10,10 +10,9 @@
 #import <Parse/Parse.h>
 
 
-@interface User : PFObject <PFSubclassing>
+@interface User : PFUser <PFSubclassing>
 
 @property (strong, nonatomic) NSString * name;
-@property (strong, nonatomic) NSString * emailAddress;
 @property (strong, nonatomic) NSString * phoneNumber;
 
 @property (strong, nonatomic) NSArray * favoriteProperties;
