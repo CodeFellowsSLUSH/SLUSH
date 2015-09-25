@@ -19,6 +19,7 @@
 		AE06B80F1BB23FA500FB9EAE /* ContainerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AE06B80E1BB23FA500FB9EAE /* ContainerViewController.m */; settings = {ASSET_TAGS = (); }; };
 		AE06B8141BB2465100FB9EAE /* Empty.m in Sources */ = {isa = PBXBuildFile; fileRef = AE06B8131BB2465100FB9EAE /* Empty.m */; settings = {ASSET_TAGS = (); }; };
 		AE06B8171BB24CEC00FB9EAE /* ListingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AE06B8161BB24CEC00FB9EAE /* ListingViewController.m */; settings = {ASSET_TAGS = (); }; };
+		AE71AB8E1BB5282400F93745 /* ThumbNailViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AE71AB8D1BB5282400F93745 /* ThumbNailViewCell.m */; settings = {ASSET_TAGS = (); }; };
 		AEB160C41BB088A2006038A6 /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AEB160C31BB088A2006038A6 /* Profile.storyboard */; settings = {ASSET_TAGS = (); }; };
 		AEB160C61BB088CE006038A6 /* Starting.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AEB160C51BB088CE006038A6 /* Starting.storyboard */; settings = {ASSET_TAGS = (); }; };
 		AEB160C91BB08F59006038A6 /* StartingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AEB160C81BB08F59006038A6 /* StartingViewController.m */; settings = {ASSET_TAGS = (); }; };
@@ -87,6 +88,8 @@
 		AE06B8131BB2465100FB9EAE /* Empty.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Empty.m; sourceTree = "<group>"; };
 		AE06B8151BB24CEC00FB9EAE /* ListingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ListingViewController.h; sourceTree = "<group>"; };
 		AE06B8161BB24CEC00FB9EAE /* ListingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ListingViewController.m; sourceTree = "<group>"; };
+		AE71AB8C1BB5282400F93745 /* ThumbNailViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ThumbNailViewCell.h; sourceTree = "<group>"; };
+		AE71AB8D1BB5282400F93745 /* ThumbNailViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ThumbNailViewCell.m; sourceTree = "<group>"; };
 		AEB160C31BB088A2006038A6 /* Profile.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Profile.storyboard; sourceTree = "<group>"; };
 		AEB160C51BB088CE006038A6 /* Starting.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Starting.storyboard; sourceTree = "<group>"; };
 		AEB160C71BB08F59006038A6 /* StartingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StartingViewController.h; sourceTree = "<group>"; };
@@ -267,6 +270,8 @@
 				B52EA8741BB0627600A1C98E /* NewPropertyViewController.m */,
 				B52EA8701BB0626800A1C98E /* ProfileViewController.h */,
 				B52EA8711BB0626800A1C98E /* ProfileViewController.m */,
+				AE71AB8C1BB5282400F93745 /* ThumbNailViewCell.h */,
+				AE71AB8D1BB5282400F93745 /* ThumbNailViewCell.m */,
 				AEB160C71BB08F59006038A6 /* StartingViewController.h */,
 				AEB160C81BB08F59006038A6 /* StartingViewController.m */,
 			);
@@ -498,6 +503,7 @@
 				B52EA8721BB0626800A1C98E /* ProfileViewController.m in Sources */,
 				B5E3407D1BB3159400D43AEF /* Secrets.m in Sources */,
 				4C9AB6021BB3290D0037B32E /* ParseService.m in Sources */,
+				AE71AB8E1BB5282400F93745 /* ThumbNailViewCell.m in Sources */,
 				4C9AB5FF1BB25D450037B32E /* PriceRangePickerDataSource.m in Sources */,
 				DF7DA1741BB1E782004882E0 /* User.m in Sources */,
 				B52EA8391BB060FF00A1C98E /* AppDelegate.m in Sources */,
