@@ -227,9 +227,12 @@
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="6" minValue="1" maxValue="11" continuous="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oG3-5G-a3K">
+                                                <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="6" minValue="1" maxValue="11" translatesAutoresizingMaskIntoConstraints="NO" id="oG3-5G-a3K">
                                                     <rect key="frame" x="115" y="16" width="377" height="59"/>
                                                     <animations/>
+                                                    <connections>
+                                                        <action selector="sliderValueChanged:" destination="vO1-rI-rGI" eventType="valueChanged" id="bOd-Z3-EJg"/>
+                                                    </connections>
                                                 </slider>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" text="6" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AEe-Eo-few" userLabel="number">
                                                     <rect key="frame" x="498" y="35" width="20" height="20.5"/>
