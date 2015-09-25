@@ -84,6 +84,8 @@
   [self performSegueWithIdentifier:@"showBLDetailedVC" sender:self];
 }
 
+
+
 #pragma mark - Collection View Data source
 
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView{
@@ -99,7 +101,7 @@
 
 -(UICollectionViewCell *)collectionView:(ImageCollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
   ImageCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:collectionViewCellIdentifier forIndexPath:indexPath];
-
+  
   Property *property = self.properties[collectionView.indexPath.row];
   PFObject *photo = property.photos[indexPath.row];
   
@@ -110,9 +112,11 @@
     if (!error) {
       if (tag == cell.tag) {
         cell.imageView.image = image;
-        
       }
+
+
     }
+    
   }];
 
   return cell;
@@ -125,6 +129,12 @@
   BrowseListingCellsTableViewCell *cell = [self.tableView cellForRowAtIndexPath:collectionView.indexPath];
   
   return cell.frame.size;
+}
+
+
+-(void)collectionView:(ImageCollectionView *)collectionView didSelectItemAtIndexPath:(nonnull NSIndexPath *)indexPath{
+  [self performSegueWithIdentifier:@"showBLDetailedVC" sender:self];
+  NSLog(@"the collection View Should change");
 }
 
 #pragma mark - BLDetailedVC

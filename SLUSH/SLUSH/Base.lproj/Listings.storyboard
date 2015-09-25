@@ -131,7 +131,7 @@
                                                         <constraint firstItem="8SU-Vh-DB6" firstAttribute="leading" secondItem="GrK-9C-Ujh" secondAttribute="leadingMargin" id="xZg-Yh-fNm"/>
                                                     </constraints>
                                                     <connections>
-                                                        <outlet property="imageView" destination="zW1-AZ-8z4" id="wZS-sg-YZ2"/>
+                                                        <outlet property="imageView" destination="zW1-AZ-8z4" id="O8N-Jv-guY"/>
                                                         <outlet property="priceLabel" destination="TSW-WY-tqN" id="A4r-sS-uVS"/>
                                                     </connections>
                                                 </collectionViewCell>
