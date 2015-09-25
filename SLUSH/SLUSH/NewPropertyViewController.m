@@ -86,7 +86,12 @@
 
   self.rentTextField.text = (self.property.price > 0) ? [NSString stringWithFormat: @"%ld", (long)self.property.price] : @"";
 
-  self.leaseTermSlider.value = self.property.monthsAvailable;
+  int monthsAvailable = (int)self.property.monthsAvailable;
+  if (monthsAvailable < 1) { monthsAvailable = 6; }
+  if (monthsAvailable > 11) { monthsAvailable = 11; }
+
+  self.leaseTermSlider.value = monthsAvailable;
+  self.leaseTermLabel.text = [NSString stringWithFormat: @"%d", monthsAvailable];
 
   self.sqFtTextField.text = (self.property.squareFeet > 0) ? [NSString stringWithFormat: @"%ld", (long)self.property.squareFeet] : @"";
   self.bedsTextField.text = (self.property.numberOfBedrooms > 0) ? [NSString stringWithFormat: @"%ld", (long)self.property.numberOfBedrooms] : @"";
@@ -106,7 +111,9 @@
 
   self.property.price = [self.rentTextField.text integerValue];
 
-  self.property.monthsAvailable = self.leaseTermSlider.value;
+  float sliderValue = self.leaseTermSlider.value;
+  int value = (int)(roundf(sliderValue));
+  self.property.monthsAvailable = value;
 
   self.property.squareFeet = [self.sqFtTextField.text integerValue];
   self.property.numberOfBedrooms = [self.bedsTextField.text integerValue];
@@ -129,6 +136,14 @@
   [self.navigationController popViewControllerAnimated:true];
   
 }
+
+
+- (IBAction) sliderValueChanged: (UISlider *) sender {
+  float sliderValue = sender.value;
+  int value = (int)(roundf(sliderValue));
+  self.leaseTermLabel.text = (value > 0) ? [NSString stringWithFormat: @"%d", value] : @"";
+}
+
 
 - (void)setupSearchController {
   self.searchResultsController = [[LocationSearchResultsController alloc] initWithStyle:UITableViewStylePlain];
