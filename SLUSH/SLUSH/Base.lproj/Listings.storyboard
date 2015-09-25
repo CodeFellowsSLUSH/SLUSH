@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8191" systemVersion="15A282b" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="quk-jQ-2cM">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8191" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="quk-jQ-2cM">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
@@ -206,14 +206,14 @@
                                     <constraint firstAttribute="width" secondItem="0HK-3j-M8H" secondAttribute="height" multiplier="3:2" id="cbL-mt-qOE"/>
                                     <constraint firstAttribute="width" constant="600" id="mkl-97-wVc"/>
                                 </constraints>
-                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="gNo-63-4TV">
+                                <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="gNo-63-4TV">
                                     <size key="itemSize" width="600" height="400"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="s70-2I-FJl" customClass="BLDetailedCollectionViewCell">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="DetailedCollectionViewCell" id="s70-2I-FJl" customClass="BLDetailedCollectionViewCell">
                                         <rect key="frame" x="0.0" y="0.0" width="600" height="400"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -228,8 +228,12 @@
                                         </view>
                                         <constraints>
                                             <constraint firstAttribute="bottom" secondItem="Nqr-4w-STO" secondAttribute="bottom" id="02w-7R-cuH"/>
+                                            <constraint firstAttribute="bottomMargin" secondItem="Nqr-4w-STO" secondAttribute="bottom" constant="-8" id="1aQ-Px-NdG"/>
+                                            <constraint firstItem="Nqr-4w-STO" firstAttribute="top" secondItem="s70-2I-FJl" secondAttribute="topMargin" constant="-8" id="9RM-9e-kJQ"/>
                                             <constraint firstAttribute="trailing" secondItem="Nqr-4w-STO" secondAttribute="trailing" id="RAh-Sl-lV0"/>
                                             <constraint firstItem="Nqr-4w-STO" firstAttribute="top" secondItem="s70-2I-FJl" secondAttribute="top" id="dB6-BC-1iC"/>
+                                            <constraint firstItem="Nqr-4w-STO" firstAttribute="leading" secondItem="s70-2I-FJl" secondAttribute="leadingMargin" constant="-8" id="lzO-da-nuk"/>
+                                            <constraint firstAttribute="trailingMargin" secondItem="Nqr-4w-STO" secondAttribute="trailing" constant="-8" id="rk0-QV-AMo"/>
                                             <constraint firstItem="Nqr-4w-STO" firstAttribute="leading" secondItem="s70-2I-FJl" secondAttribute="leading" id="ydi-zB-8iz"/>
                                         </constraints>
                                         <connections>
@@ -237,6 +241,10 @@
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
+                                <connections>
+                                    <outlet property="dataSource" destination="r7F-FF-ba5" id="Mjb-vg-jFn"/>
+                                    <outlet property="delegate" destination="r7F-FF-ba5" id="NyW-cz-AJg"/>
+                                </connections>
                             </collectionView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NZf-iF-52a">
                                 <rect key="frame" x="20" y="408" width="580" height="32.5"/>
@@ -270,6 +278,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="BLCollectionView" destination="0HK-3j-M8H" id="UbH-2L-Ud0"/>
                         <outlet property="BLDetailedLabel" destination="pCv-yB-58l" id="GuN-M0-Gqo"/>
                         <outlet property="BLHeader" destination="NZf-iF-52a" id="SN3-3G-J0E"/>
                     </connections>
