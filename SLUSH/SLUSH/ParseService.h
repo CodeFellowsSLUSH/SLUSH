@@ -14,8 +14,6 @@
 
 @interface ParseService : NSObject
 
-+ (void)uploadTestProperties;
-
 + (void)propertiesWithFilter:(PropertyQueryFilter *)filter completionHandler:(void (^)(NSArray *properties, NSError *))handler;
 + (void)fetchImageObject:(PFObject *)imageObject withBlock:(void(^)(UIImage *image, NSError *error))handler;
 

@@ -13,7 +13,7 @@
 #import <Parse/Parse.h>
 
 
-@class UserDataObject;
+@class User;
 
 
 @interface Property : PFObject <PFSubclassing>
@@ -35,11 +35,7 @@
 @property (nonatomic) BOOL allowsPets;
 @property (nonatomic) BOOL hasWasherDryer;
 
-@property (strong, nonatomic) NSString * streetAddress;
-@property (strong, nonatomic) NSString * unitNumber;
-@property (strong, nonatomic) NSString * city;
-@property (strong, nonatomic) NSString * state;
-@property (strong, nonatomic) NSString * zipCode;
+@property (strong, nonatomic) NSString * address;
 
 @property (strong, nonatomic) NSArray *photos;
 @property (nonatomic) CLLocationCoordinate2D coordinate;
@@ -48,7 +44,9 @@
 
 - (void)addImage:(UIImage *)image withBlock:(void(^)(BOOL succeeded, NSError *error))handler;
 
-+ (Property *) generateTestPropertyForLandlord: (UserDataObject *) landlord;
+- (void) save;
+
++ (Property *) generateTestPropertyForLandlord: (User *) landlord;
 
 
 @end

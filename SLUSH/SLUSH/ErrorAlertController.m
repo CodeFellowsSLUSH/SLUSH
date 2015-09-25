@@ -18,4 +18,12 @@
   return alert;
 }
 
++(UIAlertController *)alertWithErrorString:(NSString *)errorString {
+  UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Error" message:errorString preferredStyle:UIAlertControllerStyleAlert];
+  
+  [alert addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil]];
+  
+  return alert;
+}
+
 @end

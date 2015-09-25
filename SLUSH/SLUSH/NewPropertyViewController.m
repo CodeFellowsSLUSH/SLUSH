@@ -10,9 +10,11 @@
 
 #import "CustomTableView.h"
 #import "Property.h"
+#import "LocationSearchResultsController.h"
+#import "GooglePlaceService.h"
 
 
-@interface NewPropertyViewController () <UITableViewDelegate, UITextViewDelegate>
+@interface NewPropertyViewController () <UITableViewDelegate, UITextViewDelegate, UISearchResultsUpdating, LocationPickerDelegate>
 
 @property (weak, nonatomic) IBOutlet UITextField *headlineTextField;
 @property (weak, nonatomic) IBOutlet UITextView *detailsTextView;
@@ -31,6 +33,10 @@
 @property (weak, nonatomic) IBOutlet UISwitch *smokingSwitch;
 
 @property (weak, nonatomic) IBOutlet UISwitch *wdSwitch;
+@property (weak, nonatomic) IBOutlet UITableViewCell *addressSearchCell;
+
+@property (strong, nonatomic) UISearchController *searchController;
+@property (strong, nonatomic) LocationSearchResultsController *searchResultsController;
 
 
 @end
@@ -53,32 +59,24 @@
   // Populate the UI from the property object.
   NSAssert(self.property && self.property.landlordId, @"You must supply a property object with a link to a landlord's user object");
   [self loadUIFromProperty];
+  
+  [self setupSearchController];
 
 }
 
-
-- (void) viewWillDisappear:(BOOL)animated {
-
-  // Save the property object based on the changes the user has made.
-  [self saveUIToProperty];
-
-  // For did's, call super first. For will's, call super last.
-  [super viewWillDisappear: animated];
-
-}
 
 - (void) loadUIFromProperty {
 
   self.headlineTextField.text = self.property.headlineDescription;
   self.detailsTextView.text = self.property.detailsDescription;
 
-  self.rentTextField.text = [NSString stringWithFormat: @"%ld", (long)self.property.price];
+  self.rentTextField.text = (self.property.price > 0) ? [NSString stringWithFormat: @"%ld", (long)self.property.price] : @"";
 
   self.leaseTermSlider.value = self.property.monthsAvailable;
 
-  self.sqFtTextField.text = [NSString stringWithFormat: @"%ld", (long)self.property.squareFeet];
-  self.bedsTextField.text = [NSString stringWithFormat: @"%ld", (long)self.property.numberOfBedrooms];
-  self.bathsTextField.text = [NSString stringWithFormat: @"%ld", (long)self.property.numberOfBathrooms];
+  self.sqFtTextField.text = (self.property.squareFeet > 0) ? [NSString stringWithFormat: @"%ld", (long)self.property.squareFeet] : @"";
+  self.bedsTextField.text = (self.property.numberOfBedrooms > 0) ? [NSString stringWithFormat: @"%ld", (long)self.property.numberOfBedrooms] : @"";
+  self.bathsTextField.text = (self.property.numberOfBathrooms > 0) ? [NSString stringWithFormat: @"%ld", (long)self.property.numberOfBathrooms] : @"";
 
   self.petsSwitch.on = self.property.allowsPets;
   self.smokingSwitch.on = self.property.allowsSmoking;
@@ -89,30 +87,43 @@
 
 - (void) saveUIToProperty {
 
-//  descriptionTextField;
-//  detailsTextView;
-//  descriptionCell;
-//
-//  rentTextField;
-//
-//  leaseTermSlider;
-//  leaseTermLabel;
-//
-//  sqFtTextField;
-//  bedsTextField;
-//  bathsTextField;
-//
-//  petsSwitch;
-//  smokingSwitch;
-//
-//  wdSwitch;
+  self.property.headlineDescription = self.headlineTextField.text;
+  self.property.detailsDescription = self.detailsTextView.text;
+
+  self.property.price = [self.rentTextField.text integerValue];
+
+  self.property.monthsAvailable = self.leaseTermSlider.value;
+
+  self.property.squareFeet = [self.sqFtTextField.text integerValue];
+  self.property.numberOfBedrooms = [self.bedsTextField.text integerValue];
+  self.property.numberOfBathrooms = [self.bathsTextField.text integerValue];
+
+  self.property.allowsPets = self.petsSwitch.on;
+  self.property.allowsSmoking = self.smokingSwitch.on;
+
+  self.property.hasWasherDryer = self.wdSwitch.on;
 
 }
 
+- (IBAction)saveButtonPressed:(UIBarButtonItem *)sender {
+  
+  // Save the property object based on the changes the user has made.
+  [self saveUIToProperty];
+  [self.property save];
+  
+  // Return to the profile controller.
+  [self.navigationController popViewControllerAnimated:true];
+  
+}
 
-- (void)didReceiveMemoryWarning {
-  [super didReceiveMemoryWarning];
-  // Dispose of any resources that can be recreated.
+- (void)setupSearchController {
+  self.searchResultsController = [[LocationSearchResultsController alloc] initWithStyle:UITableViewStylePlain];
+  self.searchController = [[UISearchController alloc] initWithSearchResultsController:self.searchResultsController];
+  self.searchController.searchResultsUpdater = self;
+  self.searchResultsController.delegate = self;
+  
+  [self.addressSearchCell addSubview:self.searchController.searchBar];
+ 
 }
 
 
@@ -148,6 +159,33 @@
   [customTableView ignoreAnimationsAndBoundsChanges: false];
 
 }
+
+#pragma mark - Search Results Updating
+
+
+-(void)updateSearchResultsForSearchController:(UISearchController *)searchController {
+  [GooglePlaceService autoCompletePredictionsFromSearchTerm:searchController.searchBar.text withBlock:^(NSArray *predictions, NSError *error) {
+    if (error) {
+      
+    } else {
+      self.searchResultsController.searchResults = predictions;
+    }
+  }];
+}
+
+#pragma mark - Location Picker Delegate
+
+-(void)locationPicker:(LocationSearchResultsController *)picker didPickPlace:(GMSPlace *)place {
+
+  self.property.coordinate = place.coordinate;
+  self.property.address = place.formattedAddress;
+  self.searchController.searchBar.text = place.formattedAddress;
+  
+  [picker dismissViewControllerAnimated:true completion:nil];
+  
+}
+
+
 
 
 @end

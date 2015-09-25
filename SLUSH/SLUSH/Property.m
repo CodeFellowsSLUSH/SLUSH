@@ -8,7 +8,7 @@
 
 #import "Property.h"
 
-#import "UserDataObject.h"
+#import "User.h"
 
 
 CGFloat const kDefaultImageCompression = 0.8;
@@ -40,11 +40,7 @@ CGFloat const kDefaultImageCompression = 0.8;
 
 @synthesize googlePlace;
 
-@dynamic streetAddress;
-@dynamic unitNumber;
-@dynamic city;
-@dynamic state;
-@dynamic zipCode;
+@dynamic address;
 
 @dynamic imagesFile;
 @dynamic photos;
@@ -56,7 +52,6 @@ CGFloat const kDefaultImageCompression = 0.8;
 + (NSString *)parseClassName {
   return @"Property";
 }
-
 
 - (void)addImage:(UIImage *)image withBlock:(void(^)(BOOL succeeded, NSError *error))handler {
   NSData *imageData = UIImageJPEGRepresentation(image, kDefaultImageCompression);
@@ -77,7 +72,6 @@ CGFloat const kDefaultImageCompression = 0.8;
   }];
 }
 
-
 -(void)setCoordinate:(CLLocationCoordinate2D)coordinate {
   PFGeoPoint *geoPoint = [PFGeoPoint geoPointWithLatitude:coordinate.latitude longitude:coordinate.longitude];
   self.geoPoint = geoPoint;
@@ -93,7 +87,14 @@ CGFloat const kDefaultImageCompression = 0.8;
 }
 
 
-+ (Property *) generateTestPropertyForLandlord: (UserDataObject *) landlord {
+- (void) save {
+
+  [self saveEventually];
+
+}
+
+
++ (Property *) generateTestPropertyForLandlord: (User *) landlord {
 
   static const CLLocationDegrees latitudeOfCodeFellows = 47.62354;
   static const CLLocationDegrees longitudeOfCodeFellows = -122.3362;
@@ -124,14 +125,25 @@ CGFloat const kDefaultImageCompression = 0.8;
   property.allowsSmoking = arc4random_uniform(2) > 0 ? true : false;
   property.hasWasherDryer = arc4random_uniform(2) > 0 ? true : false;
 
-  property.geoPoint.latitude = latitudeOfCodeFellows + ( 0.005 - (double)arc4random_uniform(100) / 10000.0);
-  property.geoPoint.longitude = longitudeOfCodeFellows + ( 0.005 - (double)arc4random_uniform(100) / 10000.0);
+  property.geoPoint = [PFGeoPoint geoPointWithLatitude: latitudeOfCodeFellows + ( 0.005 - (double)arc4random_uniform(100) / 10000.0) longitude: longitudeOfCodeFellows + ( 0.005 - (double)arc4random_uniform(100) / 10000.0)];
 
-  property.streetAddress = [NSString stringWithFormat: @"%u Boren Ave N", arc4random_uniform(20) + 490];
-  property.unitNumber = [NSString stringWithFormat: @"%u", arc4random_uniform(20) + 1];
-  property.city = @"Seattle";
-  property.state = @"WA";
-  property.zipCode = @"98123";
+  [property addImage:[UIImage imageNamed:@"modernHouse"] withBlock:^(BOOL succeeded, NSError *error) {
+    if (error) {
+      NSLog(@"error: %@", error.localizedDescription);
+    }
+  }];
+
+  [property addImage:[UIImage imageNamed:@"craftsman"] withBlock:^(BOOL succeeded, NSError *error) {
+    if (error) {
+      NSLog(@"error: %@", error.localizedDescription);
+    }
+  }];
+
+  [property addImage:[UIImage imageNamed:@"seattleRoom"] withBlock:^(BOOL succeeded, NSError *error) {
+    if (error) {
+      NSLog(@"error: %@", error.localizedDescription);
+    }
+  }];
 
   return property;
   

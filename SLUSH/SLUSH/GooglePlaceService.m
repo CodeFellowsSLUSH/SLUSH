@@ -34,11 +34,16 @@
   }];
 }
 
-+ (void)currentPlace {
++ (void)currentPlaceWithBlock:(void(^)(GMSPlace *place, NSError *error))handler {
   GMSPlacesClient *placesClient = [GMSPlacesClient sharedClient];
   [placesClient currentPlaceWithCallback:^(GMSPlaceLikelihoodList * _Nullable likelihoodList, NSError * _Nullable error) {
-    
-    
+    if (error) {
+      handler(nil, error);
+    } else {
+      GMSPlaceLikelihood *placeGuess = likelihoodList.likelihoods[0];
+      GMSPlace *place = placeGuess.place;
+      handler(place, nil);
+    }
   }];
 }
 
