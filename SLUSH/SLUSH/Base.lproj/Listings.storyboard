@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8191" systemVersion="15A282b" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="quk-jQ-2cM">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8191" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="quk-jQ-2cM">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
@@ -45,7 +45,7 @@
         <scene sceneID="62M-px-tUj">
             <objects>
                 <tableViewController storyboardIdentifier="BrowseListingVC" id="ofO-tF-N67" customClass="BrowseListingsTableViewController" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="376" sectionHeaderHeight="28" sectionFooterHeight="28" id="JGk-zi-mkO">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="singleLineEtched" rowHeight="376" sectionHeaderHeight="28" sectionFooterHeight="28" id="JGk-zi-mkO">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <animations/>
@@ -134,16 +134,26 @@
                                                 <constraint firstAttribute="width" constant="80" id="w2K-rA-TAs"/>
                                             </constraints>
                                         </view>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="m3s-Jc-8VP" userLabel="thin blue line">
+                                            <rect key="frame" x="8" y="374.5" width="584" height="1"/>
+                                            <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="1" id="vxJ-kz-MZB"/>
+                                            </constraints>
+                                        </view>
                                     </subviews>
                                     <animations/>
                                     <constraints>
                                         <constraint firstAttribute="bottomMargin" secondItem="kIc-Pw-PzB" secondAttribute="bottom" constant="7" id="1al-v8-Pr0"/>
                                         <constraint firstAttribute="trailingMargin" secondItem="Pff-5w-6aR" secondAttribute="trailing" constant="-8" id="2bd-Ha-HV2"/>
+                                        <constraint firstItem="m3s-Jc-8VP" firstAttribute="leading" secondItem="puy-bH-xgD" secondAttribute="leadingMargin" id="4Rl-S0-xxp"/>
                                         <constraint firstItem="Pff-5w-6aR" firstAttribute="top" secondItem="puy-bH-xgD" secondAttribute="topMargin" constant="-8" id="5l7-sw-Sho"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="m3s-Jc-8VP" secondAttribute="trailing" id="D0G-M2-V6g"/>
                                         <constraint firstAttribute="trailingMargin" secondItem="kIc-Pw-PzB" secondAttribute="trailing" id="Da7-tB-9ZD"/>
                                         <constraint firstAttribute="trailing" secondItem="a0d-JJ-1eY" secondAttribute="trailing" id="H41-RN-GBD"/>
                                         <constraint firstItem="f6s-cJ-bUb" firstAttribute="leading" secondItem="puy-bH-xgD" secondAttribute="leadingMargin" id="Oku-Ky-fin"/>
                                         <constraint firstItem="Pff-5w-6aR" firstAttribute="leading" secondItem="puy-bH-xgD" secondAttribute="leadingMargin" constant="-8" id="apq-gF-DWy"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="m3s-Jc-8VP" secondAttribute="bottom" constant="-5" id="bWJ-8P-yph"/>
                                         <constraint firstItem="kIc-Pw-PzB" firstAttribute="leading" secondItem="puy-bH-xgD" secondAttribute="leadingMargin" id="cou-Gp-xn1"/>
                                         <constraint firstItem="f6s-cJ-bUb" firstAttribute="top" secondItem="Pff-5w-6aR" secondAttribute="bottom" constant="8" id="nY5-X2-teZ"/>
                                         <constraint firstItem="kIc-Pw-PzB" firstAttribute="top" secondItem="f6s-cJ-bUb" secondAttribute="bottom" id="q4I-1x-Xac"/>
