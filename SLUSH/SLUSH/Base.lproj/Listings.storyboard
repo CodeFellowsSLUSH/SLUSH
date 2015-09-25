@@ -161,6 +161,7 @@
                                     </constraints>
                                 </tableViewCellContentView>
                                 <animations/>
+                                <color key="backgroundColor" red="0.76470588235294112" green="0.89803921568627454" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <connections>
                                     <outlet property="collectionView" destination="Pff-5w-6aR" id="U99-4I-edu"/>
                                     <outlet property="descriptionLabel" destination="kIc-Pw-PzB" id="tQS-nb-FWB"/>
