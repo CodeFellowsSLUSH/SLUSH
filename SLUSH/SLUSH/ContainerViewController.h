@@ -11,6 +11,8 @@
 
 @interface ContainerViewController : UIViewController
 
+@property (strong, nonatomic) PropertyQueryFilter *filter;
+
 -(void)swapViewControllers;
 
 @end
